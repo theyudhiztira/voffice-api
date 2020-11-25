@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         first_name: DataTypes.STRING,
-        last_name: DataTypes.STRING,
+        last_name: {
+            allowNull: true,
+            type: DataTypes.STRING
+        },
         email: DataTypes.STRING,
         password: DataTypes.STRING,
         current_base: DataTypes.INTEGER,
