@@ -1,0 +1,13 @@
+POST http://localhost:3005/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "sakti.vofficee@gmail.com",
+    "first_name": "Kevin",
+    "last_name": "Ramadhan",
+    "current_base": "89",
+    "dob": "2000-12-11",
+    "phone": "0877577648782",
+    "user_group": 89,
+    "user_acl": 2
+}
