@@ -9,7 +9,8 @@ module.exports = {
             body('current_base').notEmpty().trim().escape(),
             body('dob').isDate().trim().escape(),
             body('phone').isMobilePhone("any").trim().escape(),
-            body('user_group').notEmpty()
+            body('user_group').notEmpty(),
+            body('user_acl').notEmpty()
         ]
     },
 

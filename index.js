@@ -20,6 +20,6 @@ app.get('/', (req, res) => {
     });
 })
 
-app.listen(2006, () => {
+app.listen(3005, () => {
     console.log('Server started on port 3005');
 })
