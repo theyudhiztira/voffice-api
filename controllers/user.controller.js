@@ -38,7 +38,7 @@ exports.create = (req, res) => {
                 dob: body.dob,
                 email: body.email,
                 phone: body.phone,
-                password: bcrypt.hashSync(hero.randomizer(8), 10),
+                password: bcrypt.hashSync(body.password, 10),
                 status: 1,
                 created_by: 24
                 // created_by: req.userData.userId

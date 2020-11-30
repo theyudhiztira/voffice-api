@@ -18,9 +18,10 @@ exports.login = (req, res) => {
             });
         }
 
+        data = data.dataValues;
+
         bcrypt.compare(body.password, data.password, (error, result) => {
             if (error) {
-                console.log(error);
                 return res.status(500).send({
                     message: error
                 });
@@ -63,4 +64,4 @@ exports.verifyToken = (req, res) => {
             status: false
         });
     }
-}
+};
