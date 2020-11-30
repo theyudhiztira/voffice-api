@@ -3,38 +3,30 @@ const hero = require('../lib/hero');
 
 
 // Create and Save a new user acl. Params : User ID, Permissions (Object)
-exports.create = (user_id, data) => {
+exports.create = (data) => {
 
     return model.users
         .findOne({
             where: {
-                user_id: user_id
+                id: data.user_id
             }
         })
         .then(findRes => {
-            if (findRes) {
-                throw 'Error: User ID Already Exist';
+            if (!findRes) {
+                return 'Error: User ID Not Registered';
             }
-
-            const parsedData = parse(data)
-
-            model.users_acl.create({
-                user_id: user_id,
-                parsedData
-
-            }).then(() => {
-
-                return true
-
-            }).catch(err => {
-                
-                throw err.message
-
-            });
+            
+            return model.user_acl.create(
+                    data
+                ).then(() => {
+                    return true
+                }).catch(err => {
+                    throw err.message
+                });;
 
         })
         .catch(err => {
-            throw err.message
+            return err.message
         });
 };
 

@@ -41,7 +41,8 @@ module.exports = (sequelize, DataTypes) => {
         sequelize,
         modelName: 'user_acl',
         updatedAt: 'updated_at',
-        createdAt: 'created_at'
+        createdAt: 'created_at',
+        freezeTableName: true
     });
 
     return user_acl;
