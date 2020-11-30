@@ -9,5 +9,8 @@ content-type: application/json
     "dob": "2000-12-11",
     "phone": "0877577648782",
     "user_group": 89,
-    "user_acl": 2
+    "user_acl": {
+        "invoicing": [1,1,1],
+        "client": [1,0,1]
+    }
 }

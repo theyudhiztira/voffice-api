@@ -4,6 +4,7 @@ const {
 } = require('sequelize');
 const bcrypt = require("bcryptjs");
 const hero = require('../lib/hero');
+const userAcl = require('../controllers/user_acl.controller');
 
 
 // Create and Save a new user
@@ -41,7 +42,8 @@ exports.create = (req, res) => {
                 status: 1,
                 created_by: 24
                 // created_by: req.userData.userId
-            }).then(() => {
+            }).then((userId) => {
+                userAcl.create(userId, body.user_acl)
                 return res.status(201).send({
                     status: true
                 });
