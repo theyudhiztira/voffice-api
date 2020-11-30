@@ -1,9 +1,9 @@
 'use strict';
 const {
-    Model
+  Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class user_acl extends Model {
+    class user_groups extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -13,36 +13,27 @@ module.exports = (sequelize, DataTypes) => {
         // define association here
         }
     };
-    user_acl.init({
+    user_groups.init({
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        user_id: DataTypes.INTEGER,
-        invoicing: DataTypes.STRING,
-        client: DataTypes.STRING,
-        call_handling: DataTypes.STRING,
-        mail_handling: DataTypes.STRING,
-        visitor_handling: DataTypes.STRING,
-        booking: DataTypes.STRING,
-        product: DataTypes.STRING,
-        location: DataTypes.STRING,
-        serviced_office: DataTypes.STRING,
-        deals: DataTypes.STRING,
-        promo: DataTypes.STRING,
+        name: {
+            allowNull: false,
+            type: DataTypes.STRING
+        },
         created_by: {
             allowNull: false,
             type: DataTypes.INTEGER
         },
         created_at: DataTypes.DATE,
-        updated_at: DataTypes.DATE
+        updated_by: DataTypes.DATE
     }, {
         sequelize,
-        modelName: 'user_acl',
+        modelName: 'user_groups',
         updatedAt: 'updated_at',
         createdAt: 'created_at'
     });
-
-    return user_acl;
+  return user_groups;
 };

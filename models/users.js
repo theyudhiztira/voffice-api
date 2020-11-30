@@ -50,14 +50,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER
         },
-        created_at: {
-            allowNull: false,
-            type: DataTypes.DATE
-        },
-        updated_at: {
-            allowNull: false,
-            type: DataTypes.DATE
-        }
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE
     }, {
         sequelize,
         modelName: 'users',
