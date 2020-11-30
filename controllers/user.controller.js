@@ -1,4 +1,5 @@
 const model = require('../models');
+// const modelUserAcl = require('../models').users_acl;
 const {
     Op
 } = require('sequelize');
@@ -42,11 +43,21 @@ exports.create = (req, res) => {
                 status: 1,
                 created_by: 24
                 // created_by: req.userData.userId
-            }).then((userId) => {
-                userAcl.create(userId, body.user_acl)
-                return res.status(201).send({
-                    status: true
-                });
+            }).then((result) => {
+                body.user_acl.user_id = result.dataValues.id;
+                let createAcl = userAcl.create(body.user_acl);
+
+                if (createAcl){
+                    return res.status(201).send({
+                        status: true
+                    });
+                }
+                else{
+                    return res.status(500).send({
+                        message: "Failed when create user ACL"
+                    })
+                }
+
             }).catch(err => {
                 return res.status(500).send({
                     message: err.message
