@@ -32,6 +32,32 @@ POST http://localhost:3005/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "saktivofficee@gmail.com",
+    "email": "saktivoffifcefe@gmail.com",
     "password": "xero123"
+}
+
+###
+
+POST http://localhost:3005/locations HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Green Office Park 6 BSD",
+    "city": "BSD",
+    "province": "Jawa Barat",
+    "country": "Indonesia",
+    "tax_id": "12345",
+    "phone": "02123456789",
+    "timezone": "asia/jakarta",
+    "center_email": "bsd@voffice.co.id",
+    "start_time": 700,
+    "end_time": 1800,
+    "weekend_start_time": 0,
+    "weekend_end_time": 0,
+    "coordinates": "-6.303249, 106.652715",
+    "company_name": "Voffice BSD",
+    "extension": "224455",
+    "address": "bsd tangerang selatan",
+    "status": "1",
+    "created_by": 24
 }
