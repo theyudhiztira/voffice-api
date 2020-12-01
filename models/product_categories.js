@@ -18,17 +18,17 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
         name: DataTypes.STRING,
         created_by: DataTypes.INTEGER,
         created_at: {
             allowNull: false,
-            type: Sequelize.DATE
+            type: DataTypes.DATE
         },
         updated_at: {
             allowNull: false,
-            type: Sequelize.DATE
+            type: DataTypes.DATE
         }
     }, {
         sequelize,
