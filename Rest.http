@@ -1,37 +1,7 @@
-POST http://localhost:3005/register HTTP/1.1
-content-type: application/json
-
-{
-    "email": "rachmadsyaefullah1234@gmail.com",
-    "password": "xero123",
-    "first_name": "Kevin",
-    "last_name": "Ramadhan",
-    "current_base": "89",
-    "dob": "2000-12-11",
-    "phone": "08999999099",
-    "user_group": 89,
-    "user_acl": {
-        "invoicing": ["1", "0", "1"],
-        "client": ["1", "0", "1"],
-        "call_handling": "1:0:1",
-        "mail_handling": "1:1:1",
-        "visitor_handling": ["1", "0", "1"],
-        "booking": ["0", "0", "0"],
-        "product": ["1", "1", "1"],
-        "location": ["1", "0", "1"],
-        "serviced_office": ["1", "0", "1"],
-        "deals": ["0", "0", "1"],
-        "promo": ["1", "1", "1"],
-        "created_by": 24
-    }
-}
-
-###
-
 POST http://localhost:3005/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "saktivofficee@gmail.com",
+    "email": "saktivoffifcefe@gmail.com",
     "password": "xero123"
 }
