@@ -40,17 +40,17 @@ content-type: application/json
 
 POST http://localhost:3005/user-group HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 {
-    "name": "Lokiz"
+    "name": "baru"
 }
 
 ###
 
 PUT http://localhost:3005/user-group/3 HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 {
     "name": "hahaha"
@@ -60,17 +60,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtY
 
 DELETE http://localhost:3005/user-group/3 HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 ###
 
 GET http://localhost:3005/user-group/1 HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 ###
 
 GET http://localhost:3005/user-group/ HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 ###
 
