@@ -2,26 +2,26 @@ POST http://localhost:3005/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "testing@gmail.com",
+    "email": "testing2@gmail.com",
     "password": "testing123",
     "first_name": "Test",
     "last_name": "User",
     "current_base": "89",
     "dob": "2000-12-11",
-    "phone": "0810928309823",
+    "phone": "0812928309823",
     "user_group": 89,
     "user_acl": {
-        "invoicing": "1:1:1",
-        "client": "1:1:1",
-        "call_handling": "1:1:1",
-        "mail_handling": "1:1:1",
-        "visitor_handling": "1:1:1",
-        "booking": "1:1:1",
-        "product": "1:1:1",
-        "location": "1:1:1",
-        "serviced_office": "1:1:1",
-        "deals": "1:1:1",
-        "promo": "1:1:1",
+        "invoicing": ["1", "1", "1"],
+        "client": ["1", "0", "1"],
+        "call_handling": ["1", "1", "0"],
+        "mail_handling": ["0", "1", "1"],
+        "visitor_handling": ["1", "0", "0"],
+        "booking": ["0", "1", "1"],
+        "product": ["1", "0", "1"],
+        "location": ["0", "1", "1"],
+        "serviced_office": ["1", "1", "1"],
+        "deals": ["1", "1", "0"],
+        "promo": "0:0:1",
         "created_by": 24
     }
 }
@@ -40,37 +40,39 @@ content-type: application/json
 
 POST http://localhost:3005/user-group HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 {
-    "name": "Lokiz"
+    "name": "baru"
 }
 
 ###
 
-PUT http://localhost:3005/user-group/3 HTTP/1.1
+PUT http://localhost:3005/user-group/4 HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 {
-    "name": "hahaha"
+    "name": "Hani"
 }
 
 ###
 
-DELETE http://localhost:3005/user-group/3 HTTP/1.1
+DELETE http://localhost:3005/user-group/9 HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 ###
 
 GET http://localhost:3005/user-group/1 HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 ###
 
 GET http://localhost:3005/user-group/ HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
 
 ###
 

@@ -1,7 +1,7 @@
 module.exports = (app) => {
 
     const checkAuth = require('../middlewares/auth.js')
-    const userGroup = require('../controllers/user_group.controller.js');
+    const userGroup = require('../controllers/user_group');
 
     app.post('/user-group', checkAuth , userGroup.create);
     app.get('/user-group', checkAuth, userGroup.showAll);

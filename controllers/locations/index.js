@@ -1,8 +1,9 @@
+const hero = require('../../lib/hero.js');
 const controller = require('./controller.js');
 
 exports.create = async (req, res) => {
     let statusCode;
-    let body = req.body;
+    const body = req.body;
     let func = await controller.create(body);
 
     if (!func.status) {
@@ -15,7 +16,8 @@ exports.create = async (req, res) => {
 };
 
 exports.showAll = async (req, res) => {
-    let func = await controller.showAll();
+    const filter = hero.paramFilter(['city','province'], req.query);
+    let func = await controller.showAll(filter);
     
     return res.status(200).send(func);
 };
