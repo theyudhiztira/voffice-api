@@ -16,8 +16,12 @@ exports.create = async (params) => {
         });
 };
 
-exports.showAll = async () => {
-    const data = await model.locations.findAll();
+exports.showAll = async (params) => {
+    const filter = {
+        where: params
+    };
+
+    const data = await model.locations.findAll(params ? filter : {});
     return data;
 };
 
