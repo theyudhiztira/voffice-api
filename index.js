@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 require('./routes/auth.routes.js')(app);
+require('./routes/locations.routes.js')(app);
 require('./routes/user_group.routes.js')(app);
 
 app.get('/', (req, res) => {

@@ -22,9 +22,7 @@ exports.create = (req, res) => {
 exports.showAll = (req, res) => {
     return models.user_groups
     .findAll()
-    .then(result => res.status(200).send({
-            data: result
-        })
+    .then(result => res.status(200).send(result)
     ).catch(err => res.status(500).send({
             message: err.message
         })
@@ -36,9 +34,7 @@ exports.show = (req, res) => {
         where: {
             id: req.params.id
         }
-    }).then(result => res.status(200).send({
-            data: result.dataValues
-        })
+    }).then(result => res.status(200).send(result.dataValues)
     ).catch(err => res.status(500).send({
             message: err.message
         })
