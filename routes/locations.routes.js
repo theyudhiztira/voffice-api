@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const locations = require('../controllers/locations.controller.js');
+    const locations = require('../controllers/locations');
     const validator = require('../validators/locations.validator.js');
     const checkAuth = require('../middlewares/auth.js');
 
