@@ -11,14 +11,20 @@ exports.show    = async (req, res) => {
 };
 
 exports.create  = async (req, res) => {
-    // if(controller.create(req)){
-    //     res.status(201).send({status: 'OK'})
-    // }else{
-    //     res.status(500).send({status: 'Error'})
-    // }
-    console.log(await controller.create(req));
+    (controller.create(req)) ? 
+    res.status(201).send({status: true})
+    : res.status(500).send({status: false})
 };
 
-exports.update  = (req, res) => controller.update(req, res);
+exports.update  = async (req, res) => {
+    (controller.update(req)) ? 
+    res.status(200).send({status: true})
+    : res.status(500).send({status: false})
+};
 
-exports.delete  = (req, res) => controller.delete(req, res);
+exports.delete  = async (req, res) => {
+    const id = req.params.id;
+    (controller.delete(id)) ? 
+    res.status(200).send({status: true})
+    : res.status(500).send({status: false})
+};

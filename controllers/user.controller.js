@@ -5,7 +5,7 @@ const {
 } = require('sequelize');
 const bcrypt = require("bcryptjs");
 const hero = require('../lib/hero');
-const userAcl = require('../controllers/user_acl.controller');
+const userAcl = require('../controllers/user_acl/controller');
 
 
 // Create and Save a new user

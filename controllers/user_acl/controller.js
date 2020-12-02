@@ -1,11 +1,13 @@
-const model = require('../models');
-const hero = require('../lib/hero');
+const model = require('../../models');
 
+/**
+ * 
+ * @param {object} data
+ * @returns {void} 
+ */
+exports.create = async (data) => {
 
-// Create and Save a new user acl. Params : User ID, Permissions (Object)
-exports.create = (data) => {
-
-    return model.users
+    await model.users
         .findOne({
             where: {
                 id: data.user_id
@@ -26,20 +28,25 @@ exports.create = (data) => {
 
         })
         .catch(err => {
-            return err.message
+            throw err.message
         });
+
 };
 
-//Parse Array to String or String to Array. Params: Object. Return: Object
+/**
+ * 
+ * @param {object} data raw data to parse, the value could be string or Array 
+ * @returns {object} parsed data
+ */
 const parse = (data) => {
 
     Object.keys(data).forEach((key) => {
          data[key] =    (Array.isArray(data[key])) ? data[key].join(':') : 
-                        (typeof data[key] === 'string' || data[key] instanceof String) ? JSON.stringify(data[key].split(':')) :
-                        data[key] 
+                        (typeof data[key] === 'string' || data[key] instanceof String) ? JSON.stringify(data[key].split(':')) 
+                        : data[key] 
     })
 
-    return data
+    return data;
 
 }
 

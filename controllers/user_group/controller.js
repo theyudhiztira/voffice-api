@@ -14,9 +14,8 @@ exports.show = async (paramsId) => {
     return result;
 }
 
-exports.create = (req) => {
-
-    models.user_groups.create({
+exports.create = async (req) => {
+    return await models.user_groups.create({
         name: req.body.name,
         created_by: req.userData.userId
     })
@@ -25,33 +24,25 @@ exports.create = (req) => {
 
 }
 
-exports.update = (req, res) => {
-    let body = req.body;
-    return models.user_groups.update({
-            name: body.name,
+exports.update = async (req) => {
+    return await models.user_groups.update({
+            name: req.body.name,
             updated_by: req.userData.userId,
         }, {
             where: {
                 id: req.params.id
             }
-        }).then(result => res.status(201).send({
-            status: true,
-            data: result.dataValues
-        })).catch(err => res.status(500).send({
-            message: err.message
-        }))
+        })
+        .then(() => true)
+        .catch(() => false)
 }
 
-exports.delete = (req, res) => {
-    return models.user_groups.destroy({
+exports.delete = async (id) => {
+    return await models.user_groups.destroy({
         where: {
-            id: req.params.id
+            id: id
         }
-    }).then(() => res.status(201).send({
-        status: true,
-        message: "Data Deleted Successfully"
-    })).catch(err => res.send(500).send({
-        status: false,
-        message: err.message
-    }))
+    })
+    .then(() => true)
+    .catch(() => false)
 }
