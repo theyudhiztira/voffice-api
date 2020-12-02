@@ -19,3 +19,39 @@ exports.create = (req, res) => {
             })
         });
 };
+
+exports.showAll = (req, res) => {
+
+    return model.locations
+        .findAll()
+        .then((result) => {
+            return res.status(200).send({
+                result: result
+            });
+        }).catch(err => {
+            return res.status(500).send({
+                message: err.message
+            })
+        });
+};
+
+exports.show = (req, res) => {
+
+    let location_id = parseInt(req.params.location_id);
+    
+    return model.locations
+        .findOne({
+            where: {
+                id: location_id
+            }
+        })
+        .then((result) => {
+            return res.status(200).send({
+                result: result
+            });
+        }).catch(err => {
+            return res.status(500).send({
+                message: err.message
+            })
+        });
+};
