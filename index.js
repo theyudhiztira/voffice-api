@@ -15,6 +15,7 @@ app.use(cors())
 require('./routes/auth.routes.js')(app);
 require('./routes/locations.routes.js')(app);
 require('./routes/user_group.routes.js')(app);
+require('./routes/products.routes.js')(app);
 
 app.get('/', (req, res) => {
     return res.status(404).send({
