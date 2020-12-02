@@ -17,7 +17,7 @@ exports.create = (data) => {
             }
             
             return model.user_acl.create(
-                    data
+                    parse(data)
                 ).then(() => {
                     return true
                 }).catch(err => {
@@ -34,12 +34,13 @@ exports.create = (data) => {
 const parse = (data) => {
 
     Object.keys(data).forEach((key) => {
-         data[key] = (Array.isArray(data[key])) ? data[key].join(':') : (typeof data[key] == 'string') ? data[key].split(':') : data[key] 
+         data[key] =    (Array.isArray(data[key])) ? data[key].join(':') : 
+                        (typeof data[key] === 'string' || data[key] instanceof String) ? JSON.stringify(data[key].split(':')) :
+                        data[key] 
     })
 
     return data
 
 }
-
 
 
