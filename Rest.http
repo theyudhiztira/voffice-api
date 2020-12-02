@@ -2,13 +2,13 @@ POST http://localhost:3005/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "sakti.voffifcefe@gmail.com",
-    "password": "xero123",
-    "first_name": "Kevin",
-    "last_name": "Ramadhan",
+    "email": "testing@gmail.com",
+    "password": "testing123",
+    "first_name": "Test",
+    "last_name": "User",
     "current_base": "89",
     "dob": "2000-12-11",
-    "phone": "087757764873832",
+    "phone": "0810928309823",
     "user_group": 89,
     "user_acl": {
         "invoicing": "1:1:1",
@@ -32,9 +32,45 @@ POST http://localhost:3005/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "saktivoffifcefe@gmail.com",
-    "password": "xero123"
+    "email": "testing@gmail.com",
+    "password": "testing123"
 }
+
+###
+
+POST http://localhost:3005/user-group HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+
+{
+    "name": "Lokiz"
+}
+
+###
+
+PUT http://localhost:3005/user-group/3 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+
+{
+    "name": "hahaha"
+}
+
+###
+
+DELETE http://localhost:3005/user-group/3 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4ODE2NDUsImV4cCI6MTYwNjkxMDQ0NX0.aEtyIdKVD1Cm0-FyIi1YTwk7SsfQrzWizyugo-xuxsg
+
+###
+
+GET http://localhost:3005/user-group/1 HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3005/user-group/ HTTP/1.1
+content-type: application/json
 
 ###
 
