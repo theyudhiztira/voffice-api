@@ -9,137 +9,142 @@ const userAcl = require('../user_acl/controller');
 
 
 // Create and Save a new user
-exports.create = (req, res) => {
+exports.create = async (params) => {
     // Create a User
-    let body = req.body;
-
-    return model.users
+    return await model.users
         .findOne({
             where: {
                 [Op.or]: [{
-                        email: body.email
+                        email: params.email
                     },
                     {
-                        phone: body.phone
+                        phone: params.phone
                     }
                 ]
             }
         })
         .then(findRes => {
+
             if (findRes) {
-                return res.status(401).json({
+                return {
+                    status: false,
                     message: "Your email or phone number is already in use!"
-                });
+                };
             }
 
             model.users.create({
-                first_name: body.first_name,
-                last_name: body.last_name,
-                current_base: body.current_base,
-                dob: body.dob,
-                email: body.email,
-                phone: body.phone,
-                password: bcrypt.hashSync(body.password, 10),
-                status: 1,
-                created_by: 24
-                // created_by: req.userData.userId
+                first_name: params.first_name,
+                last_name: params.last_name,
+                email: params.email,
+                password: bcrypt.hashSync(params.password, 10),
+                current_base: params.current_base,
+                user_group: params.user_group,
+                phone: params.phone,
+                dob: params.dob,
+                status: params.status,
+                additional_permission: params.additional_permission,
+                created_by: params.created_by
             }).then((result) => {
-                body.user_acl.user_id = result.dataValues.id;
-                let createAcl = userAcl.create(body.user_acl);
+                
+                params.user_acl.user_id = result.dataValues.id;
+                let createAcl = userAcl.create(params.user_acl);
 
                 if (createAcl){
-                    return res.status(201).send({
+                    return {
                         status: true
-                    });
+                    };
                 }
                 else{
-                    return res.status(500).send({
+                    return {
+                        status: false,
                         message: "Failed when create user ACL"
-                    })
+                    };
                 }
 
             }).catch(err => {
-                return res.status(500).send({
+                return {
+                    status: false,
                     message: err.message
-                })
+                };
             });
         })
         .catch(err => {
-            return res.status(500).send({
+            return {
+                status: false,
                 message: err.message
-            })
+            };
         });
 };
 
-exports.get = (req, res) => {
+// exports.get = async (params) => {
 
-    const user_id = parseInt(req.params.user_id);
+//     const user_id = parseInt(req.params.user_id);
 
-    return model.users
-        .findOne({
-            where: {
-                id: user_id
-            }
-        })
-        .then((result) => {
-            return res.status(200).send(result);
-        }).catch(err => {
-            return res.status(500).send({
-                message: err.message
-            })
-        })
-}
+//     return model.users
+//         .findOne({
+//             where: {
+//                 id: user_id
+//             }
+//         })
+//         .then((result) => {
+//             return res.status(200).send(result);
+//         }).catch(err => {
+//             return res.status(500).send({
+//                 message: err.message
+//             })
+//         })
+// }
 
-exports.getAll = (req, res) => {
+// exports.getAll = async (params) => {
     
-    return model.users
-        .findAll()
-        .then((result) => {
-            return res.status(200).send(result);
-        }).catch(err => {
-            return res.status(500).send({
-                message: err.message
-            })
-        });
-}
+//     return model.users
+//         .findAll()
+//         .then((result) => {
+//             return res.status(200).send(result);
+//         }).catch(err => {
+//             return res.status(500).send({
+//                 message: err.message
+//             })
+//         });
+// }
 
-exports.update = (req, res) => {
+// exports.update = async (params) => {
 
-    const id = req.params.user_id;
-    const body = req.body;
+//     const id = req.params.user_id;
+//     const params = req.params;
 
-    return model.users
-        .update(body, {
-            where: {
-                id: id
-            }
-        }).then(result => {
-            return res.status(200).send({
-                status: true
-            });
-        }).catch(err => {
-            res.status(500).send({
-                message: err.message
-            })
-        })
-}
+//     return model.users
+//         .update(params, {
+//             where: {
+//                 id: id
+//             }
+//         }).then(result => {
+//             return res.status(200).send({
+//                 status: true
+//             });
+//         }).catch(err => {
+//             res.status(500).send({
+//                 message: err.message
+//             })
+//         })
+// }
 
-exports.delete = (req, res) => {
+// exports.delete = async (params) => {
 
-    let id = req.params.user_id;
+//     let id = req.params.user_id;
     
-    return model.users
-        .destroy({
-            where: {
-                id: id
-            }
-        }).then(() => {
-            res.status(201).send({
-                status: true
-            })
-        }).catch(err => {
-            res.send(500).send({
-                message: err.message
-            })
-        })
-}
+//     return model.users
+//         .destroy({
+//             where: {
+//                 id: id
+//             }
+//         }).then(() => {
+//             res.status(201).send({
+//                 status: true
+//             })
+//         }).catch(err => {
+//             res.send(500).send({
+//                 message: err.message
+//             })
+//         })
+// }

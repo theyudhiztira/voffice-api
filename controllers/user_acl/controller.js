@@ -1,8 +1,4 @@
 const model = require('../../models');
-<<<<<<< HEAD:controllers/user_acl/controller.js
-const hero = require('../../lib/hero');
-=======
->>>>>>> dc94031ecf5c33e738ab70fb5c05cd220becb23a:controllers/user_acl.controller.js
 
 /**
  * 
