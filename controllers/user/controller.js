@@ -1,11 +1,11 @@
-const model = require('../models');
+const model = require('../../models');
 // const modelUserAcl = require('../models').users_acl;
 const {
     Op
 } = require('sequelize');
 const bcrypt = require("bcryptjs");
-const hero = require('../lib/hero');
-const userAcl = require('../controllers/user_acl.controller');
+const hero = require('../../lib/hero');
+const userAcl = require('../user_acl/controller');
 
 
 // Create and Save a new user
@@ -70,3 +70,76 @@ exports.create = (req, res) => {
             })
         });
 };
+
+exports.get = (req, res) => {
+
+    const user_id = parseInt(req.params.user_id);
+
+    return model.users
+        .findOne({
+            where: {
+                id: user_id
+            }
+        })
+        .then((result) => {
+            return res.status(200).send(result);
+        }).catch(err => {
+            return res.status(500).send({
+                message: err.message
+            })
+        })
+}
+
+exports.getAll = (req, res) => {
+    
+    return model.users
+        .findAll()
+        .then((result) => {
+            return res.status(200).send(result);
+        }).catch(err => {
+            return res.status(500).send({
+                message: err.message
+            })
+        });
+}
+
+exports.update = (req, res) => {
+
+    const id = req.params.user_id;
+    const body = req.body;
+
+    return model.users
+        .update(body, {
+            where: {
+                id: id
+            }
+        }).then(result => {
+            return res.status(200).send({
+                status: true
+            });
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message
+            })
+        })
+}
+
+exports.delete = (req, res) => {
+
+    let id = req.params.user_id;
+    
+    return model.users
+        .destroy({
+            where: {
+                id: id
+            }
+        }).then(() => {
+            res.status(201).send({
+                status: true
+            })
+        }).catch(err => {
+            res.send(500).send({
+                message: err.message
+            })
+        })
+}
