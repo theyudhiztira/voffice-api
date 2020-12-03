@@ -20,8 +20,7 @@ module.exports = {
             company_name: "required",
             extension: "required",
             address: "required",
-            status: "required",
-            created_by: "required"
+            status: "required"
         };
         
         let validation = new Validator(req.body, rules); //(form input, rules) 
