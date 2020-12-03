@@ -1,7 +1,4 @@
 const model = require('../../models');
-const {
-    Op
-} = require('sequelize');
 
 exports.create = async (params) => {
 
@@ -34,7 +31,6 @@ exports.show = async (location_id) => {
             id: location_id
         }
     });
-    console.log(data);
     return data;
 };
 
@@ -44,7 +40,7 @@ exports.update = async (params, location_id) => {
             where: {
                 id: location_id
             }
-        }).then(result => {
+        }).then(() => {
             return {
                 status: true,
             };
@@ -62,7 +58,7 @@ exports.delete = (location_id) => {
         where: {
             id: location_id
         }
-    }).then(result => {
+    }).then(() => {
         return {
             status: true,
         };
