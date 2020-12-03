@@ -4,30 +4,29 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwNjk3MjAzNiwiZXhwIjoxNjA3MDAwODM2fQ.rY2mWcgNdkyXcV0J4bQRIG179NPIP0FS3wBdTQ_T5o0
 
 {   
-    "first_name": "Bayu",
-    "last_name": "Edit",
-    "email": "testing@voffice.co.id",
+    "first_name": "v",
+    "last_name": "g",
+    "email": "31asrasdasd@voffice.co.id",
     "password": "testing",
     "current_base": 89,
     "user_group": 1,
-    "phone": "085155001615",
+    "phone": "123571231237615",
     "dob": "2020-02-18",
     "status": "1",
     "additional_permission": null,
     "created_by": 1,
     "user_acl": {
-        "invoicing": "1:1:1",
-        "client": "1:1:1",
-        "call_handling": "1:1:1",
-        "mail_handling": "1:1:1",
-        "visitor_handling": "1:1:1",
-        "booking": "1:1:1",
-        "product": "1:1:1",
-        "location": "1:1:1",
-        "serviced_office": "1:1:1",
-        "deals": "1:1:1",
-        "promo": "1:1:1",
-        "created_by": 24
+        "invoicing": [1,1,1],
+        "client": [1,1,1],
+        "call_handling": [1,1,1],
+        "mail_handling": [1,1,1],
+        "visitor_handling": [1,1,1],
+        "booking": [1,1,1],
+        "product": [1,1,1],
+        "location": [1,1,1],
+        "serviced_office": [1,1,1],
+        "deals": [1,1,1],
+        "promo": [1,1,1]
     }
 }
 
@@ -43,7 +42,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlb
 
 ###
 
-GET http://localhost:3005/users/9 HTTP/1.1
+GET http://localhost:3005/users/37 HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwNjk3MjAzNiwiZXhwIjoxNjA3MDAwODM2fQ.rY2mWcgNdkyXcV0J4bQRIG179NPIP0FS3wBdTQ_T5o0
 
@@ -53,7 +52,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlb
 
 ###
 
-PUT http://localhost:3005/users/9 HTTP/1.1
+PUT http://localhost:3005/users/37 HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwNjk3MjAzNiwiZXhwIjoxNjA3MDAwODM2fQ.rY2mWcgNdkyXcV0J4bQRIG179NPIP0FS3wBdTQ_T5o0
 
@@ -67,13 +66,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlb
     "phone": "085155001616",
     "dob": "2020-02-18",
     "status": 1,
-    "additional_permission": null,
-    "created_by": 1
+    "additional_permission": null
 }
 
 ###
 
-DELETE http://localhost:3005/users/8 HTTP/1.1
+DELETE http://localhost:3005/users/37 HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwNjk3MjAzNiwiZXhwIjoxNjA3MDAwODM2fQ.rY2mWcgNdkyXcV0J4bQRIG179NPIP0FS3wBdTQ_T5o0
 

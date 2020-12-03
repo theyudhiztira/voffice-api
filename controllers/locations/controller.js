@@ -1,7 +1,6 @@
 const model = require('../../models');
 
 exports.create = async (params) => {
-
     return await model.locations
         .create(params)
         .then((result) => {
@@ -35,7 +34,6 @@ exports.show = async (location_id) => {
 };
 
 exports.update = async (params, location_id) => {
-
     return await model.locations.update(params, {
             where: {
                 id: location_id
@@ -53,7 +51,6 @@ exports.update = async (params, location_id) => {
 }
 
 exports.delete = (location_id) => {
-
     return model.locations.destroy({
         where: {
             id: location_id

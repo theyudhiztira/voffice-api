@@ -1,7 +1,7 @@
 //CREATE
 POST http://localhost:3005/locations HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlbWFpbCI6InRlc3RpbmdAZ21haWwuY29tIiwiaWF0IjoxNjA2ODgzNDI5LCJleHAiOjE2MDY5MTIyMjl9.CjN_vJOCMmynEW-rQowG2ySNnGk9QUQvwhfvFyAr7ZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlbWFpbCI6InRlc3RpbmdAZ21haWwuY29tIiwiaWF0IjoxNjA2OTc4NjI5LCJleHAiOjE2MDcwMDc0Mjl9.qFUkxabD4OcAwRC0W_AytVceK6aU1t9AiWhYxeXcnnE
 
 {
     "name": "Green Office Park 6 BSD",
@@ -20,8 +20,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlb
     "company_name": "Voffice BSD",
     "extension": "224455",
     "address": "bsd tangerang selatan",
-    "status": "1",
-    "created_by": 24
+    "status": "1"
 }
 
 ###

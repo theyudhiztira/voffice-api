@@ -6,31 +6,31 @@ const model = require('../../models');
  * @returns {void} 
  */
 exports.create = async (data) => {
+    const findAcl = await model.users
+    .findOne({
+        where: {
+            id: data.user_id
+        }
+    })
 
-    await model.users
-        .findOne({
-            where: {
-                id: data.user_id
-            }
-        })
-        .then(findRes => {
-            if (!findRes) {
-                return 'Error: User ID Not Registered';
-            }
-            
-            return model.user_acl.create(
-                    parse(data)
-                ).then(() => {
-                    return true
-                }).catch(err => {
-                    throw err.message
-                });;
+    if (!findAcl) {
+        return {
+            status: false,
+            message: 'Error: User ID Not Registered'
+        };
+    }
 
-        })
-        .catch(err => {
-            throw err.message
-        });
+    const createAcl = model.user_acl.create(parse(data));
+    if(!createAcl){
+        return {
+            status: false,
+            message: 'Failed to create user acl'
+        }
+    }
 
+    return {
+        status: true
+    }
 };
 
 /**

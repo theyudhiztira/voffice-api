@@ -4,13 +4,10 @@ const controller = require('./controller.js');
 exports.create = async (req, res) => {
     let statusCode;
     const body = req.body;
+    body.created_by = req.userData.userId;
     let func = await controller.create(body);
 
-    if (!func.status) {
-        statusCode = 500;
-    }else{
-        statusCode = 200;
-    }
+    (!func.status) ? statusCode = 500 : statusCode = 200;
     
     return res.status(statusCode).send(func);
 };
@@ -26,9 +23,7 @@ exports.show = async (req, res) => {
     let location_id = parseInt(req.params.location_id);
     let func = await controller.show(location_id);
 
-    if (!func){
-        func = {};
-    }
+    (!func) ? func = {} : func = func;
     
     return res.status(200).send(func);
 };
@@ -40,11 +35,7 @@ exports.update = async (req, res) => {
     body.updated_by = req.userData.userId;
     let func = await controller.update(body, location_id);
 
-    if (!func.status) {
-        statusCode = 500;
-    }else{
-        statusCode = 200;
-    }
+    (!func.status) ? statusCode = 500 : statusCode = 200;
     
     return res.status(statusCode).send(func);
 };
@@ -54,11 +45,7 @@ exports.delete = async (req, res) => {
     let location_id = parseInt(req.params.location_id);
     let func = await controller.delete(location_id);
 
-    if (!func.status) {
-        statusCode = 500;
-    }else{
-        statusCode = 200;
-    }
+    (!func.status) ? statusCode = 500 : statusCode = 200;
     
     return res.status(statusCode).send(func);
 };
