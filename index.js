@@ -17,6 +17,7 @@ require('./routes/locations.routes.js')(app);
 require('./routes/user_group.routes.js')(app);
 require('./routes/users.routes.js')(app);
 require('./routes/products.routes.js')(app);
+require('./routes/product_categories.routes.js')(app);
 
 app.get('/', (req, res) => {
     return res.status(404).send({
