@@ -50,4 +50,18 @@ const parse = (data) => {
 
 }
 
+exports._getByUserID = async (user_id) => {
+    if(!user_id){
+        throw "Parameter (user_id) is required!";
+    }
+
+    const data = model.user_acl.findOne({
+        where: {
+            user_id: user_id
+        }
+    });
+
+    return data;
+}
+
 
