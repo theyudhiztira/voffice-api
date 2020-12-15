@@ -19,7 +19,7 @@ module.exports = {
             first_name: "Administrator",
             last_name: null,
             email: 'devteam@voffice.co.id',
-            password: '$2a$10$VSrmmm6KC/G1sWMMeb7DS.S/tsc/PRiQfp7OKcDgOpmX.KDmTIQfm',
+            password: '$2a$10$x3F.D0Tvyvan8MVqWw0M4eNQ2IVxdcU5EfZxhiw0bbkyvu.l3N2lO',
             current_base: 89,
             user_group: 1,
             phone: '085155001616',
