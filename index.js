@@ -19,6 +19,10 @@ require('./routes/users.routes.js')(app);
 require('./routes/products.routes.js')(app);
 require('./routes/product_categories.routes.js')(app);
 
+
+//Partnership
+require('./routes/partnership/auth.routes.js')(app);
+
 app.get('/', (req, res) => {
     return res.status(404).send({
         'error': 'resource not found!'
