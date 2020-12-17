@@ -1,0 +1,2 @@
+GET http://localhost:3005/partnership/serviced-offices/13 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGFuZHVAdm9mZmljZS5jby5pZCIsImxvY2F0aW9uSWQiOjc1LCJpYXQiOjE2MDgxNjc1NzMsImV4cCI6MTYwODE5NjM3M30.Mpbso0ETgWKWYopsrw9tbFwS5b-2UTUavUGQYWYH54s
