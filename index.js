@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const axios = require('axios');
 const fs = require('fs');
+const path = require('path');
+const basename = path.basename(__filename);
 
 require('dotenv').config();
 
@@ -12,16 +13,32 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
-require('./routes/auth.routes.js')(app);
-require('./routes/locations.routes.js')(app);
-require('./routes/user_group.routes.js')(app);
-require('./routes/users.routes.js')(app);
-require('./routes/products.routes.js')(app);
-require('./routes/product_categories.routes.js')(app);
+const routes = {};
+
+/**
+ * Load Main Routes
+ */
+fs
+.readdirSync('./routes/')
+.filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+})
+.forEach(file => {
+    const route = require(path.join(`${__dirname}/routes`, file))(app);
+});
 
 
-//Partnership
-require('./routes/partnership/auth.routes.js')(app);
+/**
+ * Load Main Routes
+ */
+fs
+.readdirSync('./routes/partnership')
+.filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+})
+.forEach(file => {
+    const route = require(path.join(`${__dirname}/routes/partnership`, file))(app);
+});
 
 app.get('/', (req, res) => {
     return res.status(404).send({
