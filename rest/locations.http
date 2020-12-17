@@ -1,7 +1,7 @@
 //CREATE
 POST http://localhost:3005/locations HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlbWFpbCI6InRlc3RpbmdAZ21haWwuY29tIiwiaWF0IjoxNjA2OTc4NjI5LCJleHAiOjE2MDcwMDc0Mjl9.qFUkxabD4OcAwRC0W_AytVceK6aU1t9AiWhYxeXcnnE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjY2LCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwODAyMDI5MCwiZXhwIjoxNjA4MDQ5MDkwfQ.PurJdVj1fk070uGl8HzCtJ5tsllLMA3oWo3sXg-pnr8
 
 {
     "name": "Green Office Park 6 BSD",
@@ -27,7 +27,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlb
 //GET ALL
 GET http://localhost:3005/locations HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlbWFpbCI6InRlc3RpbmdAZ21haWwuY29tIiwiaWF0IjoxNjA2ODgzNDI5LCJleHAiOjE2MDY5MTIyMjl9.CjN_vJOCMmynEW-rQowG2ySNnGk9QUQvwhfvFyAr7ZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjY2LCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwODAyMDI5MCwiZXhwIjoxNjA4MDQ5MDkwfQ.PurJdVj1fk070uGl8HzCtJ5tsllLMA3oWo3sXg-pnr8
 
 {
     //
