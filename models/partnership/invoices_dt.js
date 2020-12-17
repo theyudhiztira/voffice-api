@@ -10,7 +10,14 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            models.invoices_dt.belongsTo(models.products, {
+                foreignKey: "product_id"
+            });
+
+            models.invoices_dt.belongsTo(models.invoices_ht, {
+                foreignKey: "invoice_id",
+                as: "dt_data",
+            })
         }
     };
     invoices_dt.init({
@@ -32,7 +39,9 @@ module.exports = (sequelize, DataTypes) => {
         is_floor: DataTypes.TINYINT,
     }, {
         sequelize,
-        modelName: 'invoices_dt'
+        modelName: 'invoices_dt',
+        freezeTableName: true,
+        timestamps: false
     });
     return invoices_dt;
 };

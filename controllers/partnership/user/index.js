@@ -1,4 +1,4 @@
-const controller = require('./controller')
+const locationController = require('../locations/controller')
 const model = require('../../../models/partnership')
 const md5 = require('md5')
 const jwt = require('jsonwebtoken')
@@ -33,6 +33,8 @@ exports.login = async (req, res) => {
     }, process.env.JWT_KEY, {
         expiresIn: "8h"
     });
+
+    data.location = await locationController._get(data.location);
 
     return res.status(200).send({
         token: encodedToken,
