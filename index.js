@@ -23,6 +23,7 @@ require('./routes/product_categories.routes.js')(app);
 //Partnership
 require('./routes/partnership/auth.routes.js')(app);
 require('./routes/partnership/revenue.routes.js')(app);
+require('./routes/partnership/location.routes.js')(app);
 
 app.get('/', (req, res) => {
     return res.status(404).send({
