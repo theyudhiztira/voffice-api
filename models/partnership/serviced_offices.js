@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            models.serviced_offices.hasOne(models.client_plan, {foreignKey: 'id', sourceKey: 'client_plan_id'});
         }
     };
     serviced_offices.init({

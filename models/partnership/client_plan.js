@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            models.clients.hasOne(models.clients, {foreignKey: 'client_id'});
         }
     };
     client_plan.init({
@@ -44,8 +45,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE
         }
     }, {
-        sequelize,
+        sequelize, 
         modelName: 'client_plan',
+        freezeTableName: true,
         updatedAt: 'updated_at',
         createdAt: 'created_at'
     });

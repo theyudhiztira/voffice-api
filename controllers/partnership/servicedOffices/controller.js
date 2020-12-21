@@ -39,9 +39,22 @@ exports.getDetails = (roomId) => {
             attributes: {
                 exclude: ["created_by", "created_at", "updated_at"]
             },
-            includes: {
-                
+            include: {
+                model: model.client_plan,
+                attributes: {
+                    exclude: ["created_by", "created_at", "updated_at"]
+                }
             }
         });
+
+        if(!data){
+            return reject({
+                message: 'Data is empty'
+            })
+        }
+
+        return resolve({
+            data: data
+        })
     })
 }
