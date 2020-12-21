@@ -1,4 +1,5 @@
 const model = require('../../../models/partnership')
+const hero = require('../../../lib/hero');
 
 
 /**
@@ -6,16 +7,18 @@ const model = require('../../../models/partnership')
  * @param {number} locationId 
  * @returns {object} Resulting promise resolve / reject but it depends on the result of the query
  */
-exports.getServicedOffices = (locationId) => {
+exports.getServicedOffices = (locationId, params) => {
+    let whereClause = hero.paramFilter([
+        'status',
+        'view'
+    ], params);
+    
+    whereClause.location_id = locationId;
+    
+    console.log(whereClause);
+
     return new Promise(async (resolve, reject) => {
-        const data = await model.serviced_offices.findAll({
-            where: {
-                location_id: locationId
-            },
-            attributes: {
-                exclude: ["created_by", "created_at", "updated_at"]
-            }
-        });
+        const data = await hero.paginate(model.serviced_offices, 1, params.limit , whereClause, [], []);
 
         if(!data){
             return reject({
@@ -23,9 +26,7 @@ exports.getServicedOffices = (locationId) => {
             })
         }
 
-        return resolve({
-            data: data
-        })
+        return resolve(data)
     })
 }
 

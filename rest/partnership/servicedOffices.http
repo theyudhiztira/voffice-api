@@ -1,7 +1,7 @@
 @apiKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGFuZHVAdm9mZmljZS5jby5pZCIsImxvY2F0aW9uSWQiOjc1LCJpYXQiOjE2MDg1MjAxMjcsImV4cCI6MTYwODU0ODkyN30.8oY1RQcevFULGf9Y4HMorA3KLLsaqfLXbTW_AOtzL4w
 
 # @name getServicedOfficeList
-GET http://localhost:3005/partnership/serviced-offices HTTP/1.1
+GET http://localhost:3005/partnership/serviced-offices?view=n&status=3&page=1&limit=5000 HTTP/1.1
 Authorization: Bearer {{apiKey}}
 
 ###
