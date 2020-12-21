@@ -5,7 +5,7 @@ const moment = require('moment')
 exports.get = async (req, res) => {
     const location_id = parseInt(req.params.location_id);
     
-    const findInvoice = await model.invoices_ht.findAll({
+    const findInvoice = await model.invoices_ht.findAndCountAll({
         where: {
             location_id: location_id,
             status: 1,
