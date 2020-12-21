@@ -1,11 +1,12 @@
 const model = require('../../models/partnership')
 const Op = require('sequelize')
 const moment = require('moment')
+const hero = require('../../lib/hero');
 
 exports.get = async (req, res) => {
     const location_id = parseInt(req.params.location_id);
-    
-    const findInvoice = await model.invoices_ht.findAndCountAll({
+
+    const data = await model.invoices_ht.findAndCountAll({
         where: {
             location_id: location_id,
             status: 1,
@@ -31,10 +32,8 @@ exports.get = async (req, res) => {
         order: [
             ['created_at', 'DESC']
         ],
-        limit: 1000,
-        offset: 0,
         subQuery: false
     });
 
-    return res.status(200).send(findInvoice);
+    return res.status(200).send(data);
 };
