@@ -16,7 +16,7 @@ exports.getServicedOffices = (locationId, params) => {
     whereClause.location_id = locationId;
 
     return new Promise(async (resolve, reject) => {
-        const data = await hero.paginate(model.serviced_offices, 1, params.limit , {where: whereClause});
+        const data = await hero.paginate(model.serviced_offices, params.page, params.limit , {where: whereClause});
 
         if(!data){
             return reject({

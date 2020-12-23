@@ -27,3 +27,14 @@ exports.getDetails = (req, res) => {
         return res.status(500).send(err);
     })
 }
+
+exports.getChartReport = (req, res) => {
+    controller.getServicedOffices(parseInt(req.userData.locationId), {page: 1, limit: 9999})
+    .then(data => {
+        console.log(data);
+        return res.status(200).send(data);
+    }).catch(err => {
+        console.log(err);
+        return res.status(500).send(err);
+    })
+}
