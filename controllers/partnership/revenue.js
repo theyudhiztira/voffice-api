@@ -16,7 +16,7 @@ exports.get = async (req, res) => {
         attributes: [
             'id',
             'currency',
-            'amount_due',
+            'amount_paid',
             'date_paid',
             'recurring',
         ],
