@@ -53,7 +53,7 @@ exports.changePassword = async (req, res) => {
 
     if (!body.user_id){
         error = false;
-    }else if(!body.password){
+    }else if(!body.oldPassword){
         error = false;
     }else if(!body.newPassword){
         error = false;
@@ -68,7 +68,7 @@ exports.changePassword = async (req, res) => {
     return await model.users.findOne({
         where: {
             id: body.user_id,
-            password: md5(body.password)
+            password: md5(body.oldPassword)
         }
     }).then( user => {
 
