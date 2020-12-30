@@ -60,7 +60,7 @@ exports.changePassword = async (req, res) => {
     }
 
     if (!error){
-        return res.status(401).send({
+        return res.status(400).send({
             message: 'Please check your credentials!'
         });
     }
@@ -73,8 +73,8 @@ exports.changePassword = async (req, res) => {
     }).then( user => {
 
         if (!user) {
-            return res.status(401).send({
-                message: 'User ID and Old Password not found!'
+            return res.status(404).send({
+                message: 'Password not found!'
             });
         }
 
@@ -85,13 +85,13 @@ exports.changePassword = async (req, res) => {
                 message: 'Password has been changed!'
             });
         }).catch(e => {
-            return res.status(400).json({
+            return res.status(500).json({
                 message: e.message()
             });
         })
         
     }).catch( e => {
-        return res.status(400).json({
+        return res.status(500).json({
             message: e.message()
         });
     });
