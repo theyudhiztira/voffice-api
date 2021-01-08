@@ -10,7 +10,7 @@ exports.get = async (req, res) => {
         where: {
             location_id: location_id,
             status: 1,
-            created_at: Op.where(Op.literal('invoices_ht.created_at '), '>', moment('2020-12-31').toDate()),
+            date_paid: Op.where(Op.literal('invoices_ht.date_paid '), '>=', moment('2021-01-01').toDate()),
             [Op.where]: Op.literal('product_category IN (1,5,3)')
         },
         attributes: [
