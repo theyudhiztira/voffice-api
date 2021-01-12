@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'user_acl',
-        underscored: true,,
+        underscored: true,
         freezeTableName: true
     });
 

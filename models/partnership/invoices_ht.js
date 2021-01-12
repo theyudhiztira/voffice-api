@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'invoices_ht',
-        underscored: true,,
+        underscored: true,
         freezeTableName: true
     });
 
