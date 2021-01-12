@@ -3,7 +3,7 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Clients extends Model {
+    class companies extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -13,52 +13,64 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     };
-    Clients.init({
+    companies.init({
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        first_name: {
+        client_id: {
+            type: DataTypes.INTEGER
+        },
+        company_name: {
             type: DataTypes.STRING
         },
-        last_name: {
-            type: DataTypes.STRING
-        },
-        email: {
-            type: DataTypes.STRING
-        },
-        password: {
-            type: DataTypes.STRING
+        address: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            default: null
         },
         phone: {
             type: DataTypes.STRING
         },
-        whatsapp: {
+        fax: {
             type: DataTypes.STRING,
             allowNull: true,
             default: null
         },
-        discovery_source: {
-            type: DataTypes.INTEGER,
+        email: {
+            type: DataTypes.STRING
+        },
+        company_industry: {
+            type: DataTypes.INTEGER
+        },
+        director_name: {
+            type: DataTypes.STRING
+        },
+        director_phone: {
+            type: DataTypes.STRING
+        },
+        director_email: {
+            type: DataTypes.STRING
+        },
+        company_birth_date: {
+            type: DataTypes.DATE,
             allowNull: true,
             default: null
         },
-        status: {
-            type: DataTypes.INTEGER,
+        tax_no: {
+            type: DataTypes.STRING,
             allowNull: true,
-            default: 0
+            default: null
         },
-        web_register: {
-            type: DataTypes.BOOLEAN,
+        coregno: {
+            type: DataTypes.STRING,
             allowNull: true,
-            default: 0
+            default: null
         },
         created_by: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            default: null
+            type: DataTypes.INTEGER
         },
         created_at: {
             allowNull: false,
@@ -66,12 +78,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         updated_at: {
             allowNull: false,
-            type: DataTypes.DATE,
+            type: DataTypes.DATE
         }
     }, {
         sequelize,
-        modelName: 'clients',
+        modelName: 'companies',
         underscored: true,
     });
-    return Clients;
+    return company;
 };
