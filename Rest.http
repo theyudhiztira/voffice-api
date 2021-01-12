@@ -3,7 +3,7 @@ content-type: application/json
 
 {
     "email": "devteam@voffice.co.id",
-    "password": "testing12"
+    "password": "devteam123"
 }
 
 ###

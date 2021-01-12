@@ -85,5 +85,5 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'companies',
         underscored: true,
     });
-    return company;
+    return companies;
 };

@@ -4,13 +4,13 @@ const self = module.exports = {
     create : (req, res, next) => {
         const rules = {
             first_name: "required",
-            last_name: "nullable",
+            // last_name: "nullable",
             email: "required|email",
             phone: "required",
-            whatsapp: "nullable",
-            business_needs: "nullable|array",
-            discovery_source: "required",
-            web_register: "nullable"
+            // whatsapp: "nullable",
+            business_needs: "array",
+            discovery_source: "required"
+            // web_register: "nullable"
         };
 
         self.validate(req.body, rules)
@@ -18,6 +18,7 @@ const self = module.exports = {
             return next();
         })
         .catch(err => {
+            console.log(err);
             return res.status(400).send(err);
         });
     },
@@ -25,11 +26,11 @@ const self = module.exports = {
     edit : (req, res, next) => {
         const rules = {
             first_name: "required",
-            last_name: "nullable",
+            // last_name: "nullable",
             email: "required|email",
             phone: "required",
-            whatsapp: "nullable",
-            business_needs: "nullable|array",
+            // whatsapp: "nullable",
+            business_needs: "array",
             discovery_source: "required"
         }
 

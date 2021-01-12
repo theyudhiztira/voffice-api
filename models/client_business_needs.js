@@ -14,6 +14,15 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     client_business_needs.init({
+        id: {
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+            type: DataTypes.INTEGER
+        },
+        client_id: {
+            type: DataTypes.INTEGER
+        },
         product_category_id: {
             type: DataTypes.INTEGER
         },

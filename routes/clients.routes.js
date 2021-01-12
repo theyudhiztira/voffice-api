@@ -3,5 +3,6 @@ module.exports = (app) => {
     const validator = require('../validators/clients.validator.js');
     const checkAuth = require('../middlewares/auth');
 
-    app.post('/clients', validator.create, client.create);
+    app.post('/clients', checkAuth, validator.create, client.create);
+    app.put('/clients/:client_id', checkAuth, validator.edit, client.edit);
 }
