@@ -70,6 +70,25 @@ exports._create = async (params) => {
         });
 }
 
+exports._get = async (filter) => {
+    const client = await model.clients
+        .findAll({
+            where: filter
+        });
+
+    if (!client){
+        return {
+            status: 400,
+            message: `Client doesn't exists!`
+        }
+    }
+    
+    return {
+        status: 200,
+        message: client
+    }
+}
+
 exports._edit = async (params, client_id) => {
     const client = await model.clients
         .findOne({

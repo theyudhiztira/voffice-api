@@ -15,20 +15,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtY
 }
 
 ###
-//GET ALL
-GET http://localhost:3005/locations HTTP/1.1
+//GET
+GET http://localhost:3005/clients?status=5 HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjY2LCJlbWFpbCI6ImRldnRlYW1Adm9mZmljZS5jby5pZCIsImlhdCI6MTYwODAyMDI5MCwiZXhwIjoxNjA4MDQ5MDkwfQ.PurJdVj1fk070uGl8HzCtJ5tsllLMA3oWo3sXg-pnr8
-
-{
-    //
-}
-
-###
-// GET SPECIFIC LOCATION BY location_id
-GET http://localhost:3005/locations/8 HTTP/1.1
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlbWFpbCI6InRlc3RpbmdAZ21haWwuY29tIiwiaWF0IjoxNjA2ODgzNDI5LCJleHAiOjE2MDY5MTIyMjl9.CjN_vJOCMmynEW-rQowG2ySNnGk9QUQvwhfvFyAr7ZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjEwNTIwMTU1LCJleHAiOjE2MTA1NDg5NTV9.FwEgEutG_DmhYnEpbERZMPhRM55ezyFlkoZr0h6UYmE
 
 {
     //

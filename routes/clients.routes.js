@@ -4,5 +4,6 @@ module.exports = (app) => {
     const checkAuth = require('../middlewares/auth');
 
     app.post('/clients', checkAuth, validator.create, client.create);
+    app.get('/clients', checkAuth, client.get);
     app.put('/clients/:client_id', checkAuth, validator.edit, client.edit);
 }
