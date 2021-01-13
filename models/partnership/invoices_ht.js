@@ -72,8 +72,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'invoices_ht',
-        updatedAt: 'updated_at',
-        createdAt: 'created_at',
+        underscored: true,
         freezeTableName: true
     });
 

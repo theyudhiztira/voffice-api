@@ -48,8 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         sequelize, 
         modelName: 'client_plan',
         freezeTableName: true,
-        updatedAt: 'updated_at',
-        createdAt: 'created_at'
+        underscored: true,
     });
     return client_plan;
 };

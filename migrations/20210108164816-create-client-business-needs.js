@@ -1,27 +1,30 @@
 'use strict';
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable('user_groups', {
+        await queryInterface.createTable('client_business_needs', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            name: Sequelize.STRING,
-            created_by: Sequelize.INTEGER,
+            client_id: {
+                type: Sequelize.INTEGER
+            },
+            product_category_id: {
+                type: Sequelize.INTEGER
+            },
             created_at: {
                 allowNull: false,
                 type: Sequelize.DATE
             },
             updated_at: {
-                allowNull: true,
-                defaultValue: Sequelize.NOW,
-                type: Sequelize.DATE
+                allowNull: false,
+                type: Sequelize.DATE,
             }
         });
     },
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable('user_groups');
+        await queryInterface.dropTable('client_business_needs');
     }
 };

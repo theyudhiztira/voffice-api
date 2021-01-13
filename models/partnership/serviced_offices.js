@@ -49,8 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'serviced_offices',
-        updatedAt: 'updated_at',
-        createdAt: 'created_at'
+        underscored: true,
     });
     return serviced_offices;
 };

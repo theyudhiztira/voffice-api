@@ -3,7 +3,7 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class users extends Model {
+    class Clients extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -13,36 +13,52 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     };
-    users.init({
+    Clients.init({
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        email: DataTypes.STRING,
-        password: DataTypes.STRING,
-        first_name: DataTypes.STRING,
-        last_name: DataTypes.STRING,
-        phone_number: DataTypes.STRING,
-        whatsapp: DataTypes.STRING,
-        dob: DataTypes.STRING,
-        tax_id: DataTypes.STRING,
-        id_no: DataTypes.INTEGER,
-        location: DataTypes.INTEGER,
-        address: DataTypes.STRING,
-        dob: DataTypes.DATEONLY,
-        company_name: DataTypes.STRING,
-        status: {
+        first_name: {
+            type: DataTypes.STRING
+        },
+        last_name: {
+            type: DataTypes.STRING
+        },
+        email: {
+            type: DataTypes.STRING
+        },
+        password: {
+            type: DataTypes.STRING
+        },
+        phone: {
+            type: DataTypes.STRING
+        },
+        whatsapp: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 1,
-            comment: "0 = non-active, 1 = active"
+            default: null
+        },
+        discovery_source: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            default: null
+        },
+        status: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            default: 0
+        },
+        web_register: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            default: 0
         },
         created_by: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            defaultValue: 25
+            default: null
         },
         created_at: {
             allowNull: false,
@@ -50,12 +66,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         updated_at: {
             allowNull: false,
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
         }
     }, {
         sequelize,
-        modelName: 'users',
+        modelName: 'clients',
         underscored: true,
     });
-    return users;
+    return Clients;
 };

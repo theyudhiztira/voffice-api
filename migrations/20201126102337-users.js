@@ -48,9 +48,6 @@ module.exports = {
             defaultValue: Sequelize.NOW,
             type: Sequelize.DATE
         }
-    }, {
-        updatedAt: 'updated_at',
-        createdAt: 'created_at'
     });
     },
     down: async (queryInterface, Sequelize) => {
