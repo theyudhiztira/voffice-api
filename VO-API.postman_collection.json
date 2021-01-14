@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "25d64498-beaf-47d7-9580-c1f2f3b11d5a",
+		"name": "VO-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"first_name\": \"v\",\n    \"last_name\": \"g\",\n    \"email\": \"testing@voffice.co.id\",\n    \"password\": \"testing\",\n    \"current_base\": 89,\n    \"user_group\": 1,\n    \"phone\": \"123571231237615\",\n    \"dob\": \"2020-02-18\",\n    \"status\": \"1\",\n    \"additional_permission\": null,\n    \"created_by\": 1,\n    \"user_acl\": {\n        \"invoicing\": [1,1,1],\n        \"client\": [1,1,1],\n        \"call_handling\": [1,1,1],\n        \"mail_handling\": [1,1,1],\n        \"visitor_handling\": [1,1,1],\n        \"booking\": [1,1,1],\n        \"product\": [1,1,1],\n        \"location\": [1,1,1],\n        \"serviced_office\": [1,1,1],\n        \"deals\": [1,1,1],\n        \"promo\": [1,1,1]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Administrator\",\n    \"last_name\": null,\n    \"email\": \"devteam@voffice.co.id\",\n    \"current_base\": 89,\n    \"user_group\": 1,\n    \"phone\": \"085155001616\",\n    \"dob\": \"2020-02-18\",\n    \"status\": 1,\n    \"additional_permission\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3005/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"devteam@voffice.co.id\",\n    \"password\": \"devteam123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Create Location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Centennial Tower\",\n    \"city\": \"Jakarta Selatan\",\n    \"province\": \"DKI Jakarta\",\n    \"country\": \"Indonesia\",\n    \"tax_id\": \"12345\",\n    \"phone\": \"02123456789\",\n    \"timezone\": \"asia/jakarta\",\n    \"center_email\": \"bsd@voffice.co.id\",\n    \"start_time\": 700,\n    \"end_time\": 1800,\n    \"weekend_start_time\": 0,\n    \"weekend_end_time\": 0,\n    \"coordinates\": \"-6.303249, 106.652715\",\n    \"company_name\": \"Voffice BSD\",\n    \"extension\": \"224455\",\n    \"address\": \"bsd tangerang selatan\",\n    \"status\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/locations/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"locations",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Location",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Green Office Park 6 BSD Revision\",\n    \"city\": \"BSD edit\",\n    \"province\": \"Jawa Barat edit\",\n    \"country\": \"Indonesia edit\",\n    \"tax_id\": \"12345 edit\",\n    \"phone\": \"02123456789 edit\",\n    \"timezone\": \"asia/jakarta edit\",\n    \"center_email\": \"bsd@voffice.co.id edit\",\n    \"start_time\": 7006,\n    \"end_time\": 18006,\n    \"weekend_start_time\": 0,\n    \"weekend_end_time\": 0,\n    \"coordinates\": \"-6.303249, 106.652715 edit\",\n    \"company_name\": \"Voffice BSD edit\",\n    \"extension\": \"224455 edit\",\n    \"address\": \"bsd tangerang selatan edit\",\n    \"status\": \"0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/locations/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"locations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Location Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3005/locations/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"locations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Product test\",\n    \"category\": 1,\n    \"currency\": \"IDR\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"client_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Product test Edit\",\n    \"category\": 1,\n    \"currency\": \"IDR edit\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"client_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Product test edit\",\n    \"category\": 1,\n    \"currency\": \"IDR edit\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"client_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/products/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Categories",
+			"item": [
+				{
+					"name": "Create Product Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Virtual Office\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/product_categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"product_categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/product_categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"product_categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/product_categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"product_categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Virtual Office Edit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/product_categories/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"product_categories",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/product_categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"product_categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Pandu\",\n    \"email\": \"theudhiztira@gmail.com\",\n    \"phone\": \"+6285155001616\",\n    \"discovery_source\": \"website\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/clients",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjEwMTA2MTg5LCJleHAiOjE2MTAxMzQ5ODl9.r5b4OKFvlpnkdKr72oi5O1V_SxMFIZ_47-JtaudcAJk",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
