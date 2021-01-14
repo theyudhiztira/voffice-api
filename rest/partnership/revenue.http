@@ -1,0 +1,6 @@
+//GET
+GET http://localhost:3005/partnership/revenue/75 HTTP/1.1
+content-type: application/json
+
+{
+}

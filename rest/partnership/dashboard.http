@@ -1,0 +1,7 @@
+@apiKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGFuZHVAdm9mZmljZS5jby5pZCIsImxvY2F0aW9uSWQiOjc1LCJpYXQiOjE2MDg2MDg1NDcsImV4cCI6MTYwODYzNzM0N30.6yRww6UyExrePhD0jnOqXql9j5ZQNSCkWEE2Db10Oig
+
+//GET Dashboard Data
+GET http://localhost:3005/partnership/dashboard HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{apiKey}}
+

@@ -1,0 +1,57 @@
+POST http://localhost:3005/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "devteam@voffice.co.id",
+    "password": "devteam123"
+}
+
+###
+
+POST http://localhost:3005/user-group HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
+
+{
+    "name": "baru"
+}
+
+###
+
+PUT http://localhost:3005/user-group/4 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
+
+{
+    "name": "Hani"
+}
+
+###
+
+DELETE http://localhost:3005/user-group/9 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
+
+###
+
+GET http://localhost:3005/user-group/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
+
+###
+
+GET http://localhost:3005/user-group/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoidGVzdGluZ0BnbWFpbC5jb20iLCJpYXQiOjE2MDY4OTU1MjIsImV4cCI6MTYwNjkyNDMyMn0.Jky0WmRJ5lJs8xzPnquNWZQIQ_gNflUYC2J7b01KGlc
+
+###
+
+GET http://localhost:3005/products HTTP/1.1
+Content-Type: application/application/json
+Authorization: "Bearer "
+
+###
+
+GET http://localhost:3005/partnership/location/75 HTTP/1.1
+Content-Type: application/application/json
+Authorization: "Bearer "

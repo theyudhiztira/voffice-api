@@ -4,7 +4,8 @@
     "description": "vOffice API",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon index.js"
     },
     "author": "vOffice Dev Team",
     "license": "ISC",
@@ -23,8 +24,10 @@
         "moment": "^2.29.1",
         "moment-timezone": "^0.5.31",
         "mysql2": "^2.1.0",
+        "nodemon": "^2.0.6",
         "sequelize": "^6.3.3",
         "types": "^0.1.1",
-        "useragent": "^2.3.0"
+        "useragent": "^2.3.0",
+        "validatorjs": "^3.21.0"
     }
 }

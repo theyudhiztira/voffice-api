@@ -1,0 +1,20 @@
+@apiKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGFuZHVAdm9mZmljZS5jby5pZCIsImxvY2F0aW9uSWQiOjc1LCJpYXQiOjE2MDg2ODI2MTksImV4cCI6MTYwODcxMTQxOX0.zSelxKCTjlanFROUWWuZJNcEm9gm5U6y5tVJfbm5k-Q
+
+# @name getServicedOfficeList
+GET http://localhost:3005/partnership/serviced-offices?view=n&status=3&page=1&limit=3 HTTP/1.1
+Authorization: Bearer {{apiKey}}
+
+###
+
+# @name getServicedOfficeDetails
+
+GET http://localhost:3005/partnership/serviced-offices/219 HTTP/1.1
+Authorization: Bearer {{apiKey}}
+
+
+###
+
+# @name getServicedOfficeChart
+
+GET http://localhost:3005/partnership/serviced-offices-chart HTTP/1.1
+Authorization: Bearer {{apiKey}}

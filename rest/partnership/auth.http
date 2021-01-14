@@ -1,0 +1,22 @@
+//LOGIN
+POST http://localhost:3005/partnership/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "pandu@voffice.co.id",
+    "password": "Xm9QZipa"
+}
+
+
+###
+
+
+//Change Password
+POST http://localhost:3005/partnership/change-password HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 1,
+    "password": "passTest",
+    "newPassword": "Xm9QZipa"
+}
