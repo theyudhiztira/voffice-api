@@ -41,13 +41,3 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtY
     "web_register": 4,
     "status": "5"
 }
-
-###
-// DELETE LOCATION BY location_id
-DELETE http://localhost:3005/locations/3 HTTP/1.1
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM3LCJlbWFpbCI6InRlc3RpbmdAZ21haWwuY29tIiwiaWF0IjoxNjA2ODgzNDI5LCJleHAiOjE2MDY5MTIyMjl9.CjN_vJOCMmynEW-rQowG2ySNnGk9QUQvwhfvFyAr7ZQ
-
-{
-    //
-}
