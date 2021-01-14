@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtY
 //GET
 GET http://localhost:3005/clients?status=5 HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjEwNTIwMTU1LCJleHAiOjE2MTA1NDg5NTV9.FwEgEutG_DmhYnEpbERZMPhRM55ezyFlkoZr0h6UYmE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjEwNTk1ODQ0LCJleHAiOjE2MTA2MjQ2NDR9.TR9LCwzI2UwptYh2mlNjrvp3wCGqMBGSVh9hwdg423I
 
 {
     //

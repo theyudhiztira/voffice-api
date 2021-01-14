@@ -73,7 +73,10 @@ exports._create = async (params) => {
 exports._get = async (filter) => {
     const client = await model.clients
         .findAll({
-            where: filter
+            where: filter,
+            include: {
+                model: model.client_business_needs
+            }
         });
 
     if (!client){
