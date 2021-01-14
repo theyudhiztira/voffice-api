@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "25d64498-beaf-47d7-9580-c1f2f3b11d5a",
-		"name": "VO-API",
+		"_postman_id": "1a6f2d52-9717-49ce-b888-44644df48629",
+		"name": "VOX-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -76,6 +76,111 @@
 							"port": "3005",
 							"path": [
 								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Create New Clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Kevin\",\n    \"last_name\": \"Ramadhan\",\n    \"email\": \"sakti.f@gmail.com\",\n    \"phone\": \"0871757421141878\",\n    \"whatsapp\": \"087757764878\",\n    \"business_needs\": [1,2,3],\n    \"discovery_source\": 1,\n    \"web_register\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/clients",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Kevin edit\",\n    \"last_name\": \"Ramadhan edit\",\n    \"email\": \"sakti.edit@gmail.com\",\n    \"phone\": \"087175742114187800\",\n    \"whatsapp\": \"08775776487800\",\n    \"business_needs\": [1,2,3,5],\n    \"discovery_source\": 4,\n    \"web_register\": 4,\n    \"status\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/clients/12",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"clients",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_uri}}/clients",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"clients"
 							]
 						}
 					},
