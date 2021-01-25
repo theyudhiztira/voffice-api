@@ -20,7 +20,7 @@ exports.get = async (req, res) => {
 };
 
 exports.edit = async (req, res) => {
-    let func = await controller._edit(req.body, req.params.client_id);
+    let func = await controller._edit(req.body, req.params.pic_id);
 
     (func.status !== 200) ? statusCode = func.status : statusCode = 200;
 

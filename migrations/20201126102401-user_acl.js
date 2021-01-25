@@ -19,7 +19,7 @@ module.exports = {
                 },
                 user_id: Sequelize.INTEGER,
                 invoicing: Sequelize.STRING,
-                client: Sequelize.STRING,
+                pic: Sequelize.STRING,
                 call_handling: Sequelize.STRING,
                 mail_handling: Sequelize.STRING,
                 visitor_handling: Sequelize.STRING,

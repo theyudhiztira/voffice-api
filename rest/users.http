@@ -17,7 +17,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlb
     "created_by": 1,
     "user_acl": {
         "invoicing": [1,1,1],
-        "client": [1,1,1],
+        "pic": [1,1,1],
         "call_handling": [1,1,1],
         "mail_handling": [1,1,1],
         "visitor_handling": [1,1,1],

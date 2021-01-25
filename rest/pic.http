@@ -1,0 +1,43 @@
+//CREATE
+POST http://localhost:3005/pic HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNTQ5MzIxLCJleHAiOjE2MTE1NzgxMjF9.IL2F_VeOIrN5tajb1_jV1u-8F0ID78ubqTwqsBi4zEE
+
+{
+    "first_name": "Kevin",
+    "last_name": "Ramadhan",
+    "email": "sakti.f@gmail.com",
+    "phone": "0871757421141878",
+    "whatsapp": "087757764878",
+    "business_needs": [1,2,3],
+    "discovery_source": 1,
+    "web_register": null
+}
+
+###
+//GET
+GET http://localhost:3005/pic HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNTQ5MzIxLCJleHAiOjE2MTE1NzgxMjF9.IL2F_VeOIrN5tajb1_jV1u-8F0ID78ubqTwqsBi4zEE
+
+{
+    //
+}
+
+###
+// UPDATE CLIENT BY pic_id
+PUT http://localhost:3005/pic/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNTQ5MzIxLCJleHAiOjE2MTE1NzgxMjF9.IL2F_VeOIrN5tajb1_jV1u-8F0ID78ubqTwqsBi4zEE
+
+{
+    "first_name": "Kevin edit",
+    "last_name": "Ramadhan edit",
+    "email": "sakti.edit@gmail.com",
+    "phone": "087175742114187800",
+    "whatsapp": "08775776487800",
+    "business_needs": [1,2,3,5],
+    "discovery_source": 4,
+    "web_register": 4,
+    "status": "5"
+}

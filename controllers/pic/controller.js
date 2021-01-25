@@ -7,7 +7,7 @@ const hero = require('../../lib/hero');
 const moment = require('moment')
 
 exports._create = async (params) => {
-    const client = await model.clients
+    const pic = await model.pic
         .findOne({
             where: {
                 [Op.or]: [
@@ -21,10 +21,10 @@ exports._create = async (params) => {
             }
         });
 
-    if (client){
+    if (pic){
         return {
             status: 400,
-            message: client.email === params.email ? `Client email is already in use (${client.id})` : `Client phone is already in use (${client.id})`
+            message: pic.email === params.email ? `Pic email is already in use (${pic.id})` : `Pic phone is already in use (${pic.id})`
         }
     }
 
@@ -34,25 +34,25 @@ exports._create = async (params) => {
     params.updated_at = moment().format('Y-m-d');
     delete params.business_needs;
     
-    return await model.clients
+    return await model.pic
         .create(params)
-        .then((resultClient) => {
+        .then((resultPic) => {
 
             let business_needs_arr = [];
             for (let i = 0; i < business_needs.length; i++) {
                 business_needs_arr.push({
-                    client_id: resultClient.dataValues.id,
+                    pic_id: resultPic.dataValues.id,
                     product_category_id: business_needs[i],
                 })
             }
 
-            return model.client_business_needs
+            return model.pic_business_needs
                 .bulkCreate(business_needs_arr)
                 .then(() => {
 
                     return {
                         status: 200,
-                        message: 'Successfully Create Client.'
+                        message: 'Successfully Create Pic.'
                     };
                     
                 }).catch(err => {
@@ -71,52 +71,52 @@ exports._create = async (params) => {
 }
 
 exports._get = async (filter) => {
-    const client = await model.clients
+    const pic = await model.pic
         .findAll({
             where: filter,
             include: {
-                model: model.client_business_needs
+                model: model.pic_business_needs
             }
         });
 
-    if (!client){
+    if (!pic){
         return {
             status: 400,
-            message: `Client doesn't exists!`
+            message: `Pic doesn't exists!`
         }
     }
     
     return {
         status: 200,
-        message: client
+        message: pic
     }
 }
 
-exports._edit = async (params, client_id) => {
-    const client = await model.clients
+exports._edit = async (params, pic_id) => {
+    const pic = await model.pic
         .findOne({
             where: {
-                id: client_id
+                id: pic_id
             }
         });
 
-    if (!client){
+    if (!pic){
         return {
             status: 400,
-            message: `Client with ID (${client_id}) not found!`
+            message: `Pic with ID (${pic_id}) not found!`
         }
     }
     
-    return await model.clients
+    return await model.pic
         .update(params, {
             where: {
-                id: client_id
+                id: pic_id
             }
         })
-        .then((resultClient) => {
+        .then((resultPic) => {
             return {
                 status: 200,
-                message: 'Successfully Update Client.'
+                message: 'Successfully Update Pic.'
             };
         }).catch(err => {
             return {

@@ -25,7 +25,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"first_name\": \"v\",\n    \"last_name\": \"g\",\n    \"email\": \"testing@voffice.co.id\",\n    \"password\": \"testing\",\n    \"current_base\": 89,\n    \"user_group\": 1,\n    \"phone\": \"123571231237615\",\n    \"dob\": \"2020-02-18\",\n    \"status\": \"1\",\n    \"additional_permission\": null,\n    \"created_by\": 1,\n    \"user_acl\": {\n        \"invoicing\": [1,1,1],\n        \"client\": [1,1,1],\n        \"call_handling\": [1,1,1],\n        \"mail_handling\": [1,1,1],\n        \"visitor_handling\": [1,1,1],\n        \"booking\": [1,1,1],\n        \"product\": [1,1,1],\n        \"location\": [1,1,1],\n        \"serviced_office\": [1,1,1],\n        \"deals\": [1,1,1],\n        \"promo\": [1,1,1]\n    }\n}",
+							"raw": "{   \n    \"first_name\": \"v\",\n    \"last_name\": \"g\",\n    \"email\": \"testing@voffice.co.id\",\n    \"password\": \"testing\",\n    \"current_base\": 89,\n    \"user_group\": 1,\n    \"phone\": \"123571231237615\",\n    \"dob\": \"2020-02-18\",\n    \"status\": \"1\",\n    \"additional_permission\": null,\n    \"created_by\": 1,\n    \"user_acl\": {\n        \"invoicing\": [1,1,1],\n        \"pic\": [1,1,1],\n        \"call_handling\": [1,1,1],\n        \"mail_handling\": [1,1,1],\n        \"visitor_handling\": [1,1,1],\n        \"booking\": [1,1,1],\n        \"product\": [1,1,1],\n        \"location\": [1,1,1],\n        \"serviced_office\": [1,1,1],\n        \"deals\": [1,1,1],\n        \"promo\": [1,1,1]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,10 +111,10 @@
 			]
 		},
 		{
-			"name": "Clients",
+			"name": "Pic",
 			"item": [
 				{
-					"name": "Create New Clients",
+					"name": "Create New Pic",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -138,19 +138,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_uri}}/clients",
+							"raw": "{{api_uri}}/pic",
 							"host": [
 								"{{api_uri}}"
 							],
 							"path": [
-								"clients"
+								"pic"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Edit Clients",
+					"name": "Edit Pic",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -174,12 +174,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_uri}}/clients/12",
+							"raw": "{{api_uri}}/pic/12",
 							"host": [
 								"{{api_uri}}"
 							],
 							"path": [
-								"clients",
+								"pic",
 								"12"
 							]
 						}
@@ -187,7 +187,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Clients",
+					"name": "Get Pic",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -202,12 +202,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_uri}}/clients",
+							"raw": "{{api_uri}}/pic",
 							"host": [
 								"{{api_uri}}"
 							],
 							"path": [
-								"clients"
+								"pic"
 							]
 						}
 					},
@@ -425,7 +425,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Product test\",\n    \"category\": 1,\n    \"currency\": \"IDR\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"client_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
+							"raw": "{\n    \"name\": \"Product test\",\n    \"category\": 1,\n    \"currency\": \"IDR\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"pic_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -516,7 +516,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Product test Edit\",\n    \"category\": 1,\n    \"currency\": \"IDR edit\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"client_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
+							"raw": "{\n    \"name\": \"Product test Edit\",\n    \"category\": 1,\n    \"currency\": \"IDR edit\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"pic_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -553,7 +553,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Product test edit\",\n    \"category\": 1,\n    \"currency\": \"IDR edit\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"client_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
+							"raw": "{\n    \"name\": \"Product test edit\",\n    \"category\": 1,\n    \"currency\": \"IDR edit\",\n    \"setup_fee\": 0,\n    \"price\": 3500000,\n    \"pic_id\": 13,\n    \"occupant\": 3,\n    \"room_capacity\": 5,\n    \"room_size\": 4,\n    \"view\": \"n\",\n    \"vCredit\": 0,\n    \"max_contacts\": 0,\n    \"meeting_room\": 0,\n    \"workstation\": 0,\n    \"event_space\": 0,\n    \"private_office\": 0,\n    \"hellolive\": 0,\n    \"livebox\": 0,\n    \"meeting_room_cycle\": 0,\n    \"workstation_cycle\": 0,\n    \"event_space_cycle\": 0,\n    \"private_office_cycle\": 0,\n    \"hellolive_cycle\": 0,\n    \"livebox_cycle\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -737,10 +737,10 @@
 			]
 		},
 		{
-			"name": "Clients",
+			"name": "Pic",
 			"item": [
 				{
-					"name": "Create Client",
+					"name": "Create Pic",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -754,13 +754,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3005/clients",
+							"raw": "localhost:3005/pic",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"clients"
+								"pic"
 							]
 						}
 					},

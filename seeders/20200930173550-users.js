@@ -34,7 +34,7 @@ module.exports = {
         const userPermission = [{
             user_id: 1,
             invoicing: '1:1:1',
-            client: '1:1:1',
+            pic: '1:1:1',
             call_handling: '1:1:1',
             mail_handling: '1:1:1',
             visitor_handling: '1:1:1',

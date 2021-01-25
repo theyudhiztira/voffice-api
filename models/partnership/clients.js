@@ -3,14 +3,14 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class clients extends Model {
+    class pic extends Model {
         static associate(models){
-            models.clients.belongsTo(models.client_plan, {foreignKey: 'client_id'});
+            models.pic.belongsTo(models.pic_plan, {foreignKey: 'pic_id'});
         }
     }
 
-    clients.init({
-        client_id: {
+    pic.init({
+        pic_id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
@@ -56,9 +56,9 @@ module.exports = (sequelize, DataTypes) => {
         
     }, {
         sequelize,
-        modelName: 'clients',
+        modelName: 'pic',
         underscored: true,
     });
 
-    return clients;
+    return pic;
 };

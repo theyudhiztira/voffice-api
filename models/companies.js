@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        client_id: {
+        pic_id: {
             type: DataTypes.INTEGER
         },
         company_name: {

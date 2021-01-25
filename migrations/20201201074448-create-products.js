@@ -13,7 +13,7 @@ module.exports = {
             currency: Sequelize.STRING,
             setup_fee: Sequelize.FLOAT(4),
             price: Sequelize.FLOAT(4),
-            client_id: Sequelize.INTEGER,
+            pic_id: Sequelize.INTEGER,
             occupant: Sequelize.INTEGER,
             room_capacity: Sequelize.INTEGER,
             room_size: Sequelize.INTEGER,

@@ -9,7 +9,7 @@ module.exports = {
             currency: "required",
             setup_fee: "required",
             price: "required",
-            client_id: "required|integer",
+            pic_id: "required|integer",
             occupant: "required",
             room_capacity: "required",
             room_size: "required",
