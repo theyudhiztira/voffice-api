@@ -1,17 +1,28 @@
 const model = require('../../models/partnership')
-const Op = require('sequelize')
+const Sequelize = require('sequelize')
 const moment = require('moment')
 const hero = require('../../lib/hero');
 
 exports.get = async (req, res) => {
     const location_id = parseInt(req.params.location_id);
+    const filter = hero.paramFilter(['year'], req.query);
+    const year = filter.year ? filter.year : moment().format('Y');
+
+    let from = moment(year+'-01-01').toDate();
+    let to = moment((parseInt(year) + 1).toString() + '-01-01').toDate();
+
+    if(year === '2020'){
+        from = moment(year+'-10-01').toDate();
+    }
 
     const data = await model.invoices_ht.findAndCountAll({
         where: {
             location_id: location_id,
             status: 1,
-            date_paid: Op.where(Op.literal('invoices_ht.date_paid '), '>=', moment('2021-01-01').toDate()),
-            [Op.where]: Op.literal('product_category IN (1,5,3)')
+            date_paid: {
+                [Sequelize.Op.between] : [from, to]
+            },
+            [Sequelize.where]: Sequelize.literal('product_category IN (1,5,3)')
         },
         attributes: [
             'id',
