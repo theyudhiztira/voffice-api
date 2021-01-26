@@ -18,6 +18,8 @@ exports.getServicedOffices = (locationId, params) => {
     return new Promise(async (resolve, reject) => {
         const data = await hero.paginate(model.serviced_offices, params.page, params.limit , {where: whereClause});
 
+        console.log(data);
+
         if(!data){
             return reject({
                 message: 'Data is empty'

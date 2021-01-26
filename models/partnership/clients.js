@@ -5,12 +5,12 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class pic extends Model {
         static associate(models){
-            models.pic.belongsTo(models.pic_plan, {foreignKey: 'pic_id'});
+            models.pic.belongsTo(models.client_plan, {foreignKey: 'client_id'});
         }
     }
 
     pic.init({
-        pic_id: {
+        client_id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,

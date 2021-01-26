@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            models.serviced_offices.hasOne(models.pic_plan, {foreignKey: 'id', sourceKey: 'pic_plan_id'});
+            models.serviced_offices.hasOne(models.client_plan, {foreignKey: 'id', sourceKey: 'client_plan_id'});
         }
     };
     serviced_offices.init({
@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        pic_id: DataTypes.INTEGER,
-        pic_plan_id: DataTypes.INTEGER,
+        client_id: DataTypes.INTEGER,
+        client_plan_id: DataTypes.INTEGER,
         occupant: DataTypes.STRING,
         room_name: DataTypes.STRING,
         lease_price: DataTypes.FLOAT,
