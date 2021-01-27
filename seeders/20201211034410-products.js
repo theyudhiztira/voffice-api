@@ -20,7 +20,7 @@ module.exports = {
         category: 5,
         currency: "IDR",
         setup_fee: 0,
-        price: 3500000,
+        price: 9000000,
         pic_id: 36,
         occupant: 3,
         room_capacity: 5,
