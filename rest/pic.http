@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtY
 //GET
 GET http://localhost:3005/pic HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNTQ5MzIxLCJleHAiOjE2MTE1NzgxMjF9.IL2F_VeOIrN5tajb1_jV1u-8F0ID78ubqTwqsBi4zEE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNzM1NzY1LCJleHAiOjE2MTE3NjQ1NjV9.wj-zdpzJl1yu6qjQT7iS9If60ox-QPK5gPy0L9BtOgY
 
 {
     //

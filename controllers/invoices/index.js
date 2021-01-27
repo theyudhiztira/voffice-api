@@ -3,6 +3,7 @@ const controller = require('./controller');
 const hero = require('../../lib/hero');
 
 exports.create = async (req, res) => {
+    req.body.created_by = req.userData.userId;
     let func = await controller._create(req.body);
 
     (func.status !== 200) ? statusCode = func.status : statusCode = 200;
@@ -20,7 +21,7 @@ exports.get = async (req, res) => {
 };
 
 exports.edit = async (req, res) => {
-    let func = await controller._edit(req.body, req.params.pic_id);
+    let func = await controller._edit(req.body, req.params.invoice_id);
 
     (func.status !== 200) ? statusCode = func.status : statusCode = 200;
 

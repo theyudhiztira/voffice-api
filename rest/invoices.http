@@ -1,0 +1,32 @@
+//CREATE
+POST http://localhost:3005/invoices HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNzM1NzY1LCJleHAiOjE2MTE3NjQ1NjV9.wj-zdpzJl1yu6qjQT7iS9If60ox-QPK5gPy0L9BtOgY
+
+{
+    "location_id": 1,
+    "company_id": 1,
+    "amount_due": 9000000
+}
+
+###
+//GET
+GET http://localhost:3005/invoices HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNzM1NzY1LCJleHAiOjE2MTE3NjQ1NjV9.wj-zdpzJl1yu6qjQT7iS9If60ox-QPK5gPy0L9BtOgY
+
+{
+    //
+}
+
+###
+// UPDATE INVOICE BY invoice_id
+PUT http://localhost:3005/invoices/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjExNzM1NzY1LCJleHAiOjE2MTE3NjQ1NjV9.wj-zdpzJl1yu6qjQT7iS9If60ox-QPK5gPy0L9BtOgY
+
+{
+    "location_id": 2,
+    "company_id": 2,
+    "amount_due": 10000000
+}

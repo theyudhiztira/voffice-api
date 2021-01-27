@@ -24,7 +24,7 @@ exports._create = async (params) => {
     if (pic){
         return {
             status: 400,
-            message: pic.email === params.email ? `Pic email is already in use (${pic.id})` : `Pic phone is already in use (${pic.id})`
+            result: pic.email === params.email ? `Pic email is already in use (${pic.id})` : `Pic phone is already in use (${pic.id})`
         }
     }
 
@@ -52,20 +52,20 @@ exports._create = async (params) => {
 
                     return {
                         status: 200,
-                        message: 'Successfully Create Pic.'
+                        result: 'Successfully Create Pic.'
                     };
                     
                 }).catch(err => {
                     return {
                         status: 200,
-                        message: err.message
+                        result: err.message
                     }
                 });
                 
         }).catch(err => {
             return {
                 status: 500,
-                message: err.message
+                result: err.message
             }
         });
 }
@@ -82,13 +82,13 @@ exports._get = async (filter) => {
     if (!pic){
         return {
             status: 400,
-            message: `Pic doesn't exists!`
+            result: `Pic doesn't exists!`
         }
     }
     
     return {
         status: 200,
-        message: pic
+        result: pic
     }
 }
 
@@ -103,7 +103,7 @@ exports._edit = async (params, pic_id) => {
     if (!pic){
         return {
             status: 400,
-            message: `Pic with ID (${pic_id}) not found!`
+            result: `Pic with ID (${pic_id}) not found!`
         }
     }
     
@@ -116,12 +116,12 @@ exports._edit = async (params, pic_id) => {
         .then((resultPic) => {
             return {
                 status: 200,
-                message: 'Successfully Update Pic.'
+                result: 'Successfully Update Pic.'
             };
         }).catch(err => {
             return {
                 status: 500,
-                message: err.message
+                result: err.message
             }
         });
 }
