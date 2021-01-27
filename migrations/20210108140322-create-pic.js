@@ -26,28 +26,28 @@ module.exports = {
             whatsapp: {
                 type: Sequelize.STRING,
                 allowNull: true,
-                default: null
+                defaultValue: null
             },
             discovery_source: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
-                default: null
+                defaultValue: null
             },
             status: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
-                default: 0,
+                defaultValue: 0,
                 comment: "0 = warm leads, 1 = cold leads, 3 = hot leads, 4 = failed leads, 5 = active, 6 = cancelled, 7 = terminated"
             },
             web_register: {
                 type: Sequelize.BOOLEAN,
                 allowNull: true,
-                default: 0
+                defaultValue: 0
             },
             created_by: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
-                default: null
+                defaultValue: null
             },
             created_at: {
                 allowNull: false,
