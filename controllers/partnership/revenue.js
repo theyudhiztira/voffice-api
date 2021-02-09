@@ -8,11 +8,12 @@ exports.get = async (req, res) => {
     const filter = hero.paramFilter(['year'], req.query);
     const year = filter.year ? filter.year : moment().format('Y');
 
-    let from = moment(year+'-01-01').toDate();
-    let to = moment((parseInt(year) + 1).toString() + '-01-01').toDate();
+    let from = moment(year).startOf('years').format("YYYY-MM-DD");
+    let to = moment(year).endOf('years').format("YYYY-MM-DD");
 
     if(year === '2020'){
-        from = moment(year+'-10-01').toDate();
+        from = moment(year+'-10-01').format("YYYY-MM-DD");
+        to = moment('2020').endOf('years').format("YYYY-MM-DD");
     }
 
     const data = await model.invoices_ht.findAndCountAll({
