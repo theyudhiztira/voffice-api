@@ -5,15 +5,26 @@ const hero = require('../../lib/hero');
 
 exports.get = async (req, res) => {
     const location_id = parseInt(req.params.location_id);
-    const filter = hero.paramFilter(['year'], req.query);
-    const year = filter.year ? filter.year : moment().format('Y');
+    const filter = hero.paramFilter(['year','yearAndMonth'], req.query);
+    let from;
+    let to;
 
-    let from = moment(year).startOf('years').format("YYYY-MM-DD");
-    let to = moment(year).endOf('years').format("YYYY-MM-DD");
+    if (filter.year){
+        const year = filter.year;
+        from = moment(year).startOf('years').format("YYYY-MM-DD");
+        to = moment(year).endOf('years').format("YYYY-MM-DD");
 
-    if(year === '2020'){
-        from = moment(year+'-10-01').format("YYYY-MM-DD");
-        to = moment('2020').endOf('years').format("YYYY-MM-DD");
+        if(year === '2020'){
+            from = moment(year+'-10-01').format("YYYY-MM-DD");
+            to = moment('2020').endOf('years').format("YYYY-MM-DD");
+        }
+        
+    }else if (filter.yearAndMonth){
+        from = moment(filter.yearAndMonth).startOf('month').format("YYYY-MM-DD")
+        to = moment(filter.yearAndMonth).endOf('month').format("YYYY-MM-DD")
+    }else{
+        from = moment('2020-10-01').format("YYYY-MM-DD")
+        to = moment(moment().format('Y')).endOf('years').format("YYYY-MM-DD")
     }
 
     const data = await model.invoices_ht.findAndCountAll({
