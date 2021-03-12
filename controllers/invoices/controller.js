@@ -27,7 +27,6 @@ exports._create = async (params) => {
 }
 
 exports._get = async (filter) => {
-    console.log(filter);
     const invoices = await model.invoices_ht
         .findAll({
             where: filter

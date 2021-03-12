@@ -23,16 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         location_id: DataTypes.INTEGER,
         file: DataTypes.STRING,
-        periode: DataTypes.STRING,
+        period: DataTypes.STRING,
         created_by: DataTypes.INTEGER,
-        created_at: {
-            allowNull: false,
-            type: DataTypes.DATE
-        },
-        updated_at: {
-            allowNull: false,
-            type: DataTypes.DATE
-        }
+        transferred_at: DataTypes.DATE
     }, {
         sequelize, 
         modelName: 'partner_report_files',

@@ -18,7 +18,6 @@ const self = module.exports = {
             return next();
         })
         .catch(err => {
-            console.log(err);
             return res.status(400).send(err);
         });
     },
