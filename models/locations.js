@@ -44,11 +44,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         created_by: DataTypes.INTEGER,
         created_at: {
-            allowNull: false,
             type: DataTypes.DATE
         },
         updated_at: {
-            allowNull: false,
             type: DataTypes.DATE
         }
     }, {
