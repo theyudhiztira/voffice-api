@@ -27,11 +27,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER
         },
-        updated_by: {
-            allowNull: true,
-            type: DataTypes.INTEGER
-        },
-        created_at: DataTypes.DATE
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE
     }, {
         sequelize,
         modelName: 'user_groups',
