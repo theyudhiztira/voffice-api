@@ -8,8 +8,8 @@ const self = module.exports = {
             email: "required|email",
             phone: "required",
             // whatsapp: "nullable",
-            business_needs: "array",
-            discovery_source: "required"
+            // business_needs: "array",
+            // discovery_source: "required"
             // web_register: "nullable"
         };
 

@@ -24,6 +24,7 @@ exports.login = async (req, res) => {
     let data = findUser.dataValues;
     data.user_acl = await userAcl._getByUserID(data.id);
 
+
     bcrypt.compare(body.password, data.password, (error, result) => {
         if (error) {
             return res.status(500).send({
