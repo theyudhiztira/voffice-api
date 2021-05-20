@@ -3,19 +3,14 @@ const ValidatorJs = require("validatorjs");
 const self = (module.exports = {
   create: (req, res, next) => {
     const rules = {
-      first_name: "required",
-      // last_name: "nullable",
-      email: "required|email",
-      phone: "required",
-      // whatsapp: "nullable",
-      // business_needs: "array",
-      // discovery_source: "required"
-      // web_register: "nullable"
+      client_id: "integer|required",
+      company_name: "required",
     };
 
+    console.log(rules);
     self
       .validate(req.body, rules)
-      .then(() => {
+      .then((_) => {
         return next();
       })
       .catch((err) => {
@@ -26,21 +21,17 @@ const self = (module.exports = {
 
   edit: (req, res, next) => {
     const rules = {
-      first_name: "required",
-      // last_name: "nullable",
-      email: "required|email",
-      phone: "required",
-      // whatsapp: "nullable",
-      business_needs: "array",
-      discovery_source: "required",
+      client_id: "required",
+      company_name: "required",
     };
 
     self
       .validate(req.body, rules)
-      .then(() => {
+      .then((_) => {
         return next();
       })
       .catch((err) => {
+        console.log(err);
         return res.status(400).send(err);
       });
   },

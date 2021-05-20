@@ -3,6 +3,7 @@ const {Op} = require("sequelize");
 const controller = require("./controller");
 const hero = require("../../lib/hero");
 const moment = require("moment");
+const {sequelize} = require("../../models");
 
 exports._create = async (params) => {
   const client = await model.clients.findOne({
@@ -70,11 +71,45 @@ exports._create = async (params) => {
 };
 
 exports._get = async (filter) => {
-  const client = await model.clients.findAll({
+  client = await model.clients.findAll({
     where: filter,
     include: {
       model: model.client_business_needs,
     },
+  });
+
+  if (!client) {
+    return {
+      status: 400,
+      message: `Client doesn't exists!`,
+    };
+  }
+
+  return {
+    status: 200,
+    message: client,
+  };
+};
+
+exports._search = async (filter) => {
+  const search = filter;
+
+  const client = await model.clients.findAll({
+    where: {
+      [Op.or]: [
+        {first_name: {[Op.like]: "%" + search.first_name + "%"}},
+        {last_name: {[Op.like]: "%" + search.last_name + "%"}},
+        {id: {[Op.like]: "%" + search.id + "%"}},
+      ],
+    },
+    include: [
+      {
+        model: model.companies,
+      },
+      {
+        model: model.client_business_needs,
+      },
+    ],
   });
 
   if (!client) {
