@@ -8,54 +8,50 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            client_id: {
+            pic_id: {
                 type: Sequelize.INTEGER
             },
             company_name: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            phone: {
                 type: Sequelize.STRING
+            },
+            email: {
+                type: Sequelize.STRING,
+                allowNull: false
             },
             address: {
                 type: Sequelize.TEXT,
                 allowNull: true,
                 default: null
             },
-            phone: {
-                type: Sequelize.STRING
-            },
-            fax: {
+            npwp_no: {
                 type: Sequelize.STRING,
                 allowNull: true,
                 default: null
             },
-            email: {
-                type: Sequelize.STRING
-            },
-            company_industry: {
-                type: Sequelize.INTEGER
-            },
-            director_name: {
-                type: Sequelize.STRING
-            },
-            director_phone: {
-                type: Sequelize.STRING
-            },
-            director_email: {
-                type: Sequelize.STRING
-            },
-            company_birth_date: {
-                type: Sequelize.DATE,
+            mail_handling_whatsapp_notification: {
+                type: Sequelize.TEXT,
                 allowNull: true,
                 default: null
             },
-            tax_no: {
+            call_handling_whatsapp_notification: {
+                type: Sequelize.TEXT,
+                allowNull: true,
+                default: null
+            },
+            call_handling_email_notification: {
+                type: Sequelize.TEXT,
+                allowNull: true,
+                default: null
+            },
+            status: {
                 type: Sequelize.STRING,
-                allowNull: true,
-                default: null
-            },
-            coregno: {
-                type: Sequelize.STRING,
-                allowNull: true,
-                default: null
+                allowNull: false,
+                default: 'active',
+                comment: "Value : active,suspended,terminated"
             },
             created_by: {
                 type: Sequelize.INTEGER

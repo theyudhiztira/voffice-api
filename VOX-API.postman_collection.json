@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1a6f2d52-9717-49ce-b888-44644df48629",
+		"_postman_id": "73a6e173-3057-4230-a481-a9d56d013e06",
 		"name": "VOX-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -144,6 +144,108 @@
 							],
 							"path": [
 								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Kevin edit\",\n    \"last_name\": \"Ramadhan edit\",\n    \"email\": \"sakti.edit@gmail.com\",\n    \"phone\": \"087175742114187800\",\n    \"whatsapp\": \"08775776487800\",\n    \"business_needs\": [1,2,3,5],\n    \"discovery_source\": 4,\n    \"web_register\": 4,\n    \"status\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/clients/12",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"clients",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_uri}}/clients",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Create New Clients",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"new_pic\" : true,\n    \"pic\" : {\n        \"pic_id\": null,\n        \"full_name\": \"Kevin Ramadhan2\",\n        \"phone\": \"0877577648787\",\n        \"email\": \"sakti.vofficee@gmail.com\",\n        \"designation\": \"Director\",\n        \"source_of_discovery\": 1,\n        \"id_type\": null,\n        \"id_no\": null\n    },\n    \"company\" : {\n        \"company_name\": \"PT Samsan Teche\",\n        \"phone\": \"08717574211418783\",\n        \"email\": \"devteam232@voffice.co.id\",\n        \"address\": \"this is address\",\n        \"npwp_no\": \"56787658985\",\n        \"mail_handling_whatsapp_notification\": \"Mail Handling WA Notes\",\n        \"call_handling_whatsapp_notification\": \"Call Handling WA Notes\",\n        \"call_handling_email_notification\": \"Call Handling Email Notes\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/company",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"company"
 							]
 						}
 					},
@@ -735,38 +837,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Clients",
-			"item": [
-				{
-					"name": "Create Client",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"Pandu\",\n    \"email\": \"theudhiztira@gmail.com\",\n    \"phone\": \"+6285155001616\",\n    \"discovery_source\": \"website\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3005/clients",
-							"host": [
-								"localhost"
-							],
-							"port": "3005",
-							"path": [
-								"clients"
-							]
-						}
-					},
-					"response": []
-				}
-			]
 		}
 	],
 	"auth": {
@@ -774,7 +844,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjEwMTA2MTg5LCJleHAiOjE2MTAxMzQ5ODl9.r5b4OKFvlpnkdKr72oi5O1V_SxMFIZ_47-JtaudcAJk",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIxNTYyNzUwLCJleHAiOjE2MjE1OTE1NTB9.rixzXTd8C7nOqpXMVK7yErI3Hh_i0KbWn5ZEximmtYg",
 				"type": "string"
 			}
 		]

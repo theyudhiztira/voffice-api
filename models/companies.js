@@ -4,84 +4,80 @@ module.exports = (sequelize, DataTypes) => {
   class companies extends Model {
     /**
      * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
+     * This method is not a part of DataTypes lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
       // define association here
-      models.companies.belongsTo(models.clients, {
-        foreignKey: "client_id",
-      });
+      // models.companies.belongsTo(models.pic, {
+      //   foreignKey: "id",
+      // });
     }
   }
   companies.init(
     {
       id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: DataTypes.INTEGER
       },
-      client_id: {
-        type: DataTypes.INTEGER,
+      pic_id: {
+          type: DataTypes.INTEGER
       },
       company_name: {
-        type: DataTypes.STRING,
-      },
-      address: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-        default: null,
+          type: DataTypes.STRING,
+          allowNull: false
       },
       phone: {
-        type: DataTypes.STRING,
-      },
-      fax: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        default: null,
+          type: DataTypes.STRING
       },
       email: {
-        type: DataTypes.STRING,
+          type: DataTypes.STRING,
+          allowNull: false
       },
-      company_industry: {
-        type: DataTypes.INTEGER,
+      address: {
+          type: DataTypes.TEXT,
+          allowNull: true,
+          default: null
       },
-      director_name: {
-        type: DataTypes.STRING,
+      npwp_no: {
+          type: DataTypes.STRING,
+          allowNull: true,
+          default: null
       },
-      director_phone: {
-        type: DataTypes.STRING,
+      mail_handling_whatsapp_notification: {
+          type: DataTypes.TEXT,
+          allowNull: true,
+          default: null
       },
-      director_email: {
-        type: DataTypes.STRING,
+      call_handling_whatsapp_notification: {
+          type: DataTypes.TEXT,
+          allowNull: true,
+          default: null
       },
-      company_birth_date: {
-        type: DataTypes.DATE,
-        allowNull: true,
-        default: null,
+      call_handling_email_notification: {
+          type: DataTypes.TEXT,
+          allowNull: true,
+          default: null
       },
-      tax_no: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        default: null,
-      },
-      coregno: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        default: null,
+      status: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          default: 'active',
+          comment: "Value : active,suspended,terminated"
       },
       created_by: {
-        type: DataTypes.INTEGER,
+          type: DataTypes.INTEGER
       },
       created_at: {
-        allowNull: false,
-        type: DataTypes.DATE,
+          allowNull: false,
+          type: DataTypes.DATE
       },
       updated_at: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
+          allowNull: false,
+          type: DataTypes.DATE
+      }
     },
     {
       sequelize,

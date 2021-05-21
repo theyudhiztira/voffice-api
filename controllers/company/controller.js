@@ -1,6 +1,7 @@
 const model = require("../../models");
 const {Op} = require("sequelize");
 const moment = require("moment");
+const picController = require("../pic/controller");
 
 exports._get = async (filter) => {
   const companies = await model.companies.findAll({
@@ -32,7 +33,7 @@ exports._search = async (filter) => {
     },
 
     include: {
-      model: model.clients,
+      model: model.pic,
     },
   });
 
@@ -49,34 +50,78 @@ exports._search = async (filter) => {
   };
 };
 
-exports._create = async (params) => {
+exports._create = async (params, userID) => {
+
   const company = await model.companies.findOne({
     where: {
       [Op.or]: [
         {
-          company_name: params.company_name,
+          company_name: params.company.company_name,
         },
+        {
+          phone: params.company.phone,
+        },
+        {
+          email: params.company.email,
+        }
       ],
     },
-  });
+  })
 
   if (company) {
     return {
       status: 400,
-      message: `Company is already registered (${company.id})`,
-    };
+      message: `Company is already registered (Company ID: ${company.id})`,
+    }
   }
 
-  params.created_at = moment().format("Y-m-d");
-  params.updated_at = moment().format("Y-m-d");
+  paramsCompany = params.company
+  paramsCompany.status = 'active'
+  paramsCompany.created_by = userID
+  paramsCompany.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
+  paramsCompany.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
 
-  const create = await model.companies.create(params);
+  if (params.new_pic) {
+    const createPic = await picController._create(params.pic)
 
-  return {
-    status: 200,
-    message: "Succesfully Create Company",
-  };
-};
+    if (createPic.status !== 200) {
+      return {
+        status: createPic.status,
+        message: createPic.message,
+      }
+    }
+
+    paramsCompany.pic_id = createPic.data.pic_id
+  }else{
+
+    if (!params.pic.pic_id){
+      return {
+        status: 400,
+        message: "Pic ID cannot be null",
+      }
+    }
+
+    paramsCompany.pic_id = params.pic.pic_id
+  }
+
+  return await model.companies.create(paramsCompany)
+    .then((result) => {
+      
+      return {
+        status: 200,
+        message: "Succesfully Create Company",
+      }
+
+    })
+    .catch((err) => {
+
+      return {
+        status: 500,
+        message: err.message,
+      }
+
+    })
+}
 
 exports._edit = async (params, companyId) => {
   const company = await model.companies.findOne({

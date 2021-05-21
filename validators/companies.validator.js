@@ -3,8 +3,9 @@ const ValidatorJs = require("validatorjs");
 const self = (module.exports = {
   create: (req, res, next) => {
     const rules = {
-      client_id: "integer|required",
-      company_name: "required",
+      new_pic: "required",
+      pic: "required",
+      company: "required",
     };
 
     console.log(rules);

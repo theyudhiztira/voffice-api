@@ -1,8 +1,9 @@
+const model = require("../../models");
 const controller = require("./controller");
 const hero = require("../../lib/hero");
 
 exports.create = async (req, res) => {
-  let func = await controller._create(req.body, req.userData.userId);
+  let func = await controller._create(req.body);
 
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
 
@@ -10,7 +11,7 @@ exports.create = async (req, res) => {
 };
 
 exports.get = async (req, res) => {
-  const filter = hero.paramFilter(["id", "client_id"], req.query);
+  const filter = hero.paramFilter(["id"], req.query);
 
   let func = await controller._get(filter);
 
@@ -20,7 +21,7 @@ exports.get = async (req, res) => {
 };
 
 exports.search = async (req, res) => {
-  const filter = hero.paramFilter(["id", "company_name"], req.query);
+  const filter = hero.paramFilter(["id", "first_name", "last_name"], req.query);
 
   let func = await controller._search(filter);
 
@@ -30,7 +31,7 @@ exports.search = async (req, res) => {
 };
 
 exports.edit = async (req, res) => {
-  let func = await controller._edit(req.body, req.params.companyId);
+  let func = await controller._edit(req.body, req.params.pic_id);
 
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
 

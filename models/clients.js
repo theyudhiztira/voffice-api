@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "client_id",
       });
 
-      models.clients.hasMany(models.companies, {
-        foreignKey: "client_id",
-      });
+      // models.clients.hasMany(models.companies, {
+      //   foreignKey: "client_id",
+      // });
     }
   }
   Clients.init(
