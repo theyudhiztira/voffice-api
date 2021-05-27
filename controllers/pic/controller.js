@@ -55,9 +55,6 @@ exports._create = async (params) => {
 exports._get = async (filter) => {
   pic = await model.pic.findAll({
     where: filter,
-    include: {
-      model: model.client_business_needs,
-    },
   });
 
   if (!pic) {
@@ -76,28 +73,22 @@ exports._get = async (filter) => {
 exports._search = async (filter) => {
   const search = filter;
 
+  console.log(search);
+
   const pic = await model.pic.findAll({
     where: {
       [Op.or]: [
-        {first_name: {[Op.like]: "%" + search.first_name + "%"}},
-        {last_name: {[Op.like]: "%" + search.last_name + "%"}},
+        {full_name: {[Op.like]: "%" + search.full_name + "%"}},
         {id: {[Op.like]: "%" + search.id + "%"}},
       ],
     },
-    include: [
-      {
-        model: model.companies,
-      },
-      {
-        model: model.client_business_needs,
-      },
-    ],
+    include: { model: model.companies }
   });
 
   if (!pic) {
     return {
       status: 400,
-      message: `Client doesn't exists!`,
+      message: `PIC doesn't exists!`,
     };
   }
 

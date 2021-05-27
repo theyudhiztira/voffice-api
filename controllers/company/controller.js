@@ -24,11 +24,13 @@ exports._get = async (filter) => {
 exports._search = async (filter) => {
   const search = filter;
 
+  console.log(search);
+
   const companies = await model.companies.findAll({
     where: {
       [Op.or]: [
         {company_name: {[Op.like]: "%" + search.company_name + "%"}},
-        {id: {[Op.like]: "%" + search.id + "%"}},
+        {pic_id: {[Op.like]: "%" + search.pic_id + "%"}},
       ],
     },
 
@@ -36,6 +38,7 @@ exports._search = async (filter) => {
       model: model.pic,
     },
   });
+
 
   if (!companies) {
     return {
@@ -92,7 +95,7 @@ exports._create = async (params, userID) => {
     }
 
     paramsCompany.pic_id = createPic.data.pic_id
-  }else{
+  } else {
 
     if (!params.pic.pic_id){
       return {

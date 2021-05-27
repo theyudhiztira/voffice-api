@@ -25,6 +25,8 @@ exports.search = async (req, res) => {
 
   let func = await controller._search(filter);
 
+  console.log(func);
+
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
 
   return res.status(statusCode).send(func);

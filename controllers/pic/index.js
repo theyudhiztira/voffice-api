@@ -21,7 +21,7 @@ exports.get = async (req, res) => {
 };
 
 exports.search = async (req, res) => {
-  const filter = hero.paramFilter(["id", "first_name", "last_name"], req.query);
+  const filter = hero.paramFilter(["id", "full_name"], req.query);
 
   let func = await controller._search(filter);
 

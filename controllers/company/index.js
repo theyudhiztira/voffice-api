@@ -10,7 +10,7 @@ exports.create = async (req, res) => {
 };
 
 exports.get = async (req, res) => {
-  const filter = hero.paramFilter(["id", "client_id"], req.query);
+  const filter = hero.paramFilter(["id", "pic_id", 'company_name'], req.query);
 
   let func = await controller._get(filter);
 
@@ -20,7 +20,7 @@ exports.get = async (req, res) => {
 };
 
 exports.search = async (req, res) => {
-  const filter = hero.paramFilter(["id", "company_name"], req.query);
+  const filter = hero.paramFilter(["pic_id", "company_name"], req.query);
 
   let func = await controller._search(filter);
 
