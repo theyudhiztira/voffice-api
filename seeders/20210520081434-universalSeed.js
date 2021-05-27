@@ -37,6 +37,41 @@ module.exports = {
       updated_at: '2021-02-18 00:00:00'
     }])
 
+    // Products
+    await queryInterface.bulkInsert('products', [{
+      id: 1,
+      product_name: "Virtual Office Silver (Bundle) 12 Month(s)",
+      category: 5,
+      price: 5000000,
+      credit: 2000,
+      serviced_office_id: null,
+      status: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    }])
+
+    // Facilities
+    await queryInterface.bulkInsert('facilities', [{
+      id: 1,
+      location_id: 1,
+      facility_name: "Meeting Room 1",
+      facility_category: 1,
+      maximum_capacity: 10,
+      images: "test.jpg",
+      real_time_booking: 1,
+      created_by: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    }])
+
+    // Facilities Category
+    await queryInterface.bulkInsert('facilities_category', [{
+      id: 1,
+      name: "Meeting Room",
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    }])
+
   },
 
   down: async (queryInterface, Sequelize) => {
