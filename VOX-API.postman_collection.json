@@ -219,7 +219,7 @@
 			"name": "Companies",
 			"item": [
 				{
-					"name": "Create New Clients",
+					"name": "Create",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -250,25 +250,27 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Facilities",
+			"item": [
 				{
-					"name": "Edit Clients",
+					"name": "Create",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"Kevin edit\",\n    \"last_name\": \"Ramadhan edit\",\n    \"email\": \"sakti.edit@gmail.com\",\n    \"phone\": \"087175742114187800\",\n    \"whatsapp\": \"08775776487800\",\n    \"business_needs\": [1,2,3,5],\n    \"discovery_source\": 4,\n    \"web_register\": 4,\n    \"status\": \"5\"\n}",
+							"raw": "{\n    \"location_id\": 1,\n    \"facility_name\": \"Meeting Room 2\",\n    \"facility_category\": 1,\n    \"maximum_capacity\": 15,\n    \"images\": \"test2.jpg\",\n    \"real_time_booking\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -276,40 +278,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_uri}}/clients/12",
+							"raw": "{{api_uri}}/facilities",
 							"host": [
 								"{{api_uri}}"
 							],
 							"path": [
-								"clients",
-								"12"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Clients",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{api_uri}}/clients",
-							"host": [
-								"{{api_uri}}"
-							],
-							"path": [
-								"clients"
+								"facilities"
 							]
 						}
 					},
@@ -844,7 +818,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIxNTYyNzUwLCJleHAiOjE2MjE1OTE1NTB9.rixzXTd8C7nOqpXMVK7yErI3Hh_i0KbWn5ZEximmtYg",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIyMDg5NzY0LCJleHAiOjE2MjIxMTg1NjR9.ttZIg6goN25ecO6sZtDntc7cn98DrT_Up5u_tROP-tA",
 				"type": "string"
 			}
 		]
