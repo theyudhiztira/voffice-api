@@ -20,22 +20,22 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        location_id: Datatypes.INTEGER,
-        product_name: Datatypes.STRING,
-        category: Datatypes.INTEGER,
-        price: Datatypes.FLOAT(4),
-        credit: Datatypes.INTEGER,
-        serviced_office_id: Datatypes.INTEGER,
-        status: Datatypes.INTEGER,
+        location_id: DataTypes.INTEGER,
+        product_name: DataTypes.STRING,
+        category: DataTypes.INTEGER,
+        price: DataTypes.FLOAT(4),
+        credit: DataTypes.INTEGER,
+        serviced_office_id: DataTypes.INTEGER,
+        status: DataTypes.INTEGER,
         approved_by: {
             allowNull: true,
-            type: Datatypes.INTEGER
+            type: DataTypes.INTEGER
         },
         approved_at: {
             allowNull: true,
-            type: Datatypes.DATE
+            type: DataTypes.DATE
         },
-        created_by: Datatypes.INTEGER,
+        created_by: DataTypes.INTEGER,
         created_at: {
             allowNull: false,
             type: DataTypes.DATE
