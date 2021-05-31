@@ -86,24 +86,24 @@ exports._search = async (filter) => {
   };
 };
 
-exports._edit = async (params, pic_id) => {
-  const pic = await model.pic.findOne({
+exports._edit = async (params, facilitiesId) => {
+  const facility = await model.facilities.findOne({
     where: {
-      id: pic_id,
+      id: facilitiesId,
     },
   });
 
-  if (!pic) {
+  if (!facility) {
     return {
       status: 400,
-      message: `Client with ID (${pic_id}) not found!`,
+      message: `Facilities with ID (${facilitiesId}) not found!`,
     };
   }
 
-  return await model.pic
-    .update(params, {
+  return await model.facilities
+    .update(params.body, {
       where: {
-        id: pic_id,
+        id: facilitiesId,
       },
     })
     .then((resultClient) => {

@@ -32,7 +32,8 @@ exports.search = async (req, res) => {
 };
 
 exports.edit = async (req, res) => {
-  let func = await controller._edit(req.body, req.params.pic_id);
+  console.log(req.params.facilities_id);
+  let func = await controller._edit(req, req.params.facilities_id);
 
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
 
