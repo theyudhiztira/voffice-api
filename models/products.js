@@ -20,41 +20,21 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        name: DataTypes.STRING,
+        location_id: DataTypes.INTEGER,
+        product_name: DataTypes.STRING,
         category: DataTypes.INTEGER,
-        currency: DataTypes.STRING,
-        setup_fee: DataTypes.FLOAT(4),
         price: DataTypes.FLOAT(4),
-        client_id: DataTypes.INTEGER,
-        occupant: DataTypes.INTEGER,
-        room_capacity: DataTypes.INTEGER,
-        room_size: {
-            type: DataTypes.INTEGER,
+        credit: DataTypes.INTEGER,
+        serviced_office_id: DataTypes.INTEGER,
+        status: DataTypes.INTEGER,
+        approved_by: {
             allowNull: true,
-            defaultValue: 0
+            type: DataTypes.INTEGER
         },
-        view: {
-            type: DataTypes.ENUM('y', 'n', null),
-            defaultValue: null,
-            allowNull: true
+        approved_at: {
+            allowNull: true,
+            type: DataTypes.DATE
         },
-        vCredit: {
-            type: DataTypes.FLOAT(4),
-            defaultValue: 0.00
-        },
-        max_contacts: DataTypes.INTEGER,
-        meeting_room: DataTypes.INTEGER,
-        workstation: DataTypes.INTEGER,
-        event_space: DataTypes.INTEGER,
-        private_office: DataTypes.INTEGER,
-        hellolive: DataTypes.INTEGER,
-        livebox: DataTypes.INTEGER,
-        meeting_room_cycle: DataTypes.INTEGER,
-        workstation_cycle: DataTypes.INTEGER,
-        event_space_cycle: DataTypes.INTEGER,
-        private_office_cycle: DataTypes.INTEGER,
-        hellolive_cycle: DataTypes.INTEGER,
-        livebox_cycle: DataTypes.INTEGER,
         created_by: DataTypes.INTEGER,
         created_at: {
             allowNull: false,

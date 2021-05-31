@@ -48,6 +48,54 @@ module.exports = {
       status: 1,
       created_at: '2021-02-18 00:00:00',
       updated_at: '2021-02-18 00:00:00'
+    },
+    {
+      id: 2,
+      product_name: "Basic Support Membership II (Bundle) 12 Month(s)",
+      category: 3,
+      price: 5500000,
+      credit: 0,
+      serviced_office_id: null,
+      status: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    }])
+
+    // Plan
+    await queryInterface.bulkInsert('plan', [{
+        id: 1,
+        company_id: 1,
+        product_id: 1,
+        current_price: 10500000,
+        location_id: 1,
+        credit: 2000,
+        start_date: '2021-02-18 00:00:00',
+        next_renew_date: '2022-02-18 00:00:00',
+        contract_term: 12,
+        billing_cycle: 12,
+        extend_period: 2,
+        assigned_phone_no: '085811733128',
+        domicile_number: '034 / RET - CM / CT / I / 2020',
+        status: 0,
+        created_by: 1,
+        created_at: '2021-02-15 00:00:00',
+        updated_at: '2021-02-15 00:00:00'
+    },
+    {
+        id: 2,
+        company_id: 1,
+        product_id: 2,
+        current_price: 10500000,
+        location_id: 1,
+        start_date: '2021-02-18 00:00:00',
+        next_renew_date: '2022-02-18 00:00:00',
+        contract_term: 12,
+        billing_cycle: 12,
+        extend_period: 2,
+        status: 0,
+        created_by: 1,
+        created_at: '2021-02-15 00:00:00',
+        updated_at: '2021-02-15 00:00:00'
     }])
 
     // Facilities

@@ -8,6 +8,7 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+            location_id: Sequelize.INTEGER,
             product_name: Sequelize.STRING,
             category: Sequelize.INTEGER,
             price: Sequelize.FLOAT(4),
