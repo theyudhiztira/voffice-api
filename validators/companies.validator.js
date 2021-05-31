@@ -22,7 +22,7 @@ const self = (module.exports = {
 
   edit: (req, res, next) => {
     const rules = {
-      client_id: "required",
+      // client_id: "required",
       company_name: "required",
     };
 

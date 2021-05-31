@@ -4,6 +4,7 @@ const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const basename = path.basename(__filename);
+const fileUpload = require('express-fileupload');
 
 require("dotenv").config();
 
@@ -12,6 +13,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use(fileUpload());
 
 const routes = {};
 
