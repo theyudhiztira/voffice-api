@@ -62,7 +62,7 @@ module.exports = {
     }])
 
     // Plan
-    await queryInterface.bulkInsert('plan', [{
+    await queryInterface.bulkInsert('plans', [{
         id: 1,
         company_id: 1,
         product_id: 1,
