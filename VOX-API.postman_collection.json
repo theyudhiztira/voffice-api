@@ -250,6 +250,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Call Contacts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"new_pic\" : true,\n    \"pic\" : {\n        \"pic_id\": null,\n        \"full_name\": \"Kevin Ramadhan2\",\n        \"phone\": \"0877577648787\",\n        \"email\": \"sakti.vofficee@gmail.com\",\n        \"designation\": \"Director\",\n        \"source_of_discovery\": 1,\n        \"id_type\": null,\n        \"id_no\": null\n    },\n    \"company\" : {\n        \"company_name\": \"PT Samsan Teche\",\n        \"phone\": \"08717574211418783\",\n        \"email\": \"devteam232@voffice.co.id\",\n        \"address\": \"this is address\",\n        \"npwp_no\": \"56787658985\",\n        \"mail_handling_whatsapp_notification\": \"Mail Handling WA Notes\",\n        \"call_handling_whatsapp_notification\": \"Call Handling WA Notes\",\n        \"call_handling_email_notification\": \"Call Handling Email Notes\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/company",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"company"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
