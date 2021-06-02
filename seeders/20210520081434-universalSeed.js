@@ -120,6 +120,23 @@ module.exports = {
       updated_at: '2021-02-18 00:00:00'
     }])
 
+    // Call Contacts
+    await queryInterface.bulkInsert('call_contacts', [{
+      
+      id: 1,
+      company_id: 1,
+      plan_id: 1,
+      full_name: "Kevin Ramadhan",
+      division: null,
+      primary_number: "087757764878",
+      secondary_number: null,
+      email: 'sakti.voffice@gmail.com',
+      status: 1,
+      created_by: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    }])
+
   },
 
   down: async (queryInterface, Sequelize) => {

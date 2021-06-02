@@ -21,6 +21,29 @@ exports._get = async (filter) => {
   };
 };
 
+exports._getCallContacts = async (companyId) => {
+
+  console.log(companyId);
+  
+  const callContacts = await model.call_contacts.findAll({
+    where: {
+      company_id: companyId
+    },
+  });
+
+  if (!callContacts) {
+    return {
+      status: 400,
+      message: `This client doesn't have call contact(s)!`,
+    };
+  }
+
+  return {
+    status: 200,
+    result: callContacts,
+  };
+};
+
 exports._search = async (filter) => {
   const search = filter;
 

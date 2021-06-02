@@ -19,6 +19,14 @@ exports.get = async (req, res) => {
   return res.status(statusCode).send(func);
 };
 
+exports.getCallContacts = async (req, res) => {
+  let func = await controller._getCallContacts(req.params.companyId);
+
+  func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+  return res.status(statusCode).send(func);
+};
+
 exports.search = async (req, res) => {
   const filter = hero.paramFilter(["pic_id", "company_name"], req.query);
 
