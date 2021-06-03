@@ -855,7 +855,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"product_id\": 1,\n    \"current_price\": 5000000,\n    \"renewal_price\": null,\n    \"location_id\": 1,\n    \"credit\": 2000,\n    \"start_date\": \"2021-02-18 00:00:00\",\n    \"last_renew_date\": null,\n    \"next_renew_date\": \"2022-02-18 00:00:00\",\n    \"contract_term\": 12,\n    \"billing_cycle\": 12,\n    \"extend_period\": null,\n    \"assigned_phone_no\": 6224904,\n    \"assigned_fax_no\": null,\n    \"domicile_number\": null\n}",
+							"raw": "{\n    \"company_id\": 1,\n    \"product_id\": 1,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -882,7 +882,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIyNjA0MTczLCJleHAiOjE2MjI2MzI5NzN9.iKmITgiwV-bNob7Lxpjuwlv6NKbISUNy0lHmxkOHpkM",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIyNzAzODIwLCJleHAiOjE2MjI3MzI2MjB9.lyXLrY83RJAMSH0k1wLXkbNbQfZNEPONVvVzyb6XW1I",
 				"type": "string"
 			}
 		]

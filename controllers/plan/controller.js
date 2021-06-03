@@ -4,15 +4,17 @@ const moment = require("moment");
 const products = require("../../models/products");
 
 exports._create = async (params) => {
+
+  const product = await model.products.findOne({ where: { id: params.product_id }})
   
+  params.next_renew_date = moment(params.start_date).add(params.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D")
+  params.current_price = product.price
   params.status = 0
   params.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
   params.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
 
   return await model.plans.create(params)
     .then(async (result) => {
-
-      const product = await model.products.findOne({ where: { id: result.product_id }})
 
       return model.plan_dt.create({
         plan_id: result.id,
@@ -21,7 +23,8 @@ exports._create = async (params) => {
         updated_by: result.created_by,
         created_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
         updated_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
-      }) 
+      })
+
     })
     .then((result) => {
       return {
