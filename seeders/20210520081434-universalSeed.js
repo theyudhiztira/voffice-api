@@ -52,6 +52,7 @@ module.exports = {
     },
     {
       id: 2,
+      location_id: 1,
       product_name: "Basic Support Membership II (Bundle) 12 Month(s)",
       category: 3,
       price: 5500000,
