@@ -40,6 +40,7 @@ module.exports = {
     // Products
     await queryInterface.bulkInsert('products', [{
       id: 1,
+      location_id: 1,
       product_name: "Virtual Office Silver (Bundle) 12 Month(s)",
       category: 5,
       price: 5000000,
