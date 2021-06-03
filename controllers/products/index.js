@@ -14,7 +14,10 @@ exports.create = async (req, res) => {
 }
 
 exports.getAll = async (req, res) => {
-    const func = await controller._getAll();
+    const filter = hero.paramFilter(["location_id", "category"], req.query);
+
+    const func = await controller._getAll(filter);
+
     return res.status(200).send(func)
 }
 

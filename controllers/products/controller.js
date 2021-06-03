@@ -16,8 +16,27 @@ exports._create = async (params) => {
 };
 
 exports._getAll = async (filter) => {
-    const data = await model.products.findAll();
-    return data;
+
+    try {
+        const data = await model.products.findAll({
+            where: filter
+        });
+
+        if(!data) return {
+            status: 400,
+            message: `Product doesn't exists!`    
+        }
+
+        return {
+            status: 200,
+            message: data
+        }
+    } catch (err) {
+        return {
+            status: false,
+            message: err.message
+        }
+    }  
 }
 
 exports._get = async (id) => {
