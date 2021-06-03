@@ -11,6 +11,7 @@ exports.create = async (req, res) => {
   return res.status(statusCode).send(func);
 };
 
+
 // exports.get = async (req, res) => {
 //   const filter = hero.paramFilter(["id"], req.query);
 

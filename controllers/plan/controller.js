@@ -1,6 +1,7 @@
 const model = require("../../models");
 const {Op} = require("sequelize");
 const moment = require("moment");
+const products = require("../../models/products");
 
 exports._create = async (params) => {
   
@@ -9,16 +10,26 @@ exports._create = async (params) => {
   params.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
 
   return await model.plans.create(params)
+    .then(async (result) => {
+
+      const product = await model.products.findOne({ where: { id: result.product_id }})
+
+      return model.plan_dt.create({
+        plan_id: result.id,
+        free_credit: product.credit,
+        paid_credit: 0,
+        updated_by: result.created_by,
+        created_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
+        updated_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
+      }) 
+    })
     .then((result) => {
-      
       return {
         status: 200,
         message: "Successfully Create Plan."
       }
-      
     })
     .catch((err) => {
-
       return {
         status: 500,
         message: err.message,
@@ -28,20 +39,24 @@ exports._create = async (params) => {
 };
 
 // exports._get = async (filter) => {
-//   pic = await model.pic.findAll({
+//   let plans = await model.plans.findAll({
 //     where: filter,
+//     include: [{
+//       model: model.products,
+//       as: 'products'
+//     }]
 //   });
 
-//   if (!pic) {
+//   if (!plans) {
 //     return {
 //       status: 400,
-//       message: `Client doesn't exists!`,
+//       message: `Plans doesn't exists!`,
 //     };
 //   }
 
 //   return {
 //     status: 200,
-//     message: pic,
+//     message: plans,
 //   };
 // };
 
