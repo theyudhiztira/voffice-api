@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
         current_price: DataTypes.DOUBLE,
         renewal_price: DataTypes.INTEGER,
         location_id: DataTypes.INTEGER,
-        credit: DataTypes.INTEGER,
         start_date: {
             allowNull: false,
             type: DataTypes.DATE

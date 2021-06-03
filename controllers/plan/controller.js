@@ -8,8 +8,6 @@ exports._create = async (params) => {
   params.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
   params.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
 
-  console.log(params);
-
   return await model.plans.create(params)
     .then((result) => {
       

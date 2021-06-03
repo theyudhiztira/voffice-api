@@ -13,7 +13,6 @@ module.exports = {
             current_price: Sequelize.DOUBLE,
             renewal_price: Sequelize.INTEGER,
             location_id: Sequelize.INTEGER,
-            credit: Sequelize.INTEGER,
             start_date: {
                 allowNull: false,
                 type: Sequelize.DATE

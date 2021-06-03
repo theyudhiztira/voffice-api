@@ -68,7 +68,6 @@ module.exports = {
         product_id: 1,
         current_price: 10500000,
         location_id: 1,
-        credit: 2000,
         start_date: '2021-02-18 00:00:00',
         next_renew_date: '2022-02-18 00:00:00',
         contract_term: 12,
@@ -96,6 +95,26 @@ module.exports = {
         created_by: 1,
         created_at: '2021-02-15 00:00:00',
         updated_at: '2021-02-15 00:00:00'
+    }])
+
+    // Plan DT
+    await queryInterface.bulkInsert('plan_dt', [{
+      id: 1,
+      plan_id: 1,
+      free_credit: 2000,
+      paid_credit: 0,
+      updated_by: 1,
+      created_at: '2021-02-15 00:00:00',
+      updated_at: '2021-02-15 00:00:00'
+    },
+    {
+      id: 2,
+      plan_id: 2,
+      free_credit: 0,
+      paid_credit: 0,
+      updated_by: 1,
+      created_at: '2021-02-15 00:00:00',
+      updated_at: '2021-02-15 00:00:00'
     }])
 
     // Facilities
