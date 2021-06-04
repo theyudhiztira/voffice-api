@@ -2,6 +2,7 @@ const model = require("../../models");
 const {Op} = require("sequelize");
 const moment = require("moment");
 const products = require("../../models/products");
+const plans = require("../../models/plans");
 
 exports._create = async (params) => {
 
@@ -29,7 +30,7 @@ exports._create = async (params) => {
     .then((result) => {
       return {
         status: 200,
-        message: "Successfully Create Plan."
+        message: "Successfully Create Plan."  
       }
     })
     .catch((err) => {
@@ -41,27 +42,39 @@ exports._create = async (params) => {
     })
 };
 
-// exports._get = async (filter) => {
-//   let plans = await model.plans.findAll({
-//     where: filter,
-//     include: [{
-//       model: model.products,
-//       as: 'products'
-//     }]
-//   });
+exports._get = async (filter) => {
 
-//   if (!plans) {
-//     return {
-//       status: 400,
-//       message: `Plans doesn't exists!`,
-//     };
-//   }
+  try {
+    const plans = await model.plans.findAll({
+      where: filter,
+      include: [
+        {
+          model: model.locations,
+        },
+        {
+          model: model.products,
+        }
+      ]
+    });
 
-//   return {
-//     status: 200,
-//     message: plans,
-//   };
-// };
+    if(!plans)  return {
+      status: 400,
+      message: `Plans doesn't exists!`,
+    };
+
+    return {
+      status: 200, 
+      message: plans,
+    };
+
+  } catch (err) {
+    return {
+      status: 500,
+      message: err.message,
+    };
+
+  }
+};
 
 // exports._search = async (filter) => {
 //   const search = filter;

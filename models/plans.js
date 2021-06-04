@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.plans.hasOne(models.locations, { foreignKey: 'id', sourceKey: 'location_id' })
+      models.plans.hasOne(models.products, { foreignKey: 'id', sourceKey: 'product_id' })
     }
   }
   Plans.init(
