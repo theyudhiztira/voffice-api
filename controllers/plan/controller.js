@@ -5,16 +5,17 @@ const products = require("../../models/products");
 const plans = require("../../models/plans");
 
 exports._create = async (params) => {
-
-  const product = await model.products.findOne({ where: { id: params.product_id }})
   
-  params.next_renew_date = moment(params.start_date).add(params.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D")
-  params.current_price = product.price
-  params.status = 0
-  params.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
-  params.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
+  const processData = params.map(async v => {
+    const product = await model.products.findOne({ where: { id: v.product_id }})
 
-  return await model.plans.create(params)
+    v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
+    v.current_price = product.price,
+    v.status = 0,
+    v.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss"),
+    v.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss")
+
+    return await model.plans.create(v)
     .then(async (result) => {
 
       return model.plan_dt.create({
@@ -28,18 +29,17 @@ exports._create = async (params) => {
 
     })
     .then((result) => {
-      return {
-        status: 200,
-        message: "Successfully Create Plan."  
-      }
+      return true
     })
     .catch((err) => {
-      return {
-        status: 500,
-        message: err.message,
-      }
-
+      return false
     })
+  })
+
+  return {
+    status: 200,
+    message: "Successfully Create Plan."  
+  }
 };
 
 exports._get = async (filter) => {
