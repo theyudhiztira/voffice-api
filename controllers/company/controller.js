@@ -6,6 +6,11 @@ const picController = require("../pic/controller");
 exports._get = async (filter) => {
   const companies = await model.companies.findAll({
     where: filter,
+    include: [
+      {
+        model: model.pic
+      }
+    ]
   });
 
   if (!companies) {
