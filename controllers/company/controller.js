@@ -57,14 +57,15 @@ exports._search = async (filter) => {
   const companies = await model.companies.findAll({
     where: {
       [Op.or]: [
+        {id: {[Op.like]: "%" + search.id + "%"}},
         {company_name: {[Op.like]: "%" + search.company_name + "%"}},
         {pic_id: {[Op.like]: "%" + search.pic_id + "%"}},
       ],
     },
 
-    include: {
+    include: [{
       model: model.pic,
-    },
+    }],
   });
 
 
@@ -75,6 +76,7 @@ exports._search = async (filter) => {
     };
   }
 
+  console.log(companies);
   return {
     status: 200,
     companies: companies,
