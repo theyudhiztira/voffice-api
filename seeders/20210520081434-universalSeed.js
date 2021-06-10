@@ -137,6 +137,45 @@ module.exports = {
       updated_at: '2021-02-18 00:00:00'
     }])
 
+    // Invoice_ht
+    await queryInterface.bulkInsert('invoice_ht', [{
+      
+      id: 1,
+      company_id: 1,
+      amount_due: 5000000.00,
+      promo_id: null,
+      discount: null,
+      date_generated: '2021-02-18 00:00:00',
+      date_due: '2021-02-18 00:00:00',
+      date_paid: '2021-02-18 00:00:00',
+      paid_references: null,
+      paid_references_notes: null,
+      amount_paid: null,
+      payment_proof: null,
+      proforma_invoice_pdf: null,
+      status: 0,
+      activaion_status: 0,
+      additional_description: null,
+      period_from: '2021-02-18 00:00:00',
+      period_to: '2021-02-18 00:00:00',
+      show_period: 0,
+      created_by: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    }])
+
+    // Invoice_dt
+    await queryInterface.bulkInsert('invoice_dt', [{
+      
+      id: 1,
+      invoice_id: 1,
+      company_plan_id: 1,
+      product_id: 1,
+      product_name: 'Virtual Office Silver Promo (Bundle) 12 Month',
+      price: 5000000,
+      quantity: 1,
+    }])
+
   },
 
   down: async (queryInterface, Sequelize) => {

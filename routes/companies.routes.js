@@ -4,8 +4,9 @@ module.exports = (app) => {
   const checkAuth = require("../middlewares/auth");
 
   app.get("/company", checkAuth, company.get);
-  app.get("/company/call-contacts/:companyId", checkAuth, company.getCallContacts);
   app.get("/search-company", checkAuth, company.search);
   app.post("/company", checkAuth, validator.create, company.create);
+  
+  app.get("/company/call-contacts/:companyId", checkAuth, company.getCallContacts);
   app.put("/company/edit/:companyId", checkAuth, validator.edit, company.edit);
 };
