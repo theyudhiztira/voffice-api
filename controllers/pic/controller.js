@@ -55,6 +55,11 @@ exports._create = async (params) => {
 exports._get = async (filter) => {
   pic = await model.pic.findAll({
     where: filter,
+    include: [
+      {
+        model: model.companies
+      }
+    ]
   });
 
   if (!pic) {
@@ -82,7 +87,7 @@ exports._search = async (filter) => {
         {id: {[Op.like]: "%" + search.id + "%"}},
       ],
     },
-    include: { model: model.companies }
+    include: [ { model: model.companies } ]
   });
 
   if (!pic) {

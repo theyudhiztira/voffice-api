@@ -38,7 +38,7 @@ exports._create = async (params) => {
         message: err.message,
       }
     })
-};
+};  
 
 exports._get = async (filter) => {
   pic = await model.facilities.findAll({

@@ -1,51 +1,80 @@
 const model = require("../../models");
 const {Op} = require("sequelize");
 const moment = require("moment");
+const products = require("../../models/products");
+const plans = require("../../models/plans");
 
 exports._create = async (params) => {
   
-  params.status = 0
-  params.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
-  params.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
+  const processData = params.map(async v => {
+    const product = await model.products.findOne({ where: { id: v.product_id }})
 
-  console.log(params);
+    v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
+    v.current_price = product.price,
+    v.status = 0,
+    v.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss"),
+    v.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss")
 
-  return await model.plans.create(params)
+    return await model.plans.create(v)
+    .then(async (result) => {
+
+      return model.plan_dt.create({
+        plan_id: result.id,
+        free_credit: product.credit,
+        paid_credit: 0,
+        updated_by: result.created_by,
+        created_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
+        updated_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
+      })
+
+    })
     .then((result) => {
-      
-      return {
-        status: 200,
-        message: "Successfully Create Plan."
-      }
-      
+      return true
     })
     .catch((err) => {
-
-      return {
-        status: 500,
-        message: err.message,
-      }
-
+      return false
     })
+  })
+
+  return {
+    status: 200,
+    message: "Successfully Create Plan."  
+  }
 };
 
-// exports._get = async (filter) => {
-//   pic = await model.pic.findAll({
-//     where: filter,
-//   });
+exports._get = async (filter) => {
 
-//   if (!pic) {
-//     return {
-//       status: 400,
-//       message: `Client doesn't exists!`,
-//     };
-//   }
+  try {
+    const plans = await model.plans.findAll({
+      where: filter,
+      include: [
+        {
+          model: model.locations,
+        },
+        {
+          model: model.products,
+        }
+      ]
+    });
 
-//   return {
-//     status: 200,
-//     message: pic,
-//   };
-// };
+    if(!plans)  return {
+      status: 400,
+      message: `Plans doesn't exists!`,
+    };
+
+    return {
+      status: 200, 
+      message: plans,
+    };
+
+  } catch (err) {
+    return {
+      status: 500,
+      message: err.message,
+    };
+
+  }
+};
 
 // exports._search = async (filter) => {
 //   const search = filter;

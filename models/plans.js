@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.plans.hasOne(models.locations, { foreignKey: 'id', sourceKey: 'location_id' })
+      models.plans.hasOne(models.products, { foreignKey: 'id', sourceKey: 'product_id' })
     }
   }
   Plans.init(
@@ -24,18 +26,17 @@ module.exports = (sequelize, DataTypes) => {
         current_price: DataTypes.DOUBLE,
         renewal_price: DataTypes.INTEGER,
         location_id: DataTypes.INTEGER,
-        credit: DataTypes.INTEGER,
         start_date: {
             allowNull: false,
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         last_renew_date: {
             allowNull: true,
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         next_renew_date: {
             allowNull: false,
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         contract_term: DataTypes.INTEGER,
         billing_cycle: DataTypes.INTEGER,

@@ -11,15 +11,16 @@ exports.create = async (req, res) => {
   return res.status(statusCode).send(func);
 };
 
-// exports.get = async (req, res) => {
-//   const filter = hero.paramFilter(["id"], req.query);
 
-//   let func = await controller._get(filter);
+exports.get = async (req, res) => {
+  const filter = hero.paramFilter(["id", "company_id"], req.query);
 
-//   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+  let func = await controller._get(filter);
 
-//   return res.status(statusCode).send(func);
-// };
+  func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+  return res.status(statusCode).send(func);
+};
 
 // exports.search = async (req, res) => {
 //   const filter = hero.paramFilter(["id", "full_name"], req.query);

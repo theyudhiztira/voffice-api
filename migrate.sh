@@ -1,4 +1,4 @@
 #! /bin/bash
-npx sequelize-cli db:migrate:undo:all
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
+sequelize db:migrate:undo:all
+sequelize db:migrate
+sequelize db:seed:all
