@@ -3,42 +3,65 @@ const {Op} = require("sequelize");
 const moment = require("moment");
 const products = require("../../models/products");
 const plans = require("../../models/plans");
+const { createInvoice } = require("../partnership/invoices/index")
 
 exports._create = async (params) => {
+
+  try {
+    const processData = params.plan.map(async v => {
+      const product = await model.products.findOne({ where: { id: v.product_id }})
   
-  const processData = params.map(async v => {
-    const product = await model.products.findOne({ where: { id: v.product_id }})
+      v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
+      v.current_price = product.price,
+      v.status = 0,
+      v.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss"),
+      v.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss")
+      v.created_by = params.user
 
-    v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
-    v.current_price = product.price,
-    v.status = 0,
-    v.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss"),
-    v.updated_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss")
+      let plan = await model.plans.create(v)
 
-    return await model.plans.create(v)
-    .then(async (result) => {
+      let plan_dt = await model.plan_dt.create({
+          plan_id: plan.id,
+          free_credit: product.credit,
+          paid_credit: 0,
+          updated_by: plan.created_by,
+          created_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
+          updated_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
+        })
+        
+        // date due & show period statis
+        const dataInvoice = {
+          invoice: {
+            company_id: v.company_id,
+            amount_due: params.invoice.amount_due,
+            date_generated: moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
+            date_due: "2021-02-18",
+            period_from: plan.start_date,
+            period_to: plan.next_renew_date,
+            show_period: 0,
+          },
+          invoice_dt: {
+            company_plan_id: plan.id,
+            product_id: plan.product_id,
+            quantity: 1
+          },
+          userData: plan.created_by
+        }
 
-      return model.plan_dt.create({
-        plan_id: result.id,
-        free_credit: product.credit,
-        paid_credit: 0,
-        updated_by: result.created_by,
-        created_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
-        updated_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
-      })
-
+        const invoice = await createInvoice(dataInvoice)
     })
-    .then((result) => {
-      return true
-    })
-    .catch((err) => {
-      return false
-    })
-  })
 
-  return {
-    status: 200,
-    message: "Successfully Create Plan."  
+    return {
+      status: 200,
+      message: "Successfully Create Plan."  
+    }
+    
+  } catch (err) {
+    console.log(err.message);
+    return {
+      status: 200,
+      message: err.message
+    }
   }
 };
 
