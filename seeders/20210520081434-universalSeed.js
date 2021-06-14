@@ -187,7 +187,6 @@ module.exports = {
 
     // Invoice_dt
     await queryInterface.bulkInsert('invoice_dt', [{
-      
       id: 1,
       invoice_id: 1,
       company_plan_id: 1,

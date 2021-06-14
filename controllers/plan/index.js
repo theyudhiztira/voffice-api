@@ -4,6 +4,7 @@ const hero = require("../../lib/hero");
 
 exports.create = async (req, res) => {
   req.body.created_by = req.userData.userId;
+
   let func = await controller._create(req.body);
 
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);

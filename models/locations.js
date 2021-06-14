@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             models.locations.belongsTo(models.plans, { foreignKey: 'id' })
+            models.locations.belongsTo(models.facilities, { foreignKey: 'id'} )
         }
     };
     locations.init({

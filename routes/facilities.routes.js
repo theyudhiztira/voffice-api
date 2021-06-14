@@ -7,4 +7,5 @@ module.exports = (app) => {
   app.get("/search-facilities", checkAuth, facilities.search);
   app.post("/facilities", checkAuth, facilities.create);
   app.put("/facilities/:facilities_id", checkAuth, facilities.edit);
+  app.get('/facilities/:filename', checkAuth, facilities.readFile)
 };

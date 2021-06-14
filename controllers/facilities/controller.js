@@ -43,6 +43,9 @@ exports._create = async (params) => {
 exports._get = async (filter) => {
   pic = await model.facilities.findAll({
     where: filter,
+    include: [
+      {model: model.locations}
+    ]
   });
 
   if (!pic) {
@@ -120,17 +123,6 @@ exports._edit = async (params, facilitiesId) => {
     });
 };
 
-exports._upload = async (image) => {
-  try {
-    const rootFolder = path.dirname(require.main.filename);
-    const allowedFile = 'images'
-    console.log(image);
-    console.log(image);
-
-  } catch (err) {
-    console.log(err);
-  }
-} 
 
 
 // module.exports = {
