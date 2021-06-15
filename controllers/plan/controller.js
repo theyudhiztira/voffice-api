@@ -11,7 +11,7 @@ exports._create = async (params) => {
     const processData = params.map(async v => {
       const product = await model.products.findOne({ where: { id: v.product_id }})
   
-      v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
+      // v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
       v.current_price = product.price,
       v.status = 0,
       v.created_at = moment().tz('Asia/Jakarta').format("YYYY-MM-DD HH:mm:ss"),

@@ -14,7 +14,7 @@ module.exports = {
             renewal_price: Sequelize.INTEGER,
             location_id: Sequelize.INTEGER,
             start_date: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DATEONLY
             },
             last_renew_date: {
@@ -22,7 +22,7 @@ module.exports = {
                 type: Sequelize.DATEONLY
             },
             next_renew_date: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DATEONLY
             },
             contract_term: Sequelize.INTEGER,
