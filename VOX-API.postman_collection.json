@@ -334,8 +334,11 @@
 			"item": [
 				{
 					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "token",
@@ -346,7 +349,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"location_id\": 1,\n    \"facility_name\": \"Meeting Room 2\",\n    \"facility_category\": 1,\n    \"maximum_capacity\": 15,\n    \"images\": \"test2.jpg\",\n    \"real_time_booking\": 0\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -354,12 +357,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_uri}}/facilities",
+							"raw": "{{api_uri}}/promo",
 							"host": [
 								"{{api_uri}}"
 							],
 							"path": [
-								"facilities"
+								"promo"
 							]
 						}
 					},
