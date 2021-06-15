@@ -186,14 +186,26 @@ module.exports = {
     }])
 
     // Invoice_dt
-    await queryInterface.bulkInsert('invoice_dt', [{
+    // await queryInterface.bulkInsert('invoice_dt', [{
+    //   id: 1,
+    //   invoice_id: 1,
+    //   company_plan_id: 1,
+    //   product_id: 1,
+    //   product_name: 'Virtual Office Silver Promo (Bundle) 12 Month',
+    //   price: 5000000,
+    //   quantity: 1,
+    // }])
+
+    // Promo
+    await queryInterface.bulkInsert('promo', [{
       id: 1,
-      invoice_id: 1,
-      company_plan_id: 1,
-      product_id: 1,
-      product_name: 'Virtual Office Silver Promo (Bundle) 12 Month',
-      price: 5000000,
-      quantity: 1,
+      name: 'Diskon 1 juta',
+      price: 1000000,
+      type: '1',
+      status: '1',
+      created_by: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
     }])
 
   },
