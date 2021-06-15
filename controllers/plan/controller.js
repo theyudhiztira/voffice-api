@@ -8,9 +8,11 @@ const { createInvoice } = require("../invoices")
 exports._create = async (params) => {
 
   try {
-    const processData = params.map(async v => {
+
+    let dataForDt = []
+    await Promise.all(params.map(async (v) => {
       const product = await model.products.findOne({ where: { id: v.product_id }})
-  
+
       // v.next_renew_date = moment(v.start_date).add(v.contract_term, 'M').tz('Asia/Jakarta').format("YYYY-MM-D"),
       v.current_price = product.price,
       v.status = 0,
@@ -28,18 +30,32 @@ exports._create = async (params) => {
         created_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss"),
         updated_at:  moment().tz('Asia/Jakarta').format("YYYY-MM-D HH:mm:ss")
       })
+
+      dataForDt.push({
+        plan_id: plan.id,
+        product_id: product.id,
+        product_name: product.product_name,
+      });
+    }));
+
+
+    const invoice = await createInvoice({
+      company_id: params[0].company_id,
+      amount_due: 0,
+      created_by: params.user,
+      dataForDt: dataForDt
     })
-    
+
     return {
       status: 200,
-      message: "Successfully Create Plan."  
+      result: "Successfully Create Plan."
     }
     
   } catch (err) {
     
     return {
       status: 500,
-      message: err.message
+      result: err.message
     }
   }
 };
@@ -61,18 +77,18 @@ exports._get = async (filter) => {
 
     if(!plans)  return {
       status: 400,
-      message: `Plans doesn't exists!`,
+      result: `Plans doesn't exists!`,
     };
 
     return {
       status: 200, 
-      message: plans,
+      result: plans,
     };
 
   } catch (err) {
     return {
       status: 500,
-      message: err.message,
+      result: err.message,
     };
 
   }
