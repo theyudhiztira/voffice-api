@@ -23,6 +23,7 @@ exports.get = async (req, res) => {
   return res.status(statusCode).send(func);
 };
 
+
 // exports.search = async (req, res) => {
 //   const filter = hero.paramFilter(["id", "full_name"], req.query);
 
@@ -33,10 +34,3 @@ exports.get = async (req, res) => {
 //   return res.status(statusCode).send(func);
 // };
 
-// exports.edit = async (req, res) => {
-//   let func = await controller._edit(req.body, req.params.pic_id);
-
-//   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
-
-//   return res.status(statusCode).send(func);
-// };
