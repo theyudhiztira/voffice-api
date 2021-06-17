@@ -20,7 +20,7 @@ exports.createInvoice = async (payload) => {
         
         const product = await model.products.findOne({ where: { id: dataInvoice.invoice_dt.product_id }})
  
-        dataInvoice.invoice_dt.product_name = product.name
+        dataInvoice.invoice_dt.product_name = product.product_name
         dataInvoice.invoice_dt.price = product.price
 
         const newInvoice = await axios({
