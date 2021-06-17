@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id",
         sourceKey: 'location_id'
       });
+
+      models.facilities.hasMany(models.facility_booking, { foreignKey: "facility_id"})
+      models.facilities.hasMany(models.facility_schedules, { foreignKey: "facility_id"})
     }
   }
   Facilities.init(

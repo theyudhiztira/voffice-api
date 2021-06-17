@@ -44,7 +44,7 @@ exports._get = async (filter) => {
   pic = await model.facilities.findAll({
     where: filter,
     include: [
-      {model: model.locations}
+      { model: model.locations }
     ]
   });
 

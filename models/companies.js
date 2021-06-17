@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       models.companies.belongsTo(models.pic, {
         foreignKey: "pic_id",
       });
+
+      models.companies.hasMany(models.facility_booking, { foreignKey: "company_id"})
     }
   }
   companies.init(

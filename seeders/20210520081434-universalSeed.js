@@ -175,7 +175,7 @@ module.exports = {
       payment_proof: null,
       proforma_invoice_pdf: null,
       status: 0,
-      activaion_status: 0,
+      activation_status: 0,
       additional_description: null,
       period_from: '2021-02-18 00:00:00',
       period_to: '2021-02-18 00:00:00',
@@ -207,6 +207,50 @@ module.exports = {
       created_at: '2021-02-18 00:00:00',
       updated_at: '2021-02-18 00:00:00'
     }])
+
+    // facility_booking
+    await queryInterface.bulkInsert('facility_booking', [{
+      id: 1,
+      facility_id: 1,
+      booking_date: "2021-05-27",
+      company_id: 1,
+      plan_id: 1,
+      booked_slot: "1000,1100,1300",
+      number_of_attendees: 5,
+      unique_code: "d222be9d5b5867bef0544573c5452c59",
+      booking_source: "vox",
+      created_by: 1,
+      created_at: "2020-02-06",
+      updated_at: "2020-02-06"
+    }])
+
+    // facility_schedules
+    await queryInterface.bulkInsert('facility_schedules', [{
+      id: 1,
+      facility_id: 1,
+      date: "2021-05-27",
+      700: null,
+      800: null,
+      900: 95,
+      1000: 95,
+      1100: null,
+      1200: null,
+      1300: null,
+      1400: null,
+      1500: null,
+      1600: null,
+      1700: null,
+      1800: null,
+      1900: null,
+      2000: null,
+      2100: null,
+      2200: null,
+      2300: null,
+      created_at: "2020-02-06",
+      updated_at: "2020-02-06"
+    }])
+
+    
 
   },
 
