@@ -1,5 +1,4 @@
 const model = require('../../../models')
-const axios = require('axios')
 
 exports.getRevenueData = async (req, res) => {
     let location_id = parseInt(req.params.location_id);

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fb82fbf1-8e03-4340-9960-b5f2a088d79d",
+		"_postman_id": "73a6e173-3057-4230-a481-a9d56d013e06",
 		"name": "VOX-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -322,6 +322,47 @@
 							],
 							"path": [
 								"facilities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promo",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/promo",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"promo"
 							]
 						}
 					},
@@ -860,7 +901,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"plan\": [{\n    \"company_id\": 1,\n    \"product_id\": 1,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n},\n{\n    \"company_id\": 1,\n    \"product_id\": 2,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n}],\n    \"invoice\": {\" amount_due\": 6000000 },\n    \"user\": 1\n}",
+							"raw": "[{\n    \"company_id\": 1,\n    \"product_id\": 1,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n},\n{\n    \"company_id\": 1,\n    \"product_id\": 2,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n}]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -880,40 +921,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Invoices",
-			"item": [
-				{
-					"name": "Create new invoice",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": " {\n    \"invoice\": {\n        \"company_id\": 1,\n        \"amount_due\": 6000000,\n        \"promo_id\": null,\n        \"discount\": null,\n        \"date_generated\": \"2021-02-18\",\n        \"date_due\": \"2021-02-18\",\n        \"date_paid\" : \"2021-02-18\",\n        \"paid_references\": null,\n        \"paid_references_notes\": null,\n        \"amount_paid\": null,\n        \"payment_proof\": null,\n        \"proforma_invoice_pdf\": null,\n        \"additional_description\": null,\n        \"period_from\": \"2021-02-18\",\n        \"period_to\": \"2021-02-18\",\n        \"show_period\": 0,\n        \"accept_by\": null,\n        \"decline_by\": null\n    },\n    \"payload\": {\n        \"company_plan_id\": 1,\n        \"product_id\": 1,\n        \"quantity\": 1\n    },\n    \"userData\": {\n        \"userId\": 1,\n        \"email\": \"devteam@voffice.co.id\",\n        \"iat\": 1623380199,\n        \"exp\": 1623408999\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{invoices_uri}}/invoices",
-							"host": [
-								"{{invoices_uri}}"
-							],
-							"path": [
-								"invoices"
-							]
-						}
-					},
-					"response": []
-				}
-			]
 		}
 	],
 	"auth": {
@@ -921,7 +928,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIzNjQ2ODE5LCJleHAiOjE2MjM2NzU2MTl9.kw-hvXXSE8jm2Mbg-oT930-tUeGel1EFb05Vs6zvfv4",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIzNzI1ODAwLCJleHAiOjE2MjM3NTQ2MDB9.AvoBNs0SS3egPUGdneqwiICbazD1maeyfryvrPticIg",
 				"type": "string"
 			}
 		]

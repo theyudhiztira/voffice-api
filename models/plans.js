@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         renewal_price: DataTypes.INTEGER,
         location_id: DataTypes.INTEGER,
         start_date: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.DATEONLY
         },
         last_renew_date: {
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATEONLY
         },
         next_renew_date: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.DATEONLY
         },
         contract_term: DataTypes.INTEGER,

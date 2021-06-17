@@ -1,8 +1,7 @@
 module.exports = (app) => {
-  const plan = require("../controllers/plan");
+  const invoice = require("../controllers/invoices");
   // const validator = require("../validators/clients.validator.js");
   const checkAuth = require("../middlewares/auth");
 
-  app.get("/plan", checkAuth, plan.get)
-  app.post("/plan", checkAuth, plan.create);
+  app.put("/generate", checkAuth, invoice.generateInvoice)
 };
