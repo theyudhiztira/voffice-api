@@ -43,7 +43,7 @@ module.exports = {
       location_id: 1,
       product_name: "Virtual Office Silver (Bundle) 12 Month(s)",
       category: 5,
-      price: 5000000,
+      price: 3000000,
       credit: 2000,
       serviced_office_id: null,
       status: 1,
@@ -55,7 +55,7 @@ module.exports = {
       location_id: 1,
       product_name: "Basic Support Membership II (Bundle) 12 Month(s)",
       category: 3,
-      price: 5500000,
+      price: 3500000,
       credit: 0,
       serviced_office_id: null,
       status: 1,
@@ -199,8 +199,8 @@ module.exports = {
     // Promo
     await queryInterface.bulkInsert('promo', [{
       id: 1,
-      name: 'Diskon 1 juta',
-      price: 1000000,
+      name: 'Diskon Rp 500.000',
+      price: 500000,
       type: '1',
       status: '1',
       created_by: 1,
