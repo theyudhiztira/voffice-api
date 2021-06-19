@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.plans.hasOne(models.locations, { foreignKey: 'id', sourceKey: 'location_id' })
       models.plans.hasOne(models.products, { foreignKey: 'id', sourceKey: 'product_id' })
+      models.plans.hasMany(models.facility_booking, { foreignKey: "plan_id" })
     }
   }
   Plans.init(

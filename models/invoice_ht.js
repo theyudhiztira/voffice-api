@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
             default: 0,
             comment: "0 = unpaid, 1 = paid, 2 = void, 3 = cancelled, 4 = expired, 5 = payment accepted, 6 = payment declined, 7 = payment on hold"
         },
-        activaion_status: {
+        activation_status: {
             type: DataTypes.INTEGER,
             allowNull: true,
             default: 0,
