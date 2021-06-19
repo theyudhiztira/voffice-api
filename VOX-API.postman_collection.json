@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "73a6e173-3057-4230-a481-a9d56d013e06",
+		"_postman_id": "2bd2a2be-b54c-4e89-ba04-37a36b70c551",
 		"name": "VOX-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -921,6 +921,38 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Generate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invoice_id\": 1,\n    \"date_due\": \"2021-06-20\",\n    \"contract_term\": 12,\n    \"promo_id\": 1,\n    \"pph_42\": true,\n    \"pph_23\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/invoices/generate",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"invoices",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -928,7 +960,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIzNzI1ODAwLCJleHAiOjE2MjM3NTQ2MDB9.AvoBNs0SS3egPUGdneqwiICbazD1maeyfryvrPticIg",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIzOTI1OTU4LCJleHAiOjE2MjM5NTQ3NTh9.2jtSYgpPmKCNkeXlY0s4MH-oDDFAkY4ZLO3iOkykxcU",
 				"type": "string"
 			}
 		]
