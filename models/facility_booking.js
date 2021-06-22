@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'facility_booking',
     underscored: true,
+    freezeTableName: true
   });
   return facility_booking;
 };

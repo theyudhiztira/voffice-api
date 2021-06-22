@@ -72,6 +72,9 @@ exports._get = async (filter) => {
         },
         {
           model: model.products,
+        },
+        {
+          model: model.plan_dt
         }
       ]
     });

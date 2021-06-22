@@ -24,6 +24,8 @@ exports.getSchedule = async (req, res) => {
 }
 
 exports.bookingFacility = async (req, res) => {
+  req.body.created_by = req.userData.userId;
+
   let func = await controller._bookingFacility(req.body);
 
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
