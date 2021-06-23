@@ -57,6 +57,33 @@ exports._getSchedule = async (filter) => {
   }
 }
 
+
+exports._getBookings = async (filter) => {
+  try {
+    const bookings = await model.facility_booking.findAll({
+      where: filter,
+      include: [{
+         model: model.facilities,
+         include:{ model: model.locations }
+      },{
+        model: model.companies
+      }]
+    })
+    
+    return {
+      status: 200,
+      result: bookings
+    }
+
+  } catch (err) {
+    console.log(err);
+    return {
+      status: 500,
+      message: err.message,
+    };
+  }
+}
+
 exports._bookingFacility = async (params) => {
   try { 
 
@@ -71,7 +98,8 @@ exports._bookingFacility = async (params) => {
       number_of_attendees: params.pax,
       unique_code: md5(message),
       booking_source: params.booking_source,
-      created_by: params.created_by
+      created_by: params.created_by,
+      notes: params.notes
     })
 
     const creditCost = await local.handleCreditCost({
@@ -80,6 +108,7 @@ exports._bookingFacility = async (params) => {
       credit_type: params.credit_type,
       plan_dt: params.plan_dt
     })
+
 
     if(creditCost.status === 500) return creditCost
     
@@ -97,7 +126,6 @@ exports._bookingFacility = async (params) => {
       message: "Facility booked"
     };
   } catch (err) {
-    console.log(err);
     return {
       status: 500,
       message: err.message,

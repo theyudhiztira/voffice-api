@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       booking_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
       company_id: {
@@ -51,6 +51,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         comment: "Value: vox, web_portal, mobile_app"
+      },
+      notes: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       created_by: {
         type: Sequelize.INTEGER,

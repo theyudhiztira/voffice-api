@@ -219,6 +219,7 @@ module.exports = {
       number_of_attendees: 5,
       unique_code: "d222be9d5b5867bef0544573c5452c59",
       booking_source: "vox",
+      notes: "Kursinya dibalik",
       created_by: 1,
       created_at: "2020-02-06",
       updated_at: "2020-02-06"

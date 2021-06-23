@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     number_of_attendees: DataTypes.INTEGER,
     unique_code: DataTypes.STRING,
     booking_source: DataTypes.STRING,
+    notes: DataTypes.STRING,
     created_by: DataTypes.INTEGER,
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE

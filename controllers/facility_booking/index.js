@@ -23,6 +23,16 @@ exports.getSchedule = async (req, res) => {
   return res.status(statusCode).send(func);
 }
 
+exports.getBookings = async (req, res) => {
+  const filter = hero.paramFilter(["id"], req.query);
+
+  let func = await controller._getBookings(filter);
+
+  func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+  return res.status(statusCode).send(func);
+}
+
 exports.bookingFacility = async (req, res) => {
   req.body.created_by = req.userData.userId;
 

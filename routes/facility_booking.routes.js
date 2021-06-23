@@ -4,5 +4,6 @@ module.exports = (app) => {
   const checkAuth = require("../middlewares/auth");
 
   app.get("/facility-schedules", checkAuth, facilityBooking.getSchedule)
+  app.get("/bookings", checkAuth, facilityBooking.getBookings)
   app.post("/facility-booking", checkAuth, facilityBooking.bookingFacility)
 };
