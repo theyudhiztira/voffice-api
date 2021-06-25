@@ -6,6 +6,7 @@ const promoController = require("../promo/controller")
 
 exports._generateInvoice = async (params) => {
   try {
+    console.log({params});
     
     const dataInvoices = await axios({
       method: "GET",
@@ -17,6 +18,7 @@ exports._generateInvoice = async (params) => {
     const promo = await (await promoController._get({id: params.promo_id})).result[0];
     const calculatePrice = await local.calculatePrice(promo, planId, params.pph_42, params.pph_23, dataInvoices.data.result.rows[0].vat)
 
+    console.log(planId);
     const doUpdatePlan = await model.plans.update({ contract_term: params.contract_term}, { 
       where: { 
         id: planId
@@ -35,6 +37,8 @@ exports._generateInvoice = async (params) => {
       url: process.env.INVOICE_URL + 'invoices',
       data: params
     })
+
+    console.log(doUpdateInvoice, "aaaaaaaaaaaaaaaaaaa");
 
     return {
       status: 200, 
