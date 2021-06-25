@@ -203,7 +203,7 @@ const local = exports = {
       } else {
         return {
             status: 500,
-            message: `Credit not enough`
+            message: `your credit is not sufficient to book this facility`
           }
       }
       
