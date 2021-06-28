@@ -64,6 +64,7 @@ exports._create = async (params) => {
 exports._get = async (filter) => {
 
   try {
+
     const plans = await model.plans.findAll({
       where: filter,
       include: [
@@ -75,6 +76,9 @@ exports._get = async (filter) => {
         },
         {
           model: model.plan_dt
+        },
+        {
+          model: model.companies
         }
       ]
     });
