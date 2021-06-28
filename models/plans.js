@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       models.plans.hasOne(models.products, { foreignKey: 'id', sourceKey: 'product_id' })
       models.plans.hasOne(models.plan_dt, { foreignKey: "id", sourceKey: 'id' })
       models.plans.hasMany(models.facility_booking, { foreignKey: "plan_id" })
+      models.plans.belongsTo(models.companies)
     }
   }
   Plans.init(

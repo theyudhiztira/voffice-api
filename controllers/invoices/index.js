@@ -1,6 +1,7 @@
 const model = require("../../models");
 const axios = require('axios')
 const controller = require("./controller");
+const hero = require("../../lib/hero");
 
 exports.createInvoice = async (payload) => {
 
@@ -25,3 +26,13 @@ exports.generateInvoice = async (req, res) => {
   
     return res.status(statusCode).send(func);
 };
+
+exports.getInvoice = async (req, res) => {
+    const filter = hero.paramFilter(["id"], req.query);
+
+    let func = await controller._getInvoice(filter);
+
+    func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+    return res.status(statusCode).send(func);
+}

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       models.companies.hasMany(models.facility_booking, { foreignKey: "company_id"})
+      models.companies.hasMany(models.plans, { foreignKey: "company_id" })
     }
   }
   companies.init(

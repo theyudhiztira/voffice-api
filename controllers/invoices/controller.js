@@ -6,8 +6,6 @@ const promoController = require("../promo/controller")
 
 exports._generateInvoice = async (params) => {
   try {
-    console.log({params});
-    
     const dataInvoices = await axios({
       method: "GET",
       url: process.env.INVOICE_URL + `invoices?id=${params.invoice_id}`,
@@ -51,6 +49,33 @@ exports._generateInvoice = async (params) => {
     };
   }
 }
+
+exports._getInvoice = async (params) => {
+  try {
+    const invoice = await axios({
+      method: "GET",
+      url: process.env.INVOICE_URL + `invoices?id=${params.id}`,
+    })
+
+    if(!invoice) {
+      return {
+        status: 400,
+        message: `Invoice doesn't exists!`,
+      };
+    }
+
+    return {
+      status: 200, 
+      result: invoice.data.result,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      result: err.message,
+    };
+  }
+}
+
 
 const local = exports = {
   calculatePrice: async (promo, planId, pph_42, pph_23) => {
