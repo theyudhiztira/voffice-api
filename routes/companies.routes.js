@@ -8,5 +8,6 @@ module.exports = (app) => {
   app.post("/company", checkAuth, validator.create, company.create);
   
   app.get("/company/call-contacts/:companyId", checkAuth, company.getCallContacts);
+  app.post("/company/call-contacts", checkAuth, company.createCallContacts);
   app.put("/company/edit/:companyId", checkAuth, validator.edit, company.edit);
 };

@@ -26,63 +26,6 @@ exports._get = async (filter) => {
   };
 };
 
-exports._getCallContacts = async (companyId) => {
-
-  console.log(companyId);
-  
-  const callContacts = await model.call_contacts.findAll({
-    where: {
-      company_id: companyId
-    },
-  });
-
-  if (!callContacts) {
-    return {
-      status: 400,
-      message: `This client doesn't have call contact(s)!`,
-    };
-  }
-
-  return {
-    status: 200,
-    result: callContacts,
-  };
-};
-
-exports._search = async (filter) => {
-  const search = filter;
-
-  console.log(search);
-
-  const companies = await model.companies.findAll({
-    where: {
-      [Op.or]: [
-        {id: {[Op.like]: "%" + search.id + "%"}},
-        {company_name: {[Op.like]: "%" + search.company_name + "%"}},
-        {pic_id: {[Op.like]: "%" + search.pic_id + "%"}},
-      ],
-    },
-
-    include: [{
-      model: model.pic,
-    }],
-  });
-
-
-  if (!companies) {
-    return {
-      status: 400,
-      message: `Client doesn't exists!`,
-    };
-  }
-
-  console.log(companies);
-  return {
-    status: 200,
-    companies: companies,
-  };
-};
-
 exports._create = async (params, userID) => {
 
   const company = await model.companies.findOne({
@@ -154,7 +97,7 @@ exports._create = async (params, userID) => {
       }
 
     })
-}
+};
 
 exports._edit = async (params, companyId) => {
   const company = await model.companies.findOne({
@@ -179,5 +122,81 @@ exports._edit = async (params, companyId) => {
   return {
     status: 200,
     message: "Successfully Update Client.",
+  };
+};
+
+exports._search = async (filter) => {
+  const search = filter;
+
+  const companies = await model.companies.findAll({
+    where: {
+      [Op.or]: [
+        {id: {[Op.like]: "%" + search.id + "%"}},
+        {company_name: {[Op.like]: "%" + search.company_name + "%"}},
+        {pic_id: {[Op.like]: "%" + search.pic_id + "%"}},
+      ],
+    },
+
+    include: [{
+      model: model.pic,
+    }],
+  });
+
+
+  if (!companies) {
+    return {
+      status: 400,
+      message: `Client doesn't exists!`,
+    };
+  }
+
+  console.log(companies);
+  return {
+    status: 200,
+    companies: companies,
+  };
+};
+
+exports._createCallContacts = async (params) => {
+  try {
+    params.status = 1
+    params.created_at =  moment().format("Y-m-d");
+    params.updated_at =  moment().format("Y-m-d");
+
+    const doCreate = await model.call_contacts.create(params)
+
+    return {
+      status: 200,
+      message: "Successfully Create Client.",
+      data: doCreate
+    }
+
+  } catch (err) {
+    return {
+      status: 500,
+      message: err.message,
+    }
+  }
+};
+
+exports._getCallContacts = async (companyId) => {
+
+  const callContacts = await model.call_contacts.findAll({
+    where: {
+      company_id: companyId,
+      status: 1
+    },
+  });
+
+  if (!callContacts) {
+    return {
+      status: 400,
+      message: `This client doesn't have call contact(s)!`,
+    };
+  }
+
+  return {
+    status: 200,
+    result: callContacts,
   };
 };
