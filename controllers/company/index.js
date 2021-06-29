@@ -37,6 +37,16 @@ exports.edit = async (req, res) => {
   return res.status(statusCode).send(func);
 };
 
+exports.createCall = async (req, res) => {
+  req.body.created_by = req.userData.userId;
+
+  let func = await controller._createCall(req.body);
+
+  func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+  return res.status(statusCode).send(func);
+};
+
 exports.createCallContacts = async (req, res) => {
   req.body.created_by = req.userData.userId;
 

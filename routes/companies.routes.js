@@ -10,4 +10,7 @@ module.exports = (app) => {
   app.get("/company/call-contacts/:companyId", checkAuth, company.getCallContacts);
   app.post("/company/call-contacts", checkAuth, company.createCallContacts);
   app.put("/company/edit/:companyId", checkAuth, validator.edit, company.edit);
+
+//   app.get("/company/call-handling/:companyId", checkAuth, company.getCall);
+  app.post("/company/call-handling", checkAuth, company.createCall);
 };

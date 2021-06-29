@@ -157,6 +157,30 @@ exports._search = async (filter) => {
   };
 };
 
+exports._createCall = async (params) => {
+  try {
+    // params.status = 1
+    params.created_at =  moment().format("Y-m-d");
+    params.updated_at =  moment().format("Y-m-d");
+
+    const doCreateCallHandling = await model.call_handling.create(params)
+
+    // console.log(doCreateCallHandling);
+
+    return {
+      status: 200,
+      message: "Successfully Create Client.",
+      data: doCreateCallHandling
+    }
+
+  } catch (err) {
+    return {
+      status: 500,
+      message: err.message,
+    }
+  }
+};
+
 exports._createCallContacts = async (params) => {
   try {
     params.status = 1
