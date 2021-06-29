@@ -274,7 +274,18 @@ module.exports = {
       updated_at: "2020-02-06"
     }])
 
-    
+    await queryInterface.bulkInsert("mail_handling", [{
+      id: 1,
+      company_id: 1,
+      location_id: 1,
+      received_at: "2020-02-05 00:00:00",
+      item_category: 1,
+      item_description: "a description",
+      sender_info: "Galang IT vOffice",
+      delivery_courier: "Kuda",
+      created_at: "2020-02-06",
+      updated_at: "2020-02-06"
+    }])
 
   },
 
