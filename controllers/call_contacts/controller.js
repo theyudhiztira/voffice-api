@@ -42,7 +42,7 @@ exports._get = async (filter) => {
   
     return {
       status: 200,
-      message: callContacts,
+      result: callContacts,
     };
   } catch (err) {
     return {

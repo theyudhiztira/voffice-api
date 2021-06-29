@@ -14,7 +14,7 @@ exports.create = async (req, res) => {
 
 
 exports.get = async (req, res) => {
-  const filter = hero.paramFilter(["id", "company_id"], req.query);
+  const filter = hero.paramFilter(["id", "company_id", "status"], req.query);
 
   let func = await controller._get(filter);
 
