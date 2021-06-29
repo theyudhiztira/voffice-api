@@ -25,7 +25,10 @@ exports._generateInvoice = async (params) => {
 
     delete params.contract_term
 
+    console.log(promo);
+
     params.amount_due = calculatePrice.amountDue
+    params.discount = promo ? promo.price : 0
     params.pph_42 = params.pph_42 ? 'y' : 'n'
     params.pph_23 = params.pph_23 ? 'y' : 'n'
     params.toUpdateDt = calculatePrice.toUpdateDt
@@ -36,7 +39,6 @@ exports._generateInvoice = async (params) => {
       data: params
     })
 
-    console.log(doUpdateInvoice, "aaaaaaaaaaaaaaaaaaa");
 
     return {
       status: 200, 
@@ -91,10 +93,14 @@ const local = exports = {
 
     let toUpdateDt = []
     let amountDue = 0
-    let vat       = 0
-    let pph23     = 0
-    let pph42     = 0
+    let total_pph42 = 0
+    let total_pph23 = 0
+
     await Promise.all(plan.map(async (v) => {
+      const realPrice = v.product.price
+      let pph23     = 0
+      let pph42     = 0
+      let vat       = 0
 
       if (v.product.category == 3){
 
@@ -112,6 +118,7 @@ const local = exports = {
         //pph23
         if (pph_23){
           pph23 = (v.product.price * 0.02)
+          total_pph23 = pph23
         }
         
       }else{
@@ -130,6 +137,7 @@ const local = exports = {
         //pph42
         if (pph_42){
           pph42 = (v.product.price * 0.1)
+          total_pph42 = pph42
         }
       }
 
@@ -137,13 +145,15 @@ const local = exports = {
 
       toUpdateDt.push({
         plan_id: v.id,
-        pph_23: pph23,
+        price: realPrice,
         pph_42: pph42,
+        pph_23: pph23,
         vat: vat,
       })
     }));
+
+    amountDue = amountDue + (amountDue * 0.1) - total_pph42 - total_pph23
     
-    amountDue = amountDue + (amountDue * 0.1) - pph42 - pph23
 
     return {
       amountDue: amountDue,

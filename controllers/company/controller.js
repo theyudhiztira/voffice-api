@@ -52,8 +52,6 @@ exports._getCallContacts = async (companyId) => {
 exports._search = async (filter) => {
   const search = filter;
 
-  console.log(search);
-
   const companies = await model.companies.findAll({
     where: {
       [Op.or]: [

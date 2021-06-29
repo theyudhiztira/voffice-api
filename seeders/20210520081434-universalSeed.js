@@ -61,6 +61,29 @@ module.exports = {
       status: 1,
       created_at: '2021-02-18 00:00:00',
       updated_at: '2021-02-18 00:00:00'
+    },{
+      id: 3,
+      location_id: 1,
+      product_name: "Virtual Office Gold (Bundle) 12 Month(s)",
+      category: 5,
+      price: 4000000,
+      credit: 3500,
+      serviced_office_id: null,
+      status: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
+    },
+    {
+      id: 4,
+      location_id: 1,
+      product_name: "Advance Support Membership (Bundle) 12 Month(s)",
+      category: 3,
+      price: 4910000,
+      credit: 0,
+      serviced_office_id: null,
+      status: 1,
+      created_at: '2021-02-18 00:00:00',
+      updated_at: '2021-02-18 00:00:00'
     }])
 
     // Plan

@@ -34,6 +34,7 @@ exports._create = async (params) => {
       dataForDt.push({
         plan_id: plan.id,
         product_id: product.id,
+        product_category: product.category,
         product_name: product.product_name,
         price: product.price,
       });
@@ -78,7 +79,8 @@ exports._get = async (filter) => {
           model: model.plan_dt
         },
         {
-          model: model.companies
+          model: model.companies,
+          include: { model: model.pic }
         }
       ]
     });
