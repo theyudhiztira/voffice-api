@@ -19,3 +19,18 @@ exports.get = async (req, res) => {
 
   return res.status(statusCode).send(func);
 };
+
+
+exports.mailForwarding = async (req, res) => {
+  const params = {
+    mailId: req.params.mailId,
+    dataMail: req.body,
+    proofImages: req.files.images
+  }
+
+  let func = await controller._mailForwarding(params);
+
+  func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+  return res.status(statusCode).send(func);
+}
