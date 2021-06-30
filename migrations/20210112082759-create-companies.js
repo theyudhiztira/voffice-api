@@ -11,6 +11,9 @@ module.exports = {
             pic_id: {
                 type: Sequelize.INTEGER
             },
+            location_id: {
+                type: Sequelize.INTEGER
+            },
             company_name: {
                 type: Sequelize.STRING,
                 allowNull: false

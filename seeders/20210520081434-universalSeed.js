@@ -20,6 +20,7 @@ module.exports = {
     await queryInterface.bulkInsert('companies', [{
       id: 1,
       pic_id: 1,
+      location_id: 1,
       company_name: 'PT vdev Indonesia',
       phone: '085155001616',
       email: 'devteam@voffice.co.id',

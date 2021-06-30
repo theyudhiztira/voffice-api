@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             models.locations.belongsTo(models.plans, { foreignKey: 'id' })
             models.locations.belongsTo(models.facilities, { foreignKey: 'id'} )
             models.locations.hasMany(models.mail_handling, { foreignKey: 'location_id' } )
+            models.locations.hasMany(models.companies, { foreignKey: "location_id" })
         }
     };
     locations.init({
