@@ -285,6 +285,7 @@ module.exports = {
       item_description: "a description",
       sender_info: "Galang IT vOffice",
       delivery_courier: "Kuda",
+      created_by: 1,
       created_at: "2020-02-06",
       updated_at: "2020-02-06"
     }])

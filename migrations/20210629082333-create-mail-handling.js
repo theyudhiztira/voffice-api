@@ -87,6 +87,10 @@ module.exports = {
       notified_to: {
         type: Sequelize.TEXT
       },
+      created_by: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.mail_handling.belongsTo(models.companies, { foreignKey: "company_id" } )
       models.mail_handling.belongsTo(models.locations, { foreignKey: "company_id" } )
+      models.mail_handling.belongsTo(models.users, { foreignKey: "created_by" })
     }
   };
   mail_handling.init({
@@ -41,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     recipient_phone: DataTypes.STRING,
     recipient_address: DataTypes.TEXT,
     taken_by_client_at: DataTypes.DATE,
-    notified_to: DataTypes.TEXT
+    notified_to: DataTypes.TEXT,
+    created_by: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'mail_handling',

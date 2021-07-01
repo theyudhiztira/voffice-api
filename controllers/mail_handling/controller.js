@@ -30,7 +30,12 @@ exports._create = async (params) => {
 exports._get = async (filter) => {
   try {
     const mail = await model.mail_handling.findAll({
-      where: filter
+      where: filter,
+      include: [
+        {
+          model: model.users
+        }
+      ]
     })
   
     if (!mail) {
