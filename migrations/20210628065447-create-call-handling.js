@@ -14,7 +14,16 @@ module.exports = {
             caller_no: Sequelize.STRING,
             message: Sequelize.TEXT,
             urgency_level: Sequelize.STRING,
-            forwarded_to: Sequelize.STRING,
+            forwarded_to: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: "call_contacts",
+                    key: "id"
+                },
+                onDelete: "CASCADE",
+                onUpdate: "CASCADE"
+            },
+            note: Sequelize.STRING,
             status: {
               type: Sequelize.ENUM('0', '1', '2', '3', '4'),
               allowNull: false,

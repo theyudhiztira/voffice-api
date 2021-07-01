@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.call_handling.belongsTo(models.call_contacts,  { foreignKey: "forwarded_to" })
+      models.call_handling.belongsTo(models.users,  { foreignKey: "created_by" })
+      models.call_handling.belongsTo(models.companies,  { foreignKey: "company_id" })
     }
   }
   Promo.init(
@@ -25,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
         caller_no: DataTypes.STRING,
         message: DataTypes.TEXT,
         urgency_level: DataTypes.STRING,
-        forwarded_to: DataTypes.STRING,
+        forwarded_to: DataTypes.INTEGER,
+        note: DataTypes.TEXT,
         status: {
             type: DataTypes.ENUM('0', '1', '2', '3', '4'),
             allowNull: false,

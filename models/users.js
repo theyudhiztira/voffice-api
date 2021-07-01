@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
         // define association here
-        models.users.hasOne(models.mail_handling, { foreignKey: "created_by" })
+            models.users.hasMany(models.mail_handling, { foreignKey: "created_by" })
+            models.users.hasMany(models.call_handling, { foreignKey: "created_by" })
         }
     };
     users.init({
