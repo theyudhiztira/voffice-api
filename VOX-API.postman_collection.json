@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2bd2a2be-b54c-4e89-ba04-37a36b70c551",
+		"_postman_id": "be3527b6-7e49-41e1-a9bb-2f1c49ab1580",
 		"name": "VOX-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -285,6 +285,17 @@
 								"call-contacts",
 								"1"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []
@@ -901,7 +912,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[{\n    \"company_id\": 1,\n    \"product_id\": 1,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n},\n{\n    \"company_id\": 1,\n    \"product_id\": 2,\n    \"location_id\": 1,\n    \"start_date\": \"2021-02-18\",\n    \"contract_term\": 12\n}]",
+							"raw": "[{\n    \"company_id\": 1,\n    \"product_id\": 1,\n    \"location_id\": 1\n},\n{\n    \"company_id\": 1,\n    \"product_id\": 2,\n    \"location_id\": 1\n}]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -919,20 +930,15 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Invoices",
-			"item": [
+				},
 				{
-					"name": "Generate",
+					"name": "Edit",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 1,\n    \"date_due\": \"2021-06-20\",\n    \"contract_term\": 12,\n    \"promo_id\": 1,\n    \"pph_42\": true,\n    \"pph_23\": true\n}",
+							"raw": "{\n    \"contract_term\": 2, \n    \"date_due\": \"2021-06-17\", \n    \"promo_id\": 1, \n    \"pph_42\": true,\n    \"pph_23\": true, \n    \"invoiceId\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -940,13 +946,188 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_uri}}/invoices/generate",
+							"raw": "{{api_uri}}/generate",
 							"host": [
 								"{{api_uri}}"
 							],
 							"path": [
-								"invoices",
 								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Call Contacts",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"company_id\": 1,\n      \"plan_id\": 1,\n      \"full_name\": \"Galang Ardian\",\n      \"division\": null,\n      \"primary_number\": \"087757764878\",\n      \"secondary_number\": null,\n      \"email\": \"galang.voffice@gmail.com\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/call-contacts",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"call-contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_uri}}/call-contacts",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"call-contacts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mail-handling",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"company_id\": 1,\n      \"location_id\": 1,\n      \"received_at\": \"2020-02-05 00:00:00\",\n      \"item_category\": 1,\n      \"item_description\": \"Sebwah deskripsi\",\n      \"sender_info\": \"Galang IT vOffice\",\n      \"delivery_courier\": \"Kuda Kurir\",\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/company/mail-handling",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"company",
+								"mail-handling"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mail Forwarding",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "proof_image",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "forwarding_company",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "forwarding_cost",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tracking_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "forwarded_at",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "forwarded_by",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "recipient_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "recipient_phone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "recipient_address",
+									"value": "",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_uri}}/company/mail-handling/1",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"company",
+								"mail-handling",
+								"1"
 							]
 						}
 					},
@@ -960,7 +1141,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjIzOTI1OTU4LCJleHAiOjE2MjM5NTQ3NTh9.2jtSYgpPmKCNkeXlY0s4MH-oDDFAkY4ZLO3iOkykxcU",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjI1MDM0MDIxLCJleHAiOjE2MjUwNjI4MjF9.5z9IhGlpV2SaqMlwwwksR8k_K8KhGTRWj3AmR65yXDY",
 				"type": "string"
 			}
 		]

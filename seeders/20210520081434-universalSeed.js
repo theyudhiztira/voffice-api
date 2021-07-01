@@ -148,6 +148,7 @@ module.exports = {
       id: 1,
       location_id: 1,
       facility_name: "Meeting Room 1",
+      credit_cost: 200,
       facility_category: 1,
       maximum_capacity: 10,
       images: "test.jpg",
