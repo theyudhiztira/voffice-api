@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       comment:  "0 = received by our staff, 1 = picked up by client, 2 = forwarded to client, 3 = rejected by our staff"
     },
     proof_image: DataTypes.TEXT,
-    forwarding_company: DataTypes.TINYINT,
+    forwarding_company: DataTypes.STRING,
     forwarding_cost: DataTypes.INTEGER,
     tracking_number: DataTypes.STRING,
     forwarded_at: DataTypes.DATE,

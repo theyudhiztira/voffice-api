@@ -86,7 +86,7 @@ exports._mailForwarding = async (params) => {
     });
 
     params.dataMail.proof_image = filename
-
+    
     const doUpdate = await model.mail_handling.update(params.dataMail, {
       where: { id: params.mailId }
     })

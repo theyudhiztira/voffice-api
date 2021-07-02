@@ -58,7 +58,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       forwarding_company: {
-        type: Sequelize.TINYINT
+        type: Sequelize.STRING
       },
       forwarding_cost: {
         type: Sequelize.INTEGER

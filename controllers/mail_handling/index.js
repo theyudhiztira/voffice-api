@@ -29,6 +29,8 @@ exports.mailForwarding = async (req, res) => {
     proofImages: req.files.images
   }
 
+  params.dataMail.forwarded_by = req.userData.id
+
   let func = await controller._mailForwarding(params);
 
   func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
