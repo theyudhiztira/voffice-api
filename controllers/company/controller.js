@@ -178,45 +178,54 @@ exports._edit = async (params, companyId) => {
   };
 };
 
-exports._search = async (filter) => {
-  const search = filter;
+// exports._search = async (filter) => {
+//   const search = filter;
 
-  const companies = await model.companies.findAll({
-    where: {
-      [Op.or]: [
-        {id: {[Op.like]: "%" + search.id + "%"}},
-        {company_name: {[Op.like]: "%" + search.company_name + "%"}},
-        {pic_id: {[Op.like]: "%" + search.pic_id + "%"}},
-      ],
-    },
+//   const companies = await model.companies.findAll({
+//     where: {
+//       [Op.or]: [
+//         {id: {[Op.like]: "%" + search.id + "%"}},
+//         {company_name: {[Op.like]: "%" + search.company_name + "%"}},
+//         {pic_id: {[Op.like]: "%" + search.pic_id + "%"}},
+//       ],
+//     },
 
-    include: [{
-      model: model.pic,
-    }],
-  });
+//     include: [{
+//       model: model.pic,
+//     }],
+//   });
 
 
-  if (!companies) {
-    return {
-      status: 400,
-      message: `Client doesn't exists!`,
-    };
-  }
+//   if (!companies) {
+//     return {
+//       status: 400,
+//       message: `Client doesn't exists!`,
+//     };
+//   }
 
-  console.log(companies);
-  return {
-    status: 200,
-    companies: companies,
-  };
-};
+//   console.log(companies);
+//   return {
+//     status: 200,
+//     companies: companies,
+//   };
+// };
 
 exports._createCall = async (params) => {
   try {
-    // params.status = 1
-    params.created_at =  moment().format("Y-m-d");
-    params.updated_at =  moment().format("Y-m-d");
+    params.created_at = moment().format("Y-m-d");
+    params.updated_at = moment().format("Y-m-d");
+    
+    const dataInput = []
 
-    const doCreateCallHandling = await model.call_handling.create(params)
+    params.sendTo.forEach(el => {
+      const temp = { ...params } 
+      delete temp.sendTo
+
+      temp.forwarded_to = el.id
+      dataInput.push(temp)
+    })
+
+    const doCreateCallHandling = await model.call_handling.bulkCreate(dataInput)
 
     // console.log(doCreateCallHandling);
 
@@ -256,24 +265,63 @@ exports._createCallContacts = async (params) => {
   }
 };
 
-exports._getCallContacts = async (companyId) => {
+// exports._getCallContacts = async (companyId) => {
 
-  const callContacts = await model.call_contacts.findAll({
-    where: {
-      company_id: companyId,
-      status: 1
-    },
-  });
+//   const callContacts = await model.call_contacts.findAll({
+//     where: {
+//       company_id: companyId,
+//       status: 1
+//     },
+//   });
 
-  if (!callContacts) {
+//   if (!callContacts) {
+//     return {
+//       status: 400,
+//       message: `This client doesn't have call contact(s)!`,
+//     };
+//   }
+
+//   return {
+//     status: 200,
+//     result: callContacts,
+//   };
+// };
+
+exports._getCallLog = async (companyId) => {
+  try {
+    const callLogs = await model.call_handling.findAll({
+      where: {
+        company_id: companyId
+      },
+      include: [
+        {
+          model: model.call_contacts
+        },
+        {
+          model: model.users,
+            attributes: ["first_name", "id", "last_name"]
+        },
+        {
+          model: model.companies
+        }
+      ]
+    })
+
+    if (!callLogs) {
+      return {
+        status: 400,
+        message: `Call Logs doesn't exists!`,
+      };
+    }
+
     return {
-      status: 400,
-      message: `This client doesn't have call contact(s)!`,
-    };
+      status: 200,
+      result: callLogs,
+    }
+  } catch (err) {
+    return {
+      status: 500,
+      message: err.message,
+    }
   }
-
-  return {
-    status: 200,
-    result: callContacts,
-  };
-};
+}

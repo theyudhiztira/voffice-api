@@ -64,3 +64,11 @@ exports.getCallContacts = async (req, res) => {
 
   return res.status(statusCode).send(func);
 };
+
+exports.getCallLog = async (req, res) => {
+  let func = await controller._getCallLog(req.params.companyId);
+
+  func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+  return res.status(statusCode).send(func);
+}
