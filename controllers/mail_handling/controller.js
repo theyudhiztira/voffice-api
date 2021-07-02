@@ -33,8 +33,13 @@ exports._get = async (filter) => {
       where: filter,
       include: [
         {
-          model: model.users
-        }
+          model: model.users,
+          as: 'received_by'
+        },
+        {
+          model: model.users,
+          as: 'passed_by'
+        },
       ]
     })
   

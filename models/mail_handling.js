@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.mail_handling.belongsTo(models.companies, { foreignKey: "company_id" } )
       models.mail_handling.belongsTo(models.locations, { foreignKey: "company_id" } )
-      models.mail_handling.belongsTo(models.users, { foreignKey: "created_by" })
+      models.mail_handling.belongsTo(models.users, { as: 'received_by', foreignKey: "created_by"})
+      models.mail_handling.belongsTo(models.users, { as: 'passed_by', foreignKey: "forwarded_by" })
     }
   };
   mail_handling.init({
