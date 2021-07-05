@@ -65,32 +65,36 @@ exports._get = async (filter) => {
 
 exports._mailForwarding = async (params) => {
   try {
-    const mail = await model.mail_handling.findOne({
-      where: { id: params.mail.id }
+    const mailIds = JSON.parse(params.mail.mailIds)
+    delete params.mail.mailIds
+
+    const mail = await model.mail_handling.findAll({
+      where: { id: mailIds }
     })  
 
-    if(!mail) {
+    if(mail.length !== mailIds.length) {
       return {
         status: 400,
         message: `Mail not found!`,
       }
     }
+
     if(params.mail.action === "forward") {
       const fileData = params.proofImages
-  
-      let filename = `${mail.id}-proof-images.${(fileData.mimetype).split('/').pop()}`;
+      delete params.mail.action
+
+      let filename = `${mailIds.join("&")}-proof-images.${(fileData.mimetype).split('/').pop()}`;
       const rootFolder = path.dirname(require.main.filename);
   
       await fileData.mv(`${rootFolder}/storage/facilities/${filename}`, (err) => {
         console.log(err ? err : "File saved")
       });
-  
-      delete params.mail.action
+      
       params.mail.proof_image = filename
       params.mail.status = 2
 
       const doUpdate = await model.mail_handling.update(params.mail, {
-        where: { id: params.mail.id }
+        where: { id: mailIds }
       })
   
       return {
@@ -101,9 +105,9 @@ exports._mailForwarding = async (params) => {
 
       delete params.mail.action
       params.mail.status = 1
-
+      
       const doUpdate = await model.mail_handling.update(params.mail, {
-        where: { id: params.mail.id }
+        where: { id: mailIds }
       })
 
       return {
