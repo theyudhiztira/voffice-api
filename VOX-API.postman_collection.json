@@ -1132,6 +1132,50 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Mail Retrieve",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "action",
+									"value": "retrieve",
+									"type": "text"
+								},
+								{
+									"key": "recipient_name",
+									"value": "Galang Ardian",
+									"type": "text"
+								},
+								{
+									"key": "recipient_phone",
+									"value": "088888",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_uri}}/company/mail-handling",
+							"host": [
+								"{{api_uri}}"
+							],
+							"path": [
+								"company",
+								"mail-handling"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -1141,7 +1185,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjI1MDM0MDIxLCJleHAiOjE2MjUwNjI4MjF9.5z9IhGlpV2SaqMlwwwksR8k_K8KhGTRWj3AmR65yXDY",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjI1NDU3MjEwLCJleHAiOjE2MjU0ODYwMTB9.OEoAFa74lXbd2Ie2EK3bFoxMtdtY3V8PY7ngCF9O-AE",
 				"type": "string"
 			}
 		]
