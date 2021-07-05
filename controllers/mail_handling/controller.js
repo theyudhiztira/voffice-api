@@ -65,7 +65,10 @@ exports._get = async (filter) => {
 
 exports._mailForwarding = async (params) => {
   try {
-    const mailIds = JSON.parse(params.mail.mailIds)
+    let mailIds;
+    if(typeof params.mail.mailIds !== "string") mailIds = [...params.mail.mailIds]
+    else mailIds = JSON.parse(params.mail.mailIds)
+
     delete params.mail.mailIds
 
     const mail = await model.mail_handling.findAll({
