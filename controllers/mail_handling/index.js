@@ -24,12 +24,12 @@ exports.get = async (req, res) => {
 
 exports.mailForwarding = async (req, res) => {
   const params = {
-    mailId: req.params.mailId,
-    dataMail: req.body,
-    proofImages: req.files.images
+    mail: req.body,
   }
 
-  params.dataMail.forwarded_by = req.userData.id
+  if(req.files) params.proofImages = req.files.images;
+
+  params.mail.forwarded_by = req.userData.userId
 
   let func = await controller._mailForwarding(params);
 

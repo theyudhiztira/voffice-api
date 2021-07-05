@@ -5,5 +5,5 @@ module.exports = (app) => {
 
   app.get("/company/mail-handling", checkAuth, mailHandling.get);
   app.post("/company/mail-handling", checkAuth, mailHandling.create);
-  app.put("/company/mail-handling/:mailId", checkAuth, mailHandling.mailForwarding);
+  app.put("/company/mail-handling", checkAuth, mailHandling.mailForwarding);
 };

@@ -66,7 +66,7 @@ exports._get = async (filter) => {
 exports._mailForwarding = async (params) => {
   try {
     const mail = await model.mail_handling.findOne({
-      where: { id: params.mailId }
+      where: { id: params.mail.id }
     })  
 
     if(!mail) {
@@ -75,26 +75,48 @@ exports._mailForwarding = async (params) => {
         message: `Mail not found!`,
       }
     }
+    if(params.mail.action === "forward") {
+      const fileData = params.proofImages
+  
+      let filename = `${mail.id}-proof-images.${(fileData.mimetype).split('/').pop()}`;
+      const rootFolder = path.dirname(require.main.filename);
+  
+      await fileData.mv(`${rootFolder}/storage/facilities/${filename}`, (err) => {
+        console.log(err ? err : "File saved")
+      });
+  
+      delete params.mail.action
+      params.mail.proof_image = filename
+      params.mail.status = 2
 
-    const fileData = params.proofImages
+      const doUpdate = await model.mail_handling.update(params.mail, {
+        where: { id: params.mail.id }
+      })
+  
+      return {
+        status: 200,
+        message: "Successfully Forwarding Mail."
+      }
+    } else if(params.mail.action === "retrieve") {
 
-    let filename = `${mail.id}-proof-images.${(fileData.mimetype).split('/').pop()}`;
-    const rootFolder = path.dirname(require.main.filename);
+      delete params.mail.action
+      params.mail.status = 1
 
-    await fileData.mv(`${rootFolder}/storage/facilities/${filename}`, (err) => {
-      console.log(err ? err : "File saved")
-    });
+      const doUpdate = await model.mail_handling.update(params.mail, {
+        where: { id: params.mail.id }
+      })
 
-    params.dataMail.proof_image = filename
-    
-    const doUpdate = await model.mail_handling.update(params.dataMail, {
-      where: { id: params.mailId }
-    })
+      return {
+        status: 200,
+        message: "Successfully Retrieve Mail."
+      }
+    }
 
     return {
-      status: 200,
-      message: "Successfully Forwarding Mail."
+      status: 500,
+      message: "Something error"
     }
+
   } catch (err) {
     return {
       status: 500,
