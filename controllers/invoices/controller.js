@@ -25,8 +25,6 @@ exports._generateInvoice = async (params) => {
 
     delete params.contract_term
 
-    console.log(promo);
-
     params.amount_due = calculatePrice.amountDue
     params.discount = promo ? promo.price : 0
     params.pph_42 = params.pph_42 ? 'y' : 'n'
@@ -77,6 +75,64 @@ exports._getInvoice = async (params) => {
     };
   }
 }
+
+exports._showActivation = async (params) => {
+  try {
+    const invoice = await axios({
+      method: "GET",
+      url: process.env.INVOICE_URL + `invoices?status=1`,
+    })
+
+    const plans = await model.plans.findAll({
+      where: {
+        status: 2
+      },
+      include: [
+        {
+          model: model.companies,
+          include: {
+            model: model.pic,
+            attributes: ["full_name"]
+          },
+          attributes: ["company_name"]
+        }
+      ],
+      attributes: ["company_id", "id"],
+    })
+
+    if(!invoice) {
+      return {
+        status: 400,
+        message: `Invoice doesn't exists!`,
+      };
+    }
+
+    for(let i = 0; i < invoice.data.result.rows.length; i++) {
+        const dts = invoice.data.result.rows[i].invoice_dts
+
+        let result = dts.map(el => {
+          let temp = plans.find(v => el.company_plan_id === v.id)
+          if(temp) return temp
+        })
+
+        if(result) {
+          invoice.data.result.rows[i].plans = result
+        }
+    }
+
+
+    return {
+      status: 200, 
+      result: invoice.data.result.rows,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      result: err.message,
+    };
+  }
+}
+
 
 
 const local = exports = {

@@ -4,5 +4,6 @@ module.exports = (app) => {
   const checkAuth = require("../middlewares/auth");
 
   app.get("/invoices", checkAuth, invoice.getInvoice)
+  app.get("/activation-list", checkAuth, invoice.showActivation)
   app.put("/invoices/generate", checkAuth, invoice.generateInvoice)
 };

@@ -36,3 +36,13 @@ exports.getInvoice = async (req, res) => {
 
     return res.status(statusCode).send(func);
 }
+
+exports.showActivation = async (req, res) => {
+    const filter = hero.paramFilter(["id"], req.query);
+
+    let func = await controller._showActivation(filter);
+
+    func.status !== 200 ? (statusCode = func.status) : (statusCode = 200);
+
+    return res.status(statusCode).send(func);
+}
