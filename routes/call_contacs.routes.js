@@ -3,6 +3,6 @@ module.exports = (app) => {
   const validator = require("../validators/clients.validator.js");
   const checkAuth = require("../middlewares/auth");
 
-//   app.get("/company/call-contacts", checkAuth, callContacts.get);
-//   app.post("/company/call-contacts", checkAuth, callContacts.create);
+  app.get("/company/call-contacts", checkAuth, callContacts.get);
+  // app.post("/company/call-contacts", checkAuth, callContacts.create);
 };
