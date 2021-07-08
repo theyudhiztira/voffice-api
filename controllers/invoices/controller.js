@@ -78,23 +78,12 @@ exports._getInvoice = async (params) => {
 
 exports._showActivation = async (params) => {
   try {
+    let query = "invoices?status=1"
+    if(params.id) query += `&id=${params.id}`
+
     const invoice = await axios({
       method: "GET",
-      url: process.env.INVOICE_URL + `invoices?status=1`,
-    })
-
-    const plans = await model.plans.findAll({
-      where: {
-        status: 2
-      },
-      include: [
-        {
-          model: model.companies,
-          include: {
-            model: model.pic,
-          }
-        }
-      ]
+      url: process.env.INVOICE_URL + query,
     })
 
     if(!invoice) {
@@ -104,24 +93,83 @@ exports._showActivation = async (params) => {
       };
     }
 
-    for(let i = 0; i < invoice.data.result.rows.length; i++) {
-        const dts = invoice.data.result.rows[i].invoice_dts
 
-        let result = dts.map(el => {
-          let temp = plans.find(v => el.company_plan_id === v.id)
-          if(temp) return temp
-        })
+    if(params.id) {
+      const plans = await model.plans.findAll({
+        where: {
+          status: 2
+        },
+        include: [
+          {
+            model: model.companies,
+            include: {
+              model: model.pic,
+            },
+          },
+          {
+            model: model.locations,
+            attributes: ["name"]
+          } 
+        ]
+      })
 
-        if(result) {
-          invoice.data.result.rows[i].plans = result
-        }
+  
+      for(let i = 0; i < invoice.data.result.rows.length; i++) {
+          const dts = invoice.data.result.rows[i].invoice_dts
+  
+          let result = dts.map(el => {
+            let temp = plans.find(v => el.company_plan_id === v.id)
+            if(temp) return temp
+          })
+  
+          if(result) {
+            invoice.data.result.rows[i].plans = result
+          }
+      }
+   
+      return {
+        status: 200, 
+        result: invoice.data.result.rows,
+      };
+
+    } else {
+  
+      const plans = await model.plans.findAll({
+        where: {
+          status: 2
+        },
+        include: [
+          {
+            model: model.companies,
+            include: {
+              model: model.pic,
+              attributes: ["full_name"]
+            },
+            attributes: ["company_name"]
+          }
+        ],
+        attributes: ["company_id", "id"],
+      })
+
+  
+      for(let i = 0; i < invoice.data.result.rows.length; i++) {
+          const dts = invoice.data.result.rows[i].invoice_dts
+  
+          let result = dts.map(el => {
+            let temp = plans.find(v => el.company_plan_id === v.id)
+            if(temp) return temp
+          })
+  
+          if(result) {
+            invoice.data.result.rows[i].plans = result
+          }
+      }
+
+      return {
+        status: 200, 
+        result: invoice.data.result.rows,
+      };
     }
-
-
-    return {
-      status: 200, 
-      result: invoice.data.result.rows,
-    };
   } catch (err) {
     return {
       status: 500,
