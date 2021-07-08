@@ -92,12 +92,9 @@ exports._showActivation = async (params) => {
           model: model.companies,
           include: {
             model: model.pic,
-            attributes: ["full_name"]
-          },
-          attributes: ["company_name"]
+          }
         }
-      ],
-      attributes: ["company_id", "id"],
+      ]
     })
 
     if(!invoice) {

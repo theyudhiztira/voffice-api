@@ -1139,30 +1139,13 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "id",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "action",
-									"value": "retrieve",
-									"type": "text"
-								},
-								{
-									"key": "recipient_name",
-									"value": "Galang Ardian",
-									"type": "text"
-								},
-								{
-									"key": "recipient_phone",
-									"value": "088888",
-									"type": "text",
-									"disabled": true
+							"mode": "raw",
+							"raw": "{\n    \"mailIds\": [1,2],\n    \"action\": \"retrieve\",\n    \"recipient_name\": \"Galang\",\n    \"recipient_phone\": \"081234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{api_uri}}/company/mail-handling",
@@ -1178,6 +1161,22 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Show Activation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -1185,7 +1184,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjI1NDU3MjEwLCJleHAiOjE2MjU0ODYwMTB9.OEoAFa74lXbd2Ie2EK3bFoxMtdtY3V8PY7ngCF9O-AE",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGV2dGVhbUB2b2ZmaWNlLmNvLmlkIiwiaWF0IjoxNjI1NzE1MTI2LCJleHAiOjE2MjU3NDM5MjZ9.pzTg-pMUJUFlpnpyDHTF4R0-1p1qFmvEV8Ta6SGD2nA",
 				"type": "string"
 			}
 		]
